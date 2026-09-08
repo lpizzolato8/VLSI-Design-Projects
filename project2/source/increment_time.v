@@ -14,12 +14,12 @@ module increment_time(
 	always@(posedge clk & negedge rst_n)	
 	begin 
 		if (!rst_n) begin
-			time_minutes  <= 6'b000000;
-			time_hours    <= 5'b00000;
+			minutes  <= 6'b000000;
+			hours    <= 5'b00000;
 		end else if (increment_minute) begin
-			time_minutes  <= time_minutes + 6'b000001;
+			minutes  <= minutes + 6'b000001;
 		end else if (increment_hour) begin
-			time_hours    <= time_hours + 5'b00001;
+			hours    <= hours + 5'b00001;
 		end
 	end
 
