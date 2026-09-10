@@ -13,6 +13,7 @@
 
 Edge Detection Design
 ---------------------------------------------------------------------
+``` Verilog
 reg signal_prev;
 
 always @(posedge clk or negedge rst_n) begin
@@ -24,5 +25,5 @@ always @(posedge clk or negedge rst_n) begin
 end
 
 wire signal_edge = signal && !signal_prev;   // rising edge: 0 -> 1
-
+```
 ----------------------------------------------------------------------
