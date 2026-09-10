@@ -1,9 +1,8 @@
 # VLSI Design
 
 ## Notes:
-Edge Detection Design
 
----------------------------------------------------------------------
+Edge Detection Design
 ``` Verilog
 reg signal_prev;
 
@@ -17,4 +16,3 @@ end
 
 wire signal_edge = signal && !signal_prev;   // rising edge: 0 -> 1
 ```
-----------------------------------------------------------------------
