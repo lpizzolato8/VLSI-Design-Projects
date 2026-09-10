@@ -1,7 +1,6 @@
 # VLSI Design
 
 ## Notes:
-
 ### Edge Detection Design
 ---------------------------------------------------------------------
 ``` Verilog
