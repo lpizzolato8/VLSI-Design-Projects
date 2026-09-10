@@ -4,9 +4,11 @@ module running_time(
 	input wire clk,
 	input wire rst_n,
 	input wire set_time,
-	
-	output reg [4:0] hours, 
-	output reg [5:0] minutes
+	input wire inc_hours, 
+	input wire inc_minutes,
+
+	output reg [4:0] running_hours, 
+	output reg [5:0] running_minutes
 	
 	);
 
@@ -15,15 +17,20 @@ module running_time(
 	
 	always@(posedge clk) begin
 		if (!rst_n) begin 				//required so all values are reset when rst_n flag is triggered
-			counter <= 6'b000000;
-			seconds <= 6'b000000;
-			minutes <= 6'b000000;
-			hours   <= 5'b00000;
+			counter 	<= 6'b000000;
+			seconds 	<= 6'b000000;
+			running_minutes <= 6'b000000;
+			running_hours   <= 5'b00000;
+		end else if (set_time) begin // if set_time is high then make new time the output of func2 (increment_time submodule) 
+			running_hours   <= inc_hours;
+			running_minutes <= inc_minutes;
+			counter 	<= 6'b000000;
+			seconds 	<= 6'b000000;	
 		end else if (seconds == 6'b111011) begin	// if you hit 59 seconds -> sec = 0 
 			seconds <= 6'b000000;
 			if (minutes == 6'b111011) begin		// if you hit 59 minutes -> minutes = 0
 				minutes <= 6'b000000;				
-				if (hours == 5'b11000) begin 	// if you hit 23 hours -> hours = 0
+				if (hours == 5'b10111) begin 	// if you hit 23 hours -> hours = 0
 					hours <= 5'b00000;
 				end else begin			// otherwise hours -> +1
 					hours <= hours + 5'b000001;
