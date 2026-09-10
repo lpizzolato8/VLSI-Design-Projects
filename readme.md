@@ -1,7 +1,9 @@
 # VLSI Design
 
 ## Notes:
-### Edge Detection Design
+
+Edge Detection Design
+
 ---------------------------------------------------------------------
 ``` Verilog
 reg signal_prev;
