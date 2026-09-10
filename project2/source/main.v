@@ -58,15 +58,8 @@ module main(
 		
 		.running_hours(running_hours),
 		.running_minutes(running_minutes)
-	);
-	
-	// load staging block 
-	always@(posedge clk or negedge rst_n) begin
-		if (set_time) begin
-			
-		end
+	);	
 
-	
 	// edge detection block -> dflipflop
 	always@(posedge clk or negedge rst_n) begin
    		if (!rst_n) begin
