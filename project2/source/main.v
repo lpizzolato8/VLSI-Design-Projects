@@ -40,7 +40,7 @@ module main(
         	.increment_hour_pe(increment_hour_pe),
         	.increment_minute_pe(increment_minute_pe),
 		.running_hours(running_hours),
-		.running_minutes(running_minutes)
+		.running_minutes(running_minutes),
 		.alarm_hours(alarm_hours),
 		.alarm_minutes(alarm_minutes),
 		
@@ -55,6 +55,8 @@ module main(
 		.set_time(set_time),
 		.inc_hours(inc_hours),
 		.inc_minutes(inc_minutes),
+		.set_time_pe(set_time_pe),
+		.set_alarm_time_pe(set_alarm_time_pe),
 		
 		.running_hours(running_hours),
 		.running_minutes(running_minutes)
