@@ -40,7 +40,7 @@ module running_time(
     				end else seconds <= seconds + 6'b000001;
 			end else begin
     				counter <= counter + 3'b001;
-		:end
+		end
 
 
 
