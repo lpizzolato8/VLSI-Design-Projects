@@ -3,29 +3,32 @@
 module main_tb();
 
 	// var instantiation
-	reg clk,
-	reg rst_n,
-	reg set_time,
-	reg increment_hour,
-	reg increment_minute,
-	reg set_alarm_time, 
-	reg enable_alarm, 	
-	reg alarm_off,
+	reg clk;
+	reg rst_n;
+	reg set_time;
+	reg increment_hour;
+	reg increment_minute;
+	reg set_alarm_time;
+	reg enable_alarm;	
+	reg alarm_off;
 	reg [7:0] error_count = 8'h00;
 	
-	wire [4:0] time_hours, 
-	wire [5:0] time_minutes, 
-	wire alarm,
-	wire alarm_enable,
+	wire [4:0] time_hours;
+	wire [5:0] time_minutes; 
+	wire alarm;
+	wire alarm_enable;
 
 	reg [(20*8)-1:0] testcase;
 
-	localparam integer MIN  = 480;      // clocks per minute
-	localparam integer HOUR = 28800;    // clocks per hour
+	// clk per min & clk per hr
+	localparam integer MIN  = 480;
+	localparam integer HOUR = 28800;
 	
 	// var to hold pass/fail count
 	integer pass = 0, fail = 0;
-	integer h0;  reg [5:0] m0;
+	integer h0;  
+	reg [5:0] m0;
+	integer i;
 	
 	// instantiate main
  	main dut (
@@ -120,8 +123,7 @@ module main_tb();
         
 	// Requirement 4 : run 25 h, then confirm the time is valid
         testcase = "Run_25hrs";
-	reset;
-	integer i;	
+	reset;	
 	// use for loop to run through entire 25hrs and check validity of time values
 	for (i = 0; i < 25; i = i + 1) begin
             tick(HOUR);                          
