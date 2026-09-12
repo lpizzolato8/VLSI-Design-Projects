@@ -34,14 +34,13 @@ module running_time(
         			seconds <= 6'b000000;
        				if (running_minutes == 6'b111011) begin
             				running_minutes <= 6'b000000;
-            				if (running_hours == 5'b10111) running_hours <= 5'b00000;
-            					else running_hours <= running_hours + 5'b000001;
-        				end else running_minutes <= running_minutes + 6'b000001;
-    				end else seconds <= seconds + 6'b000001;
-			end else begin
-    				counter <= counter + 3'b001;
-		end
-
-
+            				if (running_hours == 5'b10111) begin
+		 				running_hours <= 5'b00000;
+            				end else running_hours <= running_hours + 5'b000001;
+        			end else running_minutes <= running_minutes + 6'b000001;
+    			end else seconds <= seconds + 6'b000001;
+		end else begin
+    			counter <= counter + 3'b001;
+	end
 
 endmodule
