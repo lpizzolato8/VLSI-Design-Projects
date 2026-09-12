@@ -86,6 +86,11 @@ module main_tb();
  
         // Requirements 1 : reset functionality & alarm off
         testcase = "Reset";
+	
+	// rst before to initialize reg
+
+	reset;
+
 	// preload values
 	tick(10*MIN);
 	tick(2*HOUR);
