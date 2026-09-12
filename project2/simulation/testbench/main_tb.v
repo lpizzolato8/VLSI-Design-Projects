@@ -86,7 +86,21 @@ module main_tb();
  
         // Requirements 1 : reset functionality & alarm off
         testcase = "Reset";
-        reset;
+	// preload values
+	tick(10*MIN);
+	tick(2*HOUR);
+	press_en; 
+	
+	// start alarm set stage
+	set_alarm_time=1; 
+	tick(2);
+        
+	// alarm time +1 hr
+	h0 = time_hours;   
+	press_hr;  
+	tick(2);
+        
+	reset;
         
 	// checks if all values are set to their default 0
 	error_count = compare_outputs(8'h00, time_hours,    "time_hours",    error_count);
