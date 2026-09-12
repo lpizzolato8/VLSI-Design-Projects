@@ -27,21 +27,21 @@ module running_time(
 			running_minutes <= inc_minutes;
 			counter 	<= 6'b000000;
 			seconds 	<= 6'b000000;	
-		end else if (seconds == 6'b111011) begin	// if you hit 59 seconds -> sec = 0 
-			seconds <= 6'b000000;
-			running_minutes <= running_minutes + 6'b000001;
-			if (running_minutes == 6'b111011) begin		// if you hit 59 minutes -> minutes = 0
-				running_minutes <= 6'b000000;				
-				if (running_hours == 5'b10111) begin 	// if you hit 23 hours -> hours = 0
-					running_hours <= 5'b00000;
-				end else begin			// otherwise hours -> +1
-					running_hours <= running_hours + 5'b000001;
-				end
-			end 
-		end else if (counter == 3'b111) begin 		// if # of clks = 7 -> sec +1
-			counter <= 3'b000;
-			seconds <= seconds + 6'b000001;
-		end else begin
-			counter <= counter + 3'b001; 		// every clk cycle increment by 1
-		end
-	end
+		
+		end else if (counter == 3'b111) begin         // 8th clock -> one full second elapsed
+    			counter <= 3'b000;
+    			if (seconds == 6'b111011) begin           // 59s complete -> roll minute
+        			seconds <= 6'b000000;
+       				if (running_minutes == 6'b111011) begin
+            				running_minutes <= 6'b000000;
+            				if (running_hours == 5'b10111) running_hours <= 5'b00000;
+            					else running_hours <= running_hours + 5'b000001;
+        				end else running_minutes <= running_minutes + 6'b000001;
+    				end else seconds <= seconds + 6'b000001;
+			end else begin
+    				counter <= counter + 3'b001;
+		:end
+
+
+
+endmodule

@@ -2,5 +2,8 @@
 
 # list of design files to be compiled
 
-ver_files=("../../source/program_counter.v"
-	  "../testbench/program_counter_tb.v")	
+
+ver_files=("../../source/increment_time.v"
+           "../../source/running_time.v"
+           "../../source/main.v"
+           "../testbench/main_tb.v")

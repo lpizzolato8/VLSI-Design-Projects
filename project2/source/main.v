@@ -55,8 +55,6 @@ module main(
 		.set_time(set_time),
 		.inc_hours(inc_hours),
 		.inc_minutes(inc_minutes),
-		.set_time_pe(set_time_pe),
-		.set_alarm_time_pe(set_alarm_time_pe),
 		
 		.running_hours(running_hours),
 		.running_minutes(running_minutes)
@@ -81,11 +79,11 @@ module main(
 	// only changes when both values are different -> when high is sent
 	// 1&&!0 therefore 1 -> then check the next value 1&&!1 therfore 0 ->
 	// when low is then sent 0&&!1 therefore 0 (always running (ignore clk)) 
-	wire increment_hour_pe   = increment_hour   && !increment_hour_q;
-	wire increment_minute_pe = increment_minute && !increment_minute_q;
-	wire enable_alarm_pe     = enable_alarm     && !enable_alarm_q;
-	wire set_time_pe         = set_time         && !set_time_q;
-	wire set_alarm_time_pe	 = set_alarm_time   && !set_alarm_time_q;
+	assign increment_hour_pe   = increment_hour   && !increment_hour_q;
+	assign increment_minute_pe = increment_minute && !increment_minute_q;
+	assign enable_alarm_pe     = enable_alarm     && !enable_alarm_q;
+	assign set_time_pe         = set_time         && !set_time_q;
+	assign set_alarm_time_pe   = set_alarm_time   && !set_alarm_time_q;
 
 
 	// alarm logic block
@@ -123,4 +121,4 @@ module main(
 		end
 	end
 	
-end
+endmodule
