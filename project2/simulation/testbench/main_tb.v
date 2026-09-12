@@ -270,4 +270,4 @@ module main_tb();
             compare_outputs = error_count + 1;
         end
     endfunction
-
+endmodule
