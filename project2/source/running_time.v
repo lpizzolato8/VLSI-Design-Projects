@@ -18,14 +18,14 @@ module running_time(
 	
 	always@(posedge clk or negedge rst_n) begin
 		if (!rst_n) begin 				//required so all values are reset when rst_n flag is triggered
-			counter 	<= 6'b000000;
+			counter 	<= 3'b000;
 			seconds 	<= 6'b000000;
 			running_minutes <= 6'b000000;
 			running_hours   <= 5'b00000;
 		end else if (set_time) begin // if set_time is high then make new time the output of func2 (increment_time submodule) 
 			running_hours   <= inc_hours;
 			running_minutes <= inc_minutes;
-			counter 	<= 6'b000000;
+			counter 	<= 3'b000;
 			seconds 	<= 6'b000000;	
 		
 		end else if (counter == 3'b111) begin         // 8th clock -> one full second elapsed
@@ -36,11 +36,17 @@ module running_time(
             				running_minutes <= 6'b000000;
             				if (running_hours == 5'b10111) begin
 		 				running_hours <= 5'b00000;
-            				end else running_hours <= running_hours + 5'b000001;
-        			end else running_minutes <= running_minutes + 6'b000001;
-    			end else seconds <= seconds + 6'b000001;
+            				end else begin 
+						running_hours <= running_hours + 5'b000001;
+					end
+        			end else begin
+					running_minutes <= running_minutes + 6'b000001;
+				end
+    			end else begin 
+				seconds <= seconds + 6'b000001;
+			end
 		end else begin
     			counter <= counter + 3'b001;
+		end
 	end
-
 endmodule
