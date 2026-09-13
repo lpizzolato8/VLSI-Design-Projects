@@ -28,9 +28,9 @@ module running_time(
 			counter 	<= 3'b000;
 			seconds 	<= 6'b000000;	
 		
-		end else if (counter == 3'b111) begin         // 8th clock -> one full second elapsed
+		end else if (counter == 3'b111) begin        // if counter hits 7 -> 0
     			counter <= 3'b000;
-    			if (seconds == 6'b111011) begin           // 59s complete -> roll minute
+    			if (seconds == 6'b111011) begin           
         			seconds <= 6'b000000;
        				if (running_minutes == 6'b111011) begin
             				running_minutes <= 6'b000000;
