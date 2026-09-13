@@ -96,6 +96,11 @@ module main_tb();
 	tick(2*HOUR);
 	press_en; 
 	
+	// check if nonzero
+	error_count = compare_outputs(8'd2,  time_hours,    "time_hours_preload",    error_count); 
+	error_count = compare_outputs(8'd10, time_minutes,  "time_minutes_preload",  error_count); 
+	error_count = compare_outputs(8'd01, alarm_enabled, "alarm_enabled_preload", error_count); 
+	
 	// start alarm set stage
 	set_alarm_time=1; 
 	tick(2);
@@ -108,10 +113,10 @@ module main_tb();
 	reset;
         
 	// checks if all values are set to their default 0
-	error_count = compare_outputs(8'h00, time_hours,    "time_hours",    error_count);
-        error_count = compare_outputs(8'h00, time_minutes,  "time_minutes",  error_count);
-        error_count = compare_outputs(8'h00, alarm,         "alarm",         error_count);
-        error_count = compare_outputs(8'h00, alarm_enabled, "alarm_enabled", error_count);
+	error_count = compare_outputs(8'd00, time_hours,    "time_hours",    error_count);
+        error_count = compare_outputs(8'd00, time_minutes,  "time_minutes",  error_count);
+        error_count = compare_outputs(8'd00, alarm,         "alarm",         error_count);
+        error_count = compare_outputs(8'd00, alarm_enabled, "alarm_enabled", error_count);
 	
         // Req2 : min wraps around
         testcase = "Minute_tick";
@@ -146,9 +151,7 @@ module main_tb();
 	// use for loop to run through entire 25hrs and check validity of time values
 	for (i = 0; i < 25; i = i + 1) begin
             tick(HOUR);                          
-            error_count = compare_outputs(8'h01,
-                          (time_hours<=23 && time_minutes<=59),
-                          "time_valid", error_count);
+            error_count = compare_outputs(8'd01, (time_hours<=23 && time_minutes<=59), "time_valid", error_count);
         end
 
    
@@ -215,8 +218,8 @@ module main_tb();
 	tick(2);
         
 	// time was increasing while held in alarm set stage?
-	error_count = compare_outputs(8'h00, time_hours,        "time_hours",    error_count);
-        error_count = compare_outputs(8'h01, (time_minutes>=1), "time_advanced", error_count);
+	error_count = compare_outputs(8'd00, time_hours,        "time_hours",    error_count);
+        error_count = compare_outputs(8'd01, (time_minutes>=1), "time_advanced", error_count);
  
         // Requirement 10 : enable_alarm toggles alarm_enabled
         testcase = "Enable_alarm";
@@ -227,14 +230,14 @@ module main_tb();
 	tick(2);
         
 	// alarm on?
-	error_count = compare_outputs(8'h01, alarm_enabled, "alarm_enabled", error_count);
+	error_count = compare_outputs(8'd01, alarm_enabled, "alarm_enabled", error_count);
         
 	// alarm off
 	press_en; 
 	tick(2);
         
 	// alarm off?
-	error_count = compare_outputs(8'h00, alarm_enabled, "alarm_enabled", error_count);
+	error_count = compare_outputs(8'd00, alarm_enabled, "alarm_enabled", error_count);
  
         // Requirement 11 : alarm fires when alarm matches running time then alarm_off snoozes it
         testcase = "Alarm->Snooze";
@@ -256,12 +259,12 @@ module main_tb();
 
 	
         // alarm on?, then simulates snooze button, alarm snoozed? 
-	error_count = compare_outputs(8'h01, alarm, "alarm", error_count);
+	error_count = compare_outputs(8'd01, alarm, "alarm", error_count);
         @(negedge clk) alarm_off=1; 
 	tick(2); 
 	@(negedge clk) alarm_off=0; 
 	tick(2);
-        error_count = compare_outputs(8'h00, alarm, "alarm", error_count);
+        error_count = compare_outputs(8'd00, alarm, "alarm", error_count);
  
         // final pass/fail count
         if (error_count == 0) begin
