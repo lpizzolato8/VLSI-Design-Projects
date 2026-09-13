@@ -32,13 +32,13 @@ module increment_time(
 			inc_minutes  <= alarm_minutes;
 		end else if (increment_minute_pe) begin
 			if (inc_minutes == 6'b111011) begin
-				inc_minutes  <= 1'b0;
+				inc_minutes  <= 6'b000000;
 			end else begin
 				inc_minutes  <= inc_minutes + 6'b000001;
 			end
 		end else if (increment_hour_pe) begin
 			if (inc_hours == 5'b10111) begin
-				inc_hours    <= 1'b0;
+				inc_hours    <= 5'b00000;
 			end else begin
 				inc_hours    <= inc_hours + 5'b00001;
 			end
