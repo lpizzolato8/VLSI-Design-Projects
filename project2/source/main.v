@@ -100,25 +100,30 @@ module main(
 		end
 	end
 	
-	// timekeeping block
-	always@(posedge clk or negedge rst_n) begin 
+	// timekeeping block 
+	always@* begin 
 		if (!rst_n) begin
-			time_minutes  <= 6'b000000;
-			time_hours    <= 5'b00000;
-			alarm_hours   <= 5'b00000;
-			alarm_minutes <= 6'b000000;
+			time_minutes  = 6'b000000;
+			time_hours    = 5'b00000;
 		end else if (set_time) begin
-			time_hours    <= inc_hours;
-			time_minutes  <= inc_minutes;		
-		end else if (set_alarm_time) begin
-			alarm_hours   <= inc_hours;
-			alarm_minutes <= inc_minutes;
-			time_hours    <= inc_hours;
-			time_minutes  <= inc_minutes;					
+			time_hours    = inc_hours;
+			time_minutes  = inc_minutes;	
 		end else begin 
-			time_hours    <= running_hours;
-			time_minutes  <= running_minutes;
+			time_hours    = running_hours;
+			time_minutes  = running_minutes;
 		end
 	end
 	
+	// seperate time keeping for alarm since it must be registered
+	always@(posedge clk or negedge rst_n) begin
+    		if (!rst_n) begin
+        		alarm_hours   <= 5'b00000;
+        		alarm_minutes <= 6'b000000;
+    	end else if (set_alarm_time) begin       
+	       	alarm_hours   <= inc_hours;
+        	alarm_minutes <= inc_minutes;
+    	end
+    
+end
+
 endmodule
