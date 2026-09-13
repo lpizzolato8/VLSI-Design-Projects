@@ -108,6 +108,9 @@ module main(
 		end else if (set_time) begin
 			time_hours    = inc_hours;
 			time_minutes  = inc_minutes;	
+		end else if (set_alarm_time) begin
+			time_hours    = inc_hours;   
+    			time_minutes  = inc_minutes;
 		end else begin 
 			time_hours    = running_hours;
 			time_minutes  = running_minutes;
