@@ -120,25 +120,16 @@ module main_tb();
         error_count = compare_outputs(8'd00, time_minutes,  "time_minutes",  error_count);
         error_count = compare_outputs(8'd00, alarm,         "alarm",         error_count);
         error_count = compare_outputs(8'd00, alarm_enabled, "alarm_enabled", error_count);
-	
-        // Req2 : min wraps around
-        testcase = "Minute_tick";
-	reset;
-	// min +1
-        tick(MIN);                               
-        
-	error_count = compare_outputs(8'd1, time_minutes, "time_minutes", error_count); // exactly 01
-        
- 	
-        // Req3 : hour wraps after 60 min
-        testcase = "Hour_tick";
+		
+        // Requirement 2/3 : hour and minute wrap around
+        testcase = "Hour&Minute_wrap";
         reset;
 
 	// min +59
 	tick(59*MIN);
                         
         // at 00:59?
-	error_count = compare_outputs(8'd59, time_minutes, "time_minutes", error_count); // sit at 00:59
+	error_count = compare_outputs(8'd59, time_minutes, "time_minutes", error_count);
         error_count = compare_outputs(8'd0,  time_hours,   "time_hours",   error_count);
         
 	// min +1 to wrap around
