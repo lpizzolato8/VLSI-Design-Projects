@@ -102,7 +102,7 @@ module main_tb();
 	error_count = compare_outputs(8'd01, alarm_enabled, "alarm_enabled_preload", error_count); 
 	
 	// start alarm set stage
-	set_alarm_time=1; 
+	set_alarm_time = 1; 
 	tick(2);
         
 	// alarm time +1 hr
@@ -110,6 +110,7 @@ module main_tb();
 	press_hr;  
 	tick(2);
         
+	set_alarm_time = 0;
 	reset;
         
 	// checks if all values are set to their default 0
