@@ -13,7 +13,9 @@ module running_time(
 	
 	);
 
-	reg [2:0] counter;
+	// counts from 0-7 for the number of clks (8 clks is one second)
+	reg [2:0] counter; 
+	// counts to 59 for seconds
 	reg [5:0] seconds;
 	
 	always@(posedge clk or negedge rst_n) begin
@@ -22,13 +24,13 @@ module running_time(
 			seconds 	<= 6'b000000;
 			running_minutes <= 6'b000000;
 			running_hours   <= 5'b00000;
-		end else if (set_time) begin // if set_time is high then make new time the output of func2 (increment_time submodule) 
+		end else if (set_time) begin // load the running clock with the values that are being inc if set_time goes high 
 			running_hours   <= inc_hours;
 			running_minutes <= inc_minutes;
 			counter 	<= 3'b000;
 			seconds 	<= 6'b000000;	
 		
-		end else if (counter == 3'b111) begin        // if counter hits 7 -> 0
+		end else if (counter == 3'b111) begin        // if counter hits 7 clks (1 sec) -> 0
     			counter <= 3'b000;
     			if (seconds == 6'b111011) begin           
         			seconds <= 6'b000000;
