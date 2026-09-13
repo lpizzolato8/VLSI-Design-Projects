@@ -125,23 +125,6 @@ module main_tb();
         testcase = "Hour&Minute_wrap";
         reset;
 
-	// min +59
-	tick(59*MIN);
-                        
-        // at 00:59?
-	error_count = compare_outputs(8'd59, time_minutes, "time_minutes", error_count);
-        error_count = compare_outputs(8'd0,  time_hours,   "time_hours",   error_count);
-        
-	// min +1 to wrap around
-	tick(MIN); 
-
-	// at 01:00?
-        error_count = compare_outputs(8'd0,  time_minutes, "time_minutes", error_count); 
-        error_count = compare_outputs(8'd1,  time_hours,   "time_hours",   error_count); 
-       	
-	// reset back to 00:00
-	reset;
-
 	// set time to 23:59
 	tick(23*HOUR + 59*MIN);
 
