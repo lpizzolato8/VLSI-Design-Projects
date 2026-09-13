@@ -50,9 +50,6 @@ module main_tb();
 	always #5 clk = ~clk;
 	
  
-    	// helper functions
-
-
 	// helper function to make the clock run for n clock edges
 	task tick(input integer n); integer i; begin for(i=0;i<n;i=i+1) @(posedge clk); end endtask
 
