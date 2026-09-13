@@ -138,7 +138,21 @@ module main_tb();
 	// at 01:00?
         error_count = compare_outputs(8'd0,  time_minutes, "time_minutes", error_count); 
         error_count = compare_outputs(8'd1,  time_hours,   "time_hours",   error_count); 
-        
+       	
+	// reset back to 00:00
+	reset;
+
+	// set time to 23:59
+	tick(23*HOUR + 59*MIN);
+
+	error_count = compare_outputs(8'd59, time_minutes, "time_minutes", error_count);
+	error_count = compare_outputs(8'd23, time_hours,   "time_hours",   error_count);
+	
+	// 23:59 -> 00:00
+	tick(MIN);                                  
+	error_count = compare_outputs(8'd0, time_minutes, "time_minutes", error_count); 
+	error_count = compare_outputs(8'd0, time_hours,   "time_hours",   error_count);
+	 
 	// Requirement 4 : run 25 h, then confirm the time is valid
         testcase = "Run_25hrs";
 	reset;	
