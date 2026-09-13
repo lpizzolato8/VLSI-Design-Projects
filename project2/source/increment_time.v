@@ -23,11 +23,11 @@ module increment_time(
 			inc_minutes  <= 6'b000000;
 			inc_hours    <= 5'b00000;
 		end else if (set_time_pe) begin 
-			// loading the inc hrs and min with the current running time
+			// loading the inc hrs and min with the current running time so it can be incremented from current time
 			inc_hours    <= running_hours;
 			inc_minutes  <= running_minutes;	
 		end else if (set_alarm_time_pe) begin
-			// loading the inc hrs and min with the current alarm time
+			// loading the inc hrs and min with the current alarm time so it can be incremented from current time
 			inc_hours    <= alarm_hours;
 			inc_minutes  <= alarm_minutes;
 		end else if (increment_minute_pe) begin
