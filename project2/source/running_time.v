@@ -24,7 +24,7 @@ module running_time(
 			seconds 	<= 6'b000000;
 			running_minutes <= 6'b000000;
 			running_hours   <= 5'b00000;
-		end else if (set_time) begin // load the running clock with the values that are being inc if set_time goes high 
+		end else if (set_time) begin // load the running clock with the values that are being inc if set_time goes high so the incremented time becomes the new running time
 			running_hours   <= inc_hours;
 			running_minutes <= inc_minutes;
 			counter 	<= 3'b000;
