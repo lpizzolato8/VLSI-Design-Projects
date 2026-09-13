@@ -111,6 +111,8 @@ module main_tb();
 	tick(2);
         
 	set_alarm_time = 0;
+	tick(2);
+
 	reset;
         
 	// checks if all values are set to their default 0
