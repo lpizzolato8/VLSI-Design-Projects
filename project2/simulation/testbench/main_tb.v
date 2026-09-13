@@ -16,7 +16,7 @@ module main_tb();
 	wire [4:0] time_hours;
 	wire [5:0] time_minutes; 
 	wire alarm;
-	wire alarm_enable;
+	wire alarm_enabled;
 
 	reg [(20*8)-1:0] testcase;
 
