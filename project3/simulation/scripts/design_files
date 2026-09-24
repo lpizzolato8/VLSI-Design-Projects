@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# list of design files to be compiled
+
+
+ver_files=(
+           "../../source/main.v"
+           "../testbench/main_tb.v")
