@@ -1,30 +1,31 @@
-
+`timescale 1ns / 1ps
 module elevator_controller(
 	
 	input  wire clk,
     	input  wire rst_n,
    
 
-	// raw buttons from the testbench
-   	input  wire floor_1_up_button,
-   	input  wire floor_2_down_button,
-	input  wire floor_2_up_button,
-    	input  wire floor_3_down_button,
-    	input  wire elevator_floor_1_button,
-    	input  wire elevator_floor_2_button,
-    	input  wire elevator_floor_3_button
+	// input buttons from the testbench
+   	input wire  floor_1_up_button,
+   	input wire  floor_2_down_button,
+	input wire  floor_2_up_button,
+    	input wire  floor_3_down_button,
+    	input wire  elevator_floor_1_button,
+    	input wire  elevator_floor_2_button,
+    	input wire  elevator_floor_3_button,
     	
-	output reg floor_1,
-	output reg floor_2,
-	output reg floor_3,
-	output reg elevator_door_open,
-	output reg floor_1_up_button_clear, 
-	output reg floor_2_down_button_clear,
-	output reg floor_2_up_button_clear,
-	output reg floor_3_down_button_clear,
-	output reg elevator_floor_1_button_clear,
-	output reg elevator_floor_2_button_clear,
-	output reg elevator_floor_3_button_clear
+	// outputs driven by a submod (elevator_fsm) instance must be declared as wire
+	output wire floor_1,
+	output wire floor_2,
+	output wire floor_3,
+	output wire elevator_door_open,
+	output reg  floor_1_up_button_clear, 
+	output reg  floor_2_down_button_clear,
+	output reg  floor_2_up_button_clear,
+	output reg  floor_3_down_button_clear,
+	output reg  elevator_floor_1_button_clear,
+	output reg  elevator_floor_2_button_clear,
+	output reg  elevator_floor_3_button_clear
 
     	);
 	
@@ -37,7 +38,7 @@ module elevator_controller(
     	wire elev_floor_2_internal;
     	wire elev_floor_3_internal;
 
-    	// clear signals
+    	// internal clear signals
     	wire floor_1_up_clear;
     	wire floor_2_down_clear;
     	wire floor_2_up_clear;
@@ -45,6 +46,16 @@ module elevator_controller(
     	wire elev_floor_1_clear;
     	wire elev_floor_2_clear;
     	wire elev_floor_3_clear;
+	
+
+	// output ports connected to internal clear wires
+	assign floor_1_up_button_clear       = floor_1_up_clear;
+	assign floor_2_down_button_clear     = floor_2_down_clear;
+	assign floor_2_up_button_clear       = floor_2_up_clear;
+	assign floor_3_down_button_clear     = floor_3_down_clear;
+	assign elevator_floor_1_button_clear = elev_floor_1_clear;
+	assign elevator_floor_2_button_clear = elev_floor_2_clear;
+	assign elevator_floor_3_button_clear = elev_floor_3_clear;
 
     	// one elevator_button instance per button in elevator car and outside car
     	elevator_button u_floor_1_up (
@@ -122,9 +133,9 @@ module elevator_controller(
         	.floor_2_up_button_clear  	(floor_2_up_clear),
 		.floor_2_down_button_clear	(floor_2_down_clear),
               	.floor_3_down_button_clear	(floor_3_down_clear),
-        	.elev_floor_1_button_clear	(elev_floor_1_clear),
-        	.elev_floor_2_button_clear	(elev_floor_2_clear),
-        	.elev_floor_3_button_clear	(elev_floor_3_clear)
+        	.elevator_floor_1_button_clear	(elev_floor_1_clear),
+        	.elevator_floor_2_button_clear	(elev_floor_2_clear),
+        	.elevator_floor_3_button_clear	(elev_floor_3_clear),
         	
 		// outputs
 		.floor_1           		(floor_1),

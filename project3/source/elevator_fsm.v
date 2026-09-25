@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module main(
+module elevator_fsm(
 	 
 	input wire clk,                  // clock signal
 	input wire rst_n,		 // active-low asynchrnous reset
@@ -9,7 +9,7 @@ module main(
 	input wire floor_2_down_button,
 	input wire floor_2_up_button,
 	input wire floor_3_down_button,
-	input wire elevator _floor_1_button,
+	input wire elevator_floor_1_button,
 	input wire elevator_floor_2_button,
 	input wire elevator_floor_3_button,
 	
@@ -42,26 +42,28 @@ module main(
                	F3DC  = 3'd6,
                	F3DO  = 3'd7;
 	
+	reg [2:0] state, next_state;
+
 
 	// FSM seq block for curr state
 	always@(posedge clk or negedge rst_n) begin 
-		if (!rst_n) begin
-			state <= F1DC;
-		end else state <= next_state;		
+		if (!rst_n) begin state <= F1DC; 
+		else state <= next_state;		
 	end
   
 
     	// FSM Next State Logic
     	always @(*) begin
- 	
+ 		next_state = state; // default to prevent latches and random state assignment after reset
+
         	case (state)
             		F1DC: begin
                 		
-				if (floor_1_up_button | elevator_floor_1_button)            next_state = F1DO;                        // open door
+				if (floor_1_up_button | elevator_floor_1_button)             next_state = F1DO;                        // open door
                 		
 				else if (floor_3_down_button    | elevator_floor_3_button |
                                         floor_2_up_button       | floor_2_down_button     | 
-                                        elevator_floor_2_button)  next_state = F2DCU;                       // go up
+                                        elevator_floor_2_button)                             next_state = F2DCU;                       // go up
             			
 				end
  
@@ -69,9 +71,9 @@ module main(
  
             		F2DCU: begin
                 		
-				if (floor_2_up_button           | elevator_floor_2_button)   next_state = F2DOU;                       // open door
+				if (floor_2_up_button           | elevator_floor_2_button)   next_state = F2DOD;                       // open door
                 		else if (floor_3_down_button    | elevator_floor_3_button)   next_state = F3DC;                        // keep going up
-                		else if (floor_1_up_button      | elevator_floor_1_button)   next_state = F2DCD;                       // reverse
+                		else if (floor_1_up_button      | elevator_floor_1_button)   next_state = F2DCU;                       // reverse
             			
 				end
  
@@ -91,7 +93,7 @@ module main(
                 		if (floor_3_down_button         | elevator_floor_3_button)    next_state = F3DO;                        // open door
                 		else if (floor_2_down_button 	| elevator_floor_2_button |
                          		floor_1_up_button   	| elevator_floor_1_button |
-                       			floor_2_up_button)	  next_state = F2DCD;                       // go down
+                       			floor_2_up_button)	  			      next_state = F2DCD;                       // go down
             	
 				end
  
@@ -104,7 +106,7 @@ module main(
     	// FSM Output Logic 
     	always @(*) begin
 		
-        
+       		// all outputs 0 to start 
         	floor_1                       = 1'b0;
         	floor_2                       = 1'b0;
         	floor_3                       = 1'b0;
@@ -142,7 +144,7 @@ module main(
                        		floor_3_down_button_clear     = 1'b1;
                        		elevator_floor_3_button_clear = 1'b1;
                    		end
-            		default: F1DC;
+            		default: floor_1 = 1'b1;
         	endcase
     	end
  
