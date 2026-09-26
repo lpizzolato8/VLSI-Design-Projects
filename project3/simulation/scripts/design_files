@@ -5,6 +5,6 @@
 
 ver_files=(
            "../../source/elevator_controller.v"
-           "../testbench/elevator_controllertb.v"
+           "../testbench/elevator_controller_tb.v"
 	   "../../source/elevator_fsm.v"
 	   "../../source/elevator_button.v")
