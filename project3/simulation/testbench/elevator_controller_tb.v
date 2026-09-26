@@ -127,6 +127,9 @@ module elevator_controller_tb();
 		tick(1); check(2, 0);                                   // travels to floor 2
 		tick(1); check(2, 1);                                   // door opens on floor 2
 		error_count = compare_outputs(8'd1, elevator_floor_2_button_clear, "floor_2_clear", error_count);
+		// buffer tick 
+		tick(2);
+
 
 		// Test 2 : Floor 1 -> Floor 3
 		testcase = "F1->F3";
@@ -140,6 +143,9 @@ module elevator_controller_tb();
 		tick(1); check(3, 0);                                   // travels to floor 3
 		tick(1); check(3, 1);                                   // door opens on floor 3
 		error_count = compare_outputs(8'd1, elevator_floor_3_button_clear, "floor_3_clear", error_count);
+		// buffer tick 
+		tick(2);
+
 
 		// Test 3 : Floor 2 -> Floor 3
 		testcase = "F2->F3";
@@ -153,6 +159,9 @@ module elevator_controller_tb();
 		tick(1); check(3, 0);                                   // travels to floor 3
 		tick(1); check(3, 1);                                   // door opens on floor 3
 		error_count = compare_outputs(8'd1, elevator_floor_3_button_clear, "floor_3_clear", error_count);
+		// buffer tick 
+		tick(2);
+
 
 		// Test 4 : Floor 2 -> Floor 1
 		testcase = "F2->F1";
@@ -167,6 +176,9 @@ module elevator_controller_tb();
 		tick(1); check(1, 0);                                   // travels to floor 1
 		tick(1); check(1, 1);                                   // door opens on floor 1
 		error_count = compare_outputs(8'd1, elevator_floor_1_button_clear, "floor_1_clear", error_count);
+		// buffer tick 
+		tick(2);
+
 
 		// Test 5 : Floor 3 -> Floor 2
 		testcase = "F3->F2";
@@ -181,6 +193,9 @@ module elevator_controller_tb();
 		tick(1); check(2, 0);                                   // travels to floor 2
 		tick(1); check(2, 1);                                   // door opens on floor 2
 		error_count = compare_outputs(8'd1, elevator_floor_2_button_clear, "floor_2_clear", error_count);
+		// buffer tick 
+		tick(2);
+
 
 		// Test 6 : Floor 3 -> Floor 1
 		testcase = "F3->F1";
@@ -196,6 +211,9 @@ module elevator_controller_tb();
 		tick(1); check(1, 0);                                   // travels to floor 1
 		tick(1); check(1, 1);                                   // door opens on floor 1
 		error_count = compare_outputs(8'd1, elevator_floor_1_button_clear, "floor_1_clear", error_count);
+		// buffer tick 
+		tick(2);
+
 
 		// Test 7 : Floor 1 -> Floor 3 w/ pickup on Floor 2
 		testcase = "F1->F3_pickup_F2";
@@ -214,6 +232,9 @@ module elevator_controller_tb();
 		tick(1); check(3, 0);                                   // travels to floor 3
 		tick(1); check(3, 1);                                   // door opens on floor 3
 		error_count = compare_outputs(8'd1, elevator_floor_3_button_clear, "floor_3_clear", error_count);
+		// buffer tick 
+		tick(2);
+
 
 		// Test 8 : Floor 3 -> Floor 2 -> Floor 1 
 		testcase = "F3->F2->F1";
@@ -234,6 +255,9 @@ module elevator_controller_tb();
 		tick(1); check(1, 0);                                   // travels to floor 1
 		tick(1); check(1, 1);                                   // door opens on floor 1
 		error_count = compare_outputs(8'd1, elevator_floor_1_button_clear, "floor_1_clear", error_count);
+		// buffer tick 
+		tick(2);
+
 
 		// Test 9 : No passangers stuck. Door opens on floor 2 (already going up to three) person hits floor one
 		// takes them to floor 3 then back down to floor 1
@@ -256,6 +280,9 @@ module elevator_controller_tb();
 		tick(1); check(1, 0);                                   // travels to floor 1
 		tick(1); check(1, 1);                                   // door opens on floor 1
 		error_count = compare_outputs(8'd1, elevator_floor_1_button_clear, "floor_1_clear", error_count);
+		// buffer tick 
+		tick(2);
+
 
 		// final pass/fail count
 		if (error_count == 0) begin
