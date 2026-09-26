@@ -19,13 +19,13 @@ module elevator_controller(
 	output wire floor_2,
 	output wire floor_3,
 	output wire elevator_door_open,
-	output reg  floor_1_up_button_clear, 
-	output reg  floor_2_down_button_clear,
-	output reg  floor_2_up_button_clear,
-	output reg  floor_3_down_button_clear,
-	output reg  elevator_floor_1_button_clear,
-	output reg  elevator_floor_2_button_clear,
-	output reg  elevator_floor_3_button_clear
+	output wire floor_1_up_button_clear, 
+	output wire floor_2_down_button_clear,
+	output wire floor_2_up_button_clear,
+	output wire floor_3_down_button_clear,
+	output wire elevator_floor_1_button_clear,
+	output wire elevator_floor_2_button_clear,
+	output wire elevator_floor_3_button_clear
 
     	);
 	

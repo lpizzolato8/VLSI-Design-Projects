@@ -103,7 +103,7 @@ module elevator_controller_tb();
 		if (floor == 1) error_count = compare_outputs(8'd1, floor_1, "floor_1", error_count);
 		if (floor == 2) error_count = compare_outputs(8'd1, floor_2, "floor_2", error_count);
 		if (floor == 3) error_count = compare_outputs(8'd1, floor_3, "floor_3", error_count);
-		else error_count = compare_outputs(door, elevator_door_open, "elevator_door_open", error_count);
+		error_count = compare_outputs(door, elevator_door_open, "elevator_door_open", error_count);
 	end endtask
 	
 

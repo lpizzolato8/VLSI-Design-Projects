@@ -13,7 +13,7 @@ module elevator_fsm(
 	input wire elevator_floor_2_button,
 	input wire elevator_floor_3_button,
 	
-	output reg [2:0] next_state,
+
 
 	output reg floor_1, // (indicates elevator is on floor 1)
 	output reg floor_2,
@@ -42,12 +42,13 @@ module elevator_fsm(
                	F3DC  = 3'd6,
                	F3DO  = 3'd7;
 	
-	reg [2:0] state, next_state;
+	reg [2:0] state;
+	reg [2:0] next_state;
 
 
 	// FSM seq block for curr state
 	always@(posedge clk or negedge rst_n) begin 
-		if (!rst_n) begin state <= F1DC; 
+		if (!rst_n) state <= F1DC; 
 		else state <= next_state;		
 	end
   
@@ -71,9 +72,9 @@ module elevator_fsm(
  
             		F2DCU: begin
                 		
-				if (floor_2_up_button           | elevator_floor_2_button)   next_state = F2DOD;                       // open door
+				if (floor_2_up_button           | elevator_floor_2_button)   next_state = F2DOU;                       // open door
                 		else if (floor_3_down_button    | elevator_floor_3_button)   next_state = F3DC;                        // keep going up
-                		else if (floor_1_up_button      | elevator_floor_1_button)   next_state = F2DCU;                       // reverse
+                		else if (floor_1_up_button      | elevator_floor_1_button)   next_state = F2DCD;                       // reverse
             			
 				end
  
