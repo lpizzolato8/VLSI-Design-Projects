@@ -74,7 +74,7 @@ module elevator_fsm(
                 		
 				if (floor_2_up_button           | elevator_floor_2_button)   next_state = F2DOU;                       // open door
                 		else if (floor_3_down_button    | elevator_floor_3_button)   next_state = F3DC;                        // keep going up
-                		else if (floor_1_up_button      | elevator_floor_1_button)   next_state = F2DCD;                       // reverse
+                		else if (floor_1_up_button      | elevator_floor_1_button   | floor_2_down_button)   next_state = F2DCD;                       // reverse
             			
 				end
  
@@ -84,7 +84,7 @@ module elevator_fsm(
                 		
 				if (floor_2_down_button         | elevator_floor_2_button)    next_state = F2DOD;                       // open door
                 		else if (floor_1_up_button      | elevator_floor_1_button)    next_state = F1DC;                        // keep going down
-               			else if (floor_3_down_button    | elevator_floor_3_button)    next_state = F2DCU;                       // reverse
+               			else if (floor_3_down_button    | elevator_floor_3_button   | floor_2_up_button)    next_state = F2DCU;                       // reverse
             			
 				end
  
@@ -123,24 +123,28 @@ module elevator_fsm(
 	        case (state)
 	        	F1DC:  floor_1 = 1'b1;
             		F1DO:  begin
+				floor_1                       = 1'b1;
                        		elevator_door_open            = 1'b1;
                        		floor_1_up_button_clear       = 1'b1;
                        		elevator_floor_1_button_clear = 1'b1;
                    		end
             		F2DCU: floor_2 = 1'b1;
             		F2DOU: begin
+				floor_2 		      = 1'b1;
                        		elevator_door_open            = 1'b1;
                        		floor_2_up_button_clear       = 1'b1;
                        		elevator_floor_2_button_clear = 1'b1;
                    		end
             		F2DCD: floor_2 = 1'b1;
             		F2DOD: begin
+				floor_2			      = 1'b1;
                        		elevator_door_open            = 1'b1;
                        		floor_2_down_button_clear     = 1'b1;
                        		elevator_floor_2_button_clear = 1'b1;
                    		end
             		F3DC:  floor_3 = 1'b1;
             		F3DO:  begin
+				floor_3			      = 1'b1;
                        		elevator_door_open            = 1'b1;
                        		floor_3_down_button_clear     = 1'b1;
                        		elevator_floor_3_button_clear = 1'b1;
