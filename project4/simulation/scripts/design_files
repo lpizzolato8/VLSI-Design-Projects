@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# list of design files to be compiled
+
+
+ver_files=("../../source/increment_time.v"
+           "../../source/running_time.v"
+           "../../source/main.v"
+           "../testbench/main_tb.v")
