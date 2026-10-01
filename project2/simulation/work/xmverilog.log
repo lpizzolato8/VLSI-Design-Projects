@@ -1,0 +1,184 @@
+xmverilog(64): 17.10-s001: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
+TOOL:	xmverilog	17.10-s001: Started on Sep 13, 2026 at 00:36:39 EDT
+xmverilog
+	../testbench/main_tb.v
+	+gui
+	+access+r
+	-timescale
+	1ns/1ps
+Recompiling... reason: file '../testbench/main_tb.v' is newer than expected.
+	expected: Sun Sep 13 00:07:42 2026
+	actual:   Sun Sep 13 00:36:34 2026
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+		Caching library 'worklib' ....... Done
+	increment_time func1(
+	                   |
+xmelab: *W,CUVWSI (/home/ead/G33545035/VLSI-Design-Projects/project2/source/main.v,36|20): 2 input ports were not connected:
+xmelab: (/home/ead/G33545035/VLSI-Design-Projects/project2/source/increment_time.v,8): set_alarm_time_pe
+xmelab: (/home/ead/G33545035/VLSI-Design-Projects/project2/source/increment_time.v,9): set_time_pe
+
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.main_tb:v <0x3bb7e442>
+			streams:  14, words: 37973
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                 Instances  Unique
+		Modules:                 4       4
+		Registers:              39      39
+		Scalar wires:           16       -
+		Vectored wires:          8       -
+		Always blocks:           7       7
+		Initial blocks:          5       5
+		Cont. assignments:       5       5
+		Pseudo assignments:      1       1
+		Simulation timescale:  1ps
+	Writing initial simulation snapshot: worklib.main_tb:v
+
+-------------------------------------
+Relinquished control to SimVision...
+xcelium> 
+xcelium> source /apps/vlsi_2018/cadence/XCELIUM1710/tools/xcelium/files/xmsimrc
+xcelium> database -open waves -into waves.shm -default
+Created default SHM database waves
+xcelium> probe -create -shm main_tb.clk main_tb.rst_n main_tb.time_hours main_tb.time_minutes main_tb.dut.func2.seconds main_tb.dut.func2.running_minutes main_tb.dut.func2.running_hours main_tb.increment_hour main_tb.increment_minute main_tb.set_alarm_time main_tb.set_time main_tb.enable_alarm main_tb.alarm_enabled main_tb.alarm main_tb.alarm_off main_tb.error_count main_tb.fail main_tb.h0 main_tb.i main_tb.m0 main_tb.pass main_tb.testcase
+Created probe 1
+xcelium> run
+Testcase                Reset : Time =                    0
+  PASS  :   time_hours_preload: Expected = 02, Actual = 02, Time =            624060000
+  PASS  :  ime_minutes_preload: Expected = 0a, Actual = 0a, Time =            624060000
+  PASS  :  arm_enabled_preload: Expected = 01, Actual = 01, Time =            624060000
+  PASS  :           time_hours: Expected = 00, Actual = 00, Time =            624175000
+  PASS  :         time_minutes: Expected = 00, Actual = 00, Time =            624175000
+  PASS  :                alarm: Expected = 00, Actual = 00, Time =            624175000
+  PASS  :        alarm_enabled: Expected = 00, Actual = 00, Time =            624175000
+Testcase     Hour&Minute_wrap : Time =            624175000
+  PASS  :         time_minutes: Expected = 3b, Actual = 3b, Time =           7531425000
+  PASS  :           time_hours: Expected = 17, Actual = 17, Time =           7531425000
+  PASS  :         time_minutes: Expected = 00, Actual = 00, Time =           7536225000
+  PASS  :           time_hours: Expected = 00, Actual = 00, Time =           7536225000
+Testcase            Run_25hrs : Time =           7536225000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =           7824275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =           8112275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =           8400275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =           8688275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =           8976275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =           9264275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =           9552275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =           9840275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =          10128275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =          10416275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =          10704275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =          10992275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =          11280275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =          11568275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =          11856275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =          12144275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =          12432275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =          12720275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =          13008275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =          13296275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =          13584275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =          13872275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =          14160275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =          14448275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =          14736275000
+Testcase             Set_time : Time =          14736275000
+  PASS  :           time_hours: Expected = 01, Actual = 01, Time =          14736375000
+  PASS  :         time_minutes: Expected = 01, Actual = 01, Time =          14736405000
+  PASS  :         time_minutes: Expected = 02, Actual = 02, Time =          14741285000
+Testcase            Set_alarm : Time =          14741285000
+  PASS  :           time_hours: Expected = 01, Actual = 01, Time =          14741385000
+  PASS  :         time_minutes: Expected = 01, Actual = 01, Time =          14741415000
+  PASS  :           time_hours: Expected = 00, Actual = 00, Time =          14751035000
+  PASS  :        time_advanced: Expected = 01, Actual = 01, Time =          14751035000
+Testcase         Enable_alarm : Time =          14751035000
+  PASS  :        alarm_enabled: Expected = 01, Actual = 01, Time =          14751115000
+  PASS  :        alarm_enabled: Expected = 00, Actual = 00, Time =          14751145000
+Testcase        Alarm->Snooze : Time =          14751145000
+  PASS  :                alarm: Expected = 01, Actual = 01, Time =          14765715000
+  PASS  :                alarm: Expected = 00, Actual = 00, Time =          14765755000
+
+
+----------SIMULATION PASSED----------
+----------RTL SIMULATION   ----------
+
+
+Simulation complete via $finish(1) at time 14765755 NS + 0
+../testbench/main_tb.v:269         $finish;
+xcelium> probe -create -shm main_tb.dut.alarm_hours main_tb.dut.alarm_minutes
+Created probe 2
+xcelium> reset
+Loaded snapshot worklib.main_tb:v
+xcelium> run
+Testcase                Reset : Time =                    0
+  PASS  :   time_hours_preload: Expected = 02, Actual = 02, Time =            624060000
+  PASS  :  ime_minutes_preload: Expected = 0a, Actual = 0a, Time =            624060000
+  PASS  :  arm_enabled_preload: Expected = 01, Actual = 01, Time =            624060000
+  PASS  :           time_hours: Expected = 00, Actual = 00, Time =            624175000
+  PASS  :         time_minutes: Expected = 00, Actual = 00, Time =            624175000
+  PASS  :                alarm: Expected = 00, Actual = 00, Time =            624175000
+  PASS  :        alarm_enabled: Expected = 00, Actual = 00, Time =            624175000
+Testcase     Hour&Minute_wrap : Time =            624175000
+  PASS  :         time_minutes: Expected = 3b, Actual = 3b, Time =           7531425000
+  PASS  :           time_hours: Expected = 17, Actual = 17, Time =           7531425000
+  PASS  :         time_minutes: Expected = 00, Actual = 00, Time =           7536225000
+  PASS  :           time_hours: Expected = 00, Actual = 00, Time =           7536225000
+Testcase            Run_25hrs : Time =           7536225000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =           7824275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =           8112275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =           8400275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =           8688275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =           8976275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =           9264275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =           9552275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =           9840275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =          10128275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =          10416275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =          10704275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =          10992275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =          11280275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =          11568275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =          11856275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =          12144275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =          12432275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =          12720275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =          13008275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =          13296275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =          13584275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =          13872275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =          14160275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =          14448275000
+  PASS  :           time_valid: Expected = 01, Actual = 01, Time =          14736275000
+Testcase             Set_time : Time =          14736275000
+  PASS  :           time_hours: Expected = 01, Actual = 01, Time =          14736375000
+  PASS  :         time_minutes: Expected = 01, Actual = 01, Time =          14736405000
+  PASS  :         time_minutes: Expected = 02, Actual = 02, Time =          14741285000
+Testcase            Set_alarm : Time =          14741285000
+  PASS  :           time_hours: Expected = 01, Actual = 01, Time =          14741385000
+  PASS  :         time_minutes: Expected = 01, Actual = 01, Time =          14741415000
+  PASS  :           time_hours: Expected = 00, Actual = 00, Time =          14751035000
+  PASS  :        time_advanced: Expected = 01, Actual = 01, Time =          14751035000
+Testcase         Enable_alarm : Time =          14751035000
+  PASS  :        alarm_enabled: Expected = 01, Actual = 01, Time =          14751115000
+  PASS  :        alarm_enabled: Expected = 00, Actual = 00, Time =          14751145000
+Testcase        Alarm->Snooze : Time =          14751145000
+  PASS  :                alarm: Expected = 01, Actual = 01, Time =          14765715000
+  PASS  :                alarm: Expected = 00, Actual = 00, Time =          14765755000
+
+
+----------SIMULATION PASSED----------
+----------RTL SIMULATION   ----------
+
+
+Simulation complete via $finish(1) at time 14765755 NS + 0
+../testbench/main_tb.v:269         $finish;
+xcelium> ...Regained control from SimVision
+-------------------------------------
+
+xcelium> 
+xmsim: *W,CMUSEX: Control-D in interactive input - one more to exit.
+xcelium> exit
+TOOL:	xmverilog	17.10-s001: Exiting on Sep 13, 2026 at 03:45:13 EDT  (total: 03:08:34)
