@@ -15,7 +15,7 @@ module elevator_fsm(
 	
 
 
-	output reg floor_1, // (indicates elevator is on floor 1)
+	output reg floor_1,
 	output reg floor_2,
 	output reg floor_3,
 	output reg elevator_door_open,
@@ -46,7 +46,7 @@ module elevator_fsm(
 	reg [2:0] next_state;
 
 
-	// FSM seq block for curr state
+	// seq block for curr FSM state
 	always@(posedge clk or negedge rst_n) begin 
 		if (!rst_n) state <= F1DC; 
 		else state <= next_state;		
@@ -73,7 +73,7 @@ module elevator_fsm(
             		F2DCU: begin
                 		
 				if (floor_2_up_button           | elevator_floor_2_button)   next_state = F2DOU;                       // open door
-                		else if (floor_3_down_button    | elevator_floor_3_button)   next_state = F3DC;                        // keep going up
+                		else if (floor_3_down_button    | elevator_floor_3_button)   next_state = F3DC;                        // going up
                 		else if (floor_1_up_button      | elevator_floor_1_button   | floor_2_down_button)   next_state = F2DCD;                       // reverse
             			
 				end
@@ -83,7 +83,7 @@ module elevator_fsm(
             		F2DCD: begin
                 		
 				if (floor_2_down_button         | elevator_floor_2_button)    next_state = F2DOD;                       // open door
-                		else if (floor_1_up_button      | elevator_floor_1_button)    next_state = F1DC;                        // keep going down
+                		else if (floor_1_up_button      | elevator_floor_1_button)    next_state = F1DC;                        // going down
                			else if (floor_3_down_button    | elevator_floor_3_button   | floor_2_up_button)    next_state = F2DCU;                       // reverse
             			
 				end
@@ -107,7 +107,8 @@ module elevator_fsm(
     	// FSM Output Logic 
     	always @(*) begin
 		
-       		// all outputs 0 to start 
+       		// all outputs 0 to start then values relating to each floor are changed based on if the elevator is on that floor
+			// basically output set high when in the state they are related to
         	floor_1                       = 1'b0;
         	floor_2                       = 1'b0;
         	floor_3                       = 1'b0;
