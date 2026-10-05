@@ -1,0 +1,1359 @@
+(DELAYFILE
+  (SDFVERSION  "OVI 3.0")
+  (DESIGN      "program_counter")
+  (DATE        "Thu Oct 01 19:45:13 EDT 2026")
+  (VENDOR      "Cadence, Inc.")
+  (PROGRAM     "Genus(TM) Synthesis Solution")
+  (VERSION     "25.10-p002_1")
+  (DIVIDER     .)
+  (VOLTAGE     ::1.35)
+  (PROCESS     "::1.0")
+  (TEMPERATURE ::125.0)
+  (TIMESCALE   1ps)
+  (CELL
+     (CELLTYPE "DFFR_H")
+     (INSTANCE mem_addr_reg\[7\])
+     (DELAY
+        (ABSOLUTE
+          (PORT RN (::0.0))
+          (PORT CLK (::0.0))
+          (PORT D (::0.1))
+          (IOPATH RN Q () (::264))
+          (IOPATH CLK Q (::356) (::255))
+          (IOPATH RN QBAR (::128) ())
+          (IOPATH CLK QBAR (::121) (::183))
+        )
+     )
+     (TIMINGCHECK
+        (RECREM (posedge RN) (COND D==1'b1 (posedge CLK)) (::100) (::50))
+        (SETUPHOLD (negedge D) (COND RN==1'b1 (posedge CLK)) (::238) (::-112))
+        (SETUPHOLD (posedge D) (COND RN==1'b1 (posedge CLK)) (::108) (::53))
+     )
+  )
+  (CELL
+     (CELLTYPE "AO222_D")
+     (INSTANCE g4630__2398)
+     (DELAY
+        (ABSOLUTE
+          (PORT A1 (::0.1))
+          (PORT A2 (::0.1))
+          (PORT B1 (::0.1))
+          (PORT B2 (::0.1))
+          (PORT C1 (::0.1))
+          (PORT C2 (::0.1))
+          (IOPATH C1 Z (::221) (::166))
+          (IOPATH B2 Z (::165) (::135))
+          (IOPATH C2 Z (::206) (::158))
+          (IOPATH A1 Z (::148) (::136))
+          (IOPATH B1 Z (::172) (::140))
+          (IOPATH A2 Z (::143) (::133))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "DFFR_H")
+     (INSTANCE mem_addr_reg\[6\])
+     (DELAY
+        (ABSOLUTE
+          (PORT RN (::0.0))
+          (PORT CLK (::0.0))
+          (PORT D (::0.1))
+          (IOPATH RN Q () (::266))
+          (IOPATH CLK Q (::358) (::257))
+          (IOPATH RN QBAR (::128) ())
+          (IOPATH CLK QBAR (::121) (::183))
+        )
+     )
+     (TIMINGCHECK
+        (RECREM (posedge RN) (COND D==1'b1 (posedge CLK)) (::100) (::50))
+        (SETUPHOLD (negedge D) (COND RN==1'b1 (posedge CLK)) (::238) (::-112))
+        (SETUPHOLD (posedge D) (COND RN==1'b1 (posedge CLK)) (::108) (::53))
+     )
+  )
+  (CELL
+     (CELLTYPE "AO222_D")
+     (INSTANCE g4632__5107)
+     (DELAY
+        (ABSOLUTE
+          (PORT A1 (::0.1))
+          (PORT A2 (::0.1))
+          (PORT B1 (::0.1))
+          (PORT B2 (::0.1))
+          (PORT C1 (::0.1))
+          (PORT C2 (::0.1))
+          (IOPATH C1 Z (::221) (::166))
+          (IOPATH B2 Z (::165) (::134))
+          (IOPATH C2 Z (::206) (::158))
+          (IOPATH A1 Z (::139) (::126))
+          (IOPATH B1 Z (::172) (::140))
+          (IOPATH A2 Z (::143) (::133))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "XNOR2_C")
+     (INSTANCE g4633__6260)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (PORT B (::0.2))
+          (IOPATH A Z (::101) (::119))
+          (IOPATH B Z (::99) (::111))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "ADDF_F")
+     (INSTANCE g4634__4319)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (PORT B (::0.2))
+          (PORT CIN (::0.2))
+          (IOPATH A COUT (::184) (::152))
+          (IOPATH CIN COUT (::157) (::146))
+          (IOPATH B COUT (::167) (::146))
+          (IOPATH A SUM (::264) (::266))
+          (IOPATH CIN SUM (::265) (::236))
+          (IOPATH B SUM (::267) (::246))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "DFFR_H")
+     (INSTANCE mem_addr_reg\[5\])
+     (DELAY
+        (ABSOLUTE
+          (PORT RN (::0.0))
+          (PORT CLK (::0.0))
+          (PORT D (::0.1))
+          (IOPATH RN Q () (::266))
+          (IOPATH CLK Q (::358) (::257))
+          (IOPATH RN QBAR (::128) ())
+          (IOPATH CLK QBAR (::121) (::183))
+        )
+     )
+     (TIMINGCHECK
+        (RECREM (posedge RN) (COND D==1'b1 (posedge CLK)) (::100) (::50))
+        (SETUPHOLD (negedge D) (COND RN==1'b1 (posedge CLK)) (::238) (::-112))
+        (SETUPHOLD (posedge D) (COND RN==1'b1 (posedge CLK)) (::108) (::53))
+     )
+  )
+  (CELL
+     (CELLTYPE "AO222_D")
+     (INSTANCE g4636__8428)
+     (DELAY
+        (ABSOLUTE
+          (PORT A1 (::0.1))
+          (PORT A2 (::0.1))
+          (PORT B1 (::0.1))
+          (PORT B2 (::0.1))
+          (PORT C1 (::0.1))
+          (PORT C2 (::0.1))
+          (IOPATH C1 Z (::221) (::166))
+          (IOPATH B2 Z (::165) (::134))
+          (IOPATH C2 Z (::206) (::158))
+          (IOPATH A1 Z (::139) (::126))
+          (IOPATH B1 Z (::172) (::140))
+          (IOPATH A2 Z (::143) (::133))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "ADDF_F")
+     (INSTANCE g4637__5526)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (PORT B (::0.2))
+          (PORT CIN (::0.2))
+          (IOPATH A COUT (::193) (::160))
+          (IOPATH CIN COUT (::165) (::153))
+          (IOPATH B COUT (::176) (::154))
+          (IOPATH A SUM (::264) (::266))
+          (IOPATH CIN SUM (::265) (::236))
+          (IOPATH B SUM (::267) (::246))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "DFFR_H")
+     (INSTANCE mem_addr_reg\[4\])
+     (DELAY
+        (ABSOLUTE
+          (PORT RN (::0.0))
+          (PORT CLK (::0.0))
+          (PORT D (::0.1))
+          (IOPATH RN Q () (::266))
+          (IOPATH CLK Q (::358) (::257))
+          (IOPATH RN QBAR (::128) ())
+          (IOPATH CLK QBAR (::121) (::183))
+        )
+     )
+     (TIMINGCHECK
+        (RECREM (posedge RN) (COND D==1'b1 (posedge CLK)) (::100) (::50))
+        (SETUPHOLD (negedge D) (COND RN==1'b1 (posedge CLK)) (::238) (::-112))
+        (SETUPHOLD (posedge D) (COND RN==1'b1 (posedge CLK)) (::108) (::53))
+     )
+  )
+  (CELL
+     (CELLTYPE "AO222_D")
+     (INSTANCE g4639__6783)
+     (DELAY
+        (ABSOLUTE
+          (PORT A1 (::0.1))
+          (PORT A2 (::0.1))
+          (PORT B1 (::0.1))
+          (PORT B2 (::0.1))
+          (PORT C1 (::0.1))
+          (PORT C2 (::0.1))
+          (IOPATH C1 Z (::221) (::166))
+          (IOPATH B2 Z (::165) (::134))
+          (IOPATH C2 Z (::206) (::158))
+          (IOPATH A1 Z (::139) (::126))
+          (IOPATH B1 Z (::172) (::140))
+          (IOPATH A2 Z (::143) (::133))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "DFFR_H")
+     (INSTANCE mem_addr_reg\[2\])
+     (DELAY
+        (ABSOLUTE
+          (PORT RN (::0.0))
+          (PORT CLK (::0.0))
+          (PORT D (::0.1))
+          (IOPATH RN Q () (::266))
+          (IOPATH CLK Q (::358) (::256))
+          (IOPATH RN QBAR (::128) ())
+          (IOPATH CLK QBAR (::121) (::183))
+        )
+     )
+     (TIMINGCHECK
+        (RECREM (posedge RN) (COND D==1'b1 (posedge CLK)) (::100) (::50))
+        (SETUPHOLD (negedge D) (COND RN==1'b1 (posedge CLK)) (::236) (::-115))
+        (SETUPHOLD (posedge D) (COND RN==1'b1 (posedge CLK)) (::123) (::49))
+     )
+  )
+  (CELL
+     (CELLTYPE "ADDF_F")
+     (INSTANCE g4641__3680)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (PORT B (::0.2))
+          (PORT CIN (::0.2))
+          (IOPATH A COUT (::193) (::160))
+          (IOPATH CIN COUT (::165) (::153))
+          (IOPATH B COUT (::176) (::154))
+          (IOPATH A SUM (::264) (::266))
+          (IOPATH CIN SUM (::265) (::236))
+          (IOPATH B SUM (::267) (::246))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "DFFR_H")
+     (INSTANCE mem_addr_reg\[3\])
+     (DELAY
+        (ABSOLUTE
+          (PORT RN (::0.0))
+          (PORT CLK (::0.0))
+          (PORT D (::0.1))
+          (IOPATH RN Q () (::266))
+          (IOPATH CLK Q (::358) (::257))
+          (IOPATH RN QBAR (::128) ())
+          (IOPATH CLK QBAR (::121) (::183))
+        )
+     )
+     (TIMINGCHECK
+        (RECREM (posedge RN) (COND D==1'b1 (posedge CLK)) (::100) (::50))
+        (SETUPHOLD (negedge D) (COND RN==1'b1 (posedge CLK)) (::238) (::-112))
+        (SETUPHOLD (posedge D) (COND RN==1'b1 (posedge CLK)) (::108) (::53))
+     )
+  )
+  (CELL
+     (CELLTYPE "OA21_F")
+     (INSTANCE g4645__1617)
+     (DELAY
+        (ABSOLUTE
+          (PORT A1 (::0.1))
+          (PORT A2 (::0.1))
+          (PORT B (::0.1))
+          (IOPATH B Z (::76) (::152))
+          (IOPATH A1 Z (::94) (::100))
+          (IOPATH A2 Z (::126) (::116))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "DFFR_H")
+     (INSTANCE mem_addr_reg\[0\])
+     (DELAY
+        (ABSOLUTE
+          (PORT RN (::0.0))
+          (PORT CLK (::0.0))
+          (PORT D (::0.1))
+          (IOPATH RN Q () (::266))
+          (IOPATH CLK Q (::358) (::257))
+          (IOPATH RN QBAR (::128) ())
+          (IOPATH CLK QBAR (::121) (::183))
+        )
+     )
+     (TIMINGCHECK
+        (RECREM (posedge RN) (COND D==1'b1 (posedge CLK)) (::100) (::50))
+        (SETUPHOLD (negedge D) (COND RN==1'b1 (posedge CLK)) (::234) (::-116))
+        (SETUPHOLD (posedge D) (COND RN==1'b1 (posedge CLK)) (::128) (::50))
+     )
+  )
+  (CELL
+     (CELLTYPE "DFFR_H")
+     (INSTANCE mem_addr_reg\[1\])
+     (DELAY
+        (ABSOLUTE
+          (PORT RN (::0.0))
+          (PORT CLK (::0.0))
+          (PORT D (::0.1))
+          (IOPATH RN Q () (::261))
+          (IOPATH CLK Q (::354) (::252))
+          (IOPATH RN QBAR (::128) ())
+          (IOPATH CLK QBAR (::121) (::183))
+        )
+     )
+     (TIMINGCHECK
+        (RECREM (posedge RN) (COND D==1'b1 (posedge CLK)) (::100) (::50))
+        (SETUPHOLD (negedge D) (COND RN==1'b1 (posedge CLK)) (::234) (::-118))
+        (SETUPHOLD (posedge D) (COND RN==1'b1 (posedge CLK)) (::131) (::50))
+     )
+  )
+  (CELL
+     (CELLTYPE "AO222_D")
+     (INSTANCE g4642__2802)
+     (DELAY
+        (ABSOLUTE
+          (PORT A1 (::0.1))
+          (PORT A2 (::0.1))
+          (PORT B1 (::0.1))
+          (PORT B2 (::0.1))
+          (PORT C1 (::0.1))
+          (PORT C2 (::0.1))
+          (IOPATH C1 Z (::221) (::166))
+          (IOPATH B2 Z (::165) (::134))
+          (IOPATH C2 Z (::206) (::158))
+          (IOPATH A1 Z (::139) (::126))
+          (IOPATH B1 Z (::172) (::140))
+          (IOPATH A2 Z (::143) (::133))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "AND3_H")
+     (INSTANCE g4648__1705)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (PORT B (::0.1))
+          (PORT C (::0.1))
+          (IOPATH A Z (::84) (::99))
+          (IOPATH B Z (::86) (::94))
+          (IOPATH C Z (::95) (::112))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "AND2_H")
+     (INSTANCE g4649__5122)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (PORT B (::0.2))
+          (IOPATH A Z (::80) (::90))
+          (IOPATH B Z (::75) (::88))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "AOI21_B")
+     (INSTANCE g4650__8246)
+     (DELAY
+        (ABSOLUTE
+          (PORT A1 (::0.1))
+          (PORT A2 (::0.1))
+          (PORT B (::0.2))
+          (IOPATH B Z (::127) (::73))
+          (IOPATH A1 Z (::114) (::82))
+          (IOPATH A2 Z (::117) (::83))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "AOI22_B")
+     (INSTANCE g4651__7098)
+     (DELAY
+        (ABSOLUTE
+          (PORT A1 (::0.2))
+          (PORT A2 (::0.1))
+          (PORT B1 (::0.2))
+          (PORT B2 (::0.1))
+          (IOPATH B2 Z (::137) (::108))
+          (IOPATH A1 Z (::112) (::92))
+          (IOPATH B1 Z (::138) (::124))
+          (IOPATH A2 Z (::117) (::94))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "ADDF_F")
+     (INSTANCE g4644__6131)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (PORT B (::0.2))
+          (PORT CIN (::0.2))
+          (IOPATH A COUT (::193) (::160))
+          (IOPATH CIN COUT (::165) (::152))
+          (IOPATH B COUT (::176) (::154))
+          (IOPATH A SUM (::264) (::266))
+          (IOPATH CIN SUM (::264) (::236))
+          (IOPATH B SUM (::267) (::246))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "NOR2_J")
+     (INSTANCE g4652__1881)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.5))
+          (PORT B (::0.5))
+          (IOPATH A Z (::73) (::68))
+          (IOPATH B Z (::83) (::82))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "XOR2_C")
+     (INSTANCE g4655__5115)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (PORT B (::0.2))
+          (IOPATH A Z (::110) (::121))
+          (IOPATH B Z (::100) (::105))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "NAND2_K")
+     (INSTANCE g4653__7482)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.6))
+          (PORT B (::0.5))
+          (IOPATH A Z (::70) (::60))
+          (IOPATH B Z (::65) (::52))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "XNOR2_C")
+     (INSTANCE g4654__4733)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (PORT B (::0.2))
+          (IOPATH A Z (::105) (::120))
+          (IOPATH B Z (::101) (::104))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "NOR3_F")
+     (INSTANCE g4659__6161)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.4))
+          (PORT B (::0.4))
+          (PORT C (::0.3))
+          (IOPATH A Z (::103) (::84))
+          (IOPATH B Z (::120) (::95))
+          (IOPATH C Z (::125) (::98))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "NAND2_D")
+     (INSTANCE g4665__9315)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.1))
+          (PORT B (::0.1))
+          (IOPATH A Z (::72) (::59))
+          (IOPATH B Z (::71) (::55))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "OR2_H")
+     (INSTANCE g4661__9945)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.1))
+          (PORT B (::0.1))
+          (IOPATH A Z (::75) (::86))
+          (IOPATH B Z (::82) (::93))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "NOR2_D")
+     (INSTANCE g4663__2883)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (PORT B (::0.2))
+          (IOPATH A Z (::71) (::62))
+          (IOPATH B Z (::87) (::79))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "INVERT_I")
+     (INSTANCE g4684)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.3))
+          (IOPATH A Z (::47) (::40))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "INVERT_F")
+     (INSTANCE g4657)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (IOPATH A Z (::47) (::42))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "NAND2BAL_E")
+     (INSTANCE g4664__2346)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (PORT B (::0.2))
+          (IOPATH A Z (::48) (::73))
+          (IOPATH B Z (::47) (::73))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "NOR2_D")
+     (INSTANCE g4666__1666)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (PORT B (::0.2))
+          (IOPATH A Z (::71) (::62))
+          (IOPATH B Z (::87) (::79))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "INVERT_H")
+     (INSTANCE g4686)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (IOPATH A Z (::32) (::27))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_L")
+     (INSTANCE g4685)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.3))
+          (IOPATH A Z (::57) (::66))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "NOR2_F")
+     (INSTANCE g4668__7410)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.3))
+          (PORT B (::0.3))
+          (IOPATH A Z (::76) (::65))
+          (IOPATH B Z (::81) (::67))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "NOR2_D")
+     (INSTANCE g4669__6417)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (PORT B (::0.2))
+          (IOPATH A Z (::71) (::61))
+          (IOPATH B Z (::87) (::79))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "NAND3_H")
+     (INSTANCE g4658__5477)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.3))
+          (PORT B (::0.3))
+          (PORT C (::0.3))
+          (IOPATH A Z (::75) (::65))
+          (IOPATH B Z (::86) (::72))
+          (IOPATH C Z (::102) (::79))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_H")
+     (INSTANCE g4671)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (IOPATH A Z (::52) (::62))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "NOR2_F")
+     (INSTANCE g4656__2398)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.3))
+          (PORT B (::0.3))
+          (IOPATH A Z (::66) (::58))
+          (IOPATH B Z (::76) (::70))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_L")
+     (INSTANCE g4687)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.3))
+          (IOPATH A Z (::59) (::68))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_H")
+     (INSTANCE g4660)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (IOPATH A Z (::62) (::73))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "NOR2_D")
+     (INSTANCE g4667__5107)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (PORT B (::0.2))
+          (IOPATH A Z (::71) (::61))
+          (IOPATH B Z (::87) (::79))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_J")
+     (INSTANCE g4672)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (IOPATH A Z (::58) (::67))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_J")
+     (INSTANCE g4688)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (IOPATH A Z (::57) (::68))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_J")
+     (INSTANCE g4689)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (IOPATH A Z (::55) (::66))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "NOR2_F")
+     (INSTANCE g4662__6260)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.3))
+          (PORT B (::0.3))
+          (IOPATH A Z (::76) (::67))
+          (IOPATH B Z (::81) (::76))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_J")
+     (INSTANCE g4670)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (IOPATH A Z (::54) (::63))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "INVERT_K")
+     (INSTANCE g4673)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.4))
+          (IOPATH A Z (::50) (::44))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "INVERT_K")
+     (INSTANCE g4681)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.4))
+          (IOPATH A Z (::57) (::49))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "INVERT_J")
+     (INSTANCE g4683)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.3))
+          (IOPATH A Z (::61) (::55))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_J")
+     (INSTANCE g4690)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (IOPATH A Z (::65) (::79))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "DFFR_E")
+     (INSTANCE branch_q_reg)
+     (DELAY
+        (ABSOLUTE
+          (PORT RN (::0.0))
+          (PORT CLK (::0.0))
+          (PORT D (::0.1))
+          (IOPATH RN Q () (::229))
+          (IOPATH CLK Q (::323) (::215))
+          (IOPATH RN QBAR (::114) ())
+          (IOPATH CLK QBAR (::101) (::166))
+        )
+     )
+     (TIMINGCHECK
+        (RECREM (posedge RN) (COND D==1'b1 (posedge CLK)) (::100) (::93))
+        (SETUPHOLD (negedge D) (COND RN==1'b1 (posedge CLK)) (::234) (::-117))
+        (SETUPHOLD (posedge D) (COND RN==1'b1 (posedge CLK)) (::132) (::51))
+     )
+  )
+  (CELL
+     (CELLTYPE "DFFR_E")
+     (INSTANCE update_lsbs_q_reg)
+     (DELAY
+        (ABSOLUTE
+          (PORT RN (::0.0))
+          (PORT CLK (::0.0))
+          (PORT D (::0.1))
+          (IOPATH RN Q () (::226))
+          (IOPATH CLK Q (::319) (::211))
+          (IOPATH RN QBAR (::114) ())
+          (IOPATH CLK QBAR (::101) (::166))
+        )
+     )
+     (TIMINGCHECK
+        (RECREM (posedge RN) (COND D==1'b1 (posedge CLK)) (::100) (::93))
+        (SETUPHOLD (negedge D) (COND RN==1'b1 (posedge CLK)) (::234) (::-117))
+        (SETUPHOLD (posedge D) (COND RN==1'b1 (posedge CLK)) (::132) (::51))
+     )
+  )
+  (CELL
+     (CELLTYPE "DFFR_E")
+     (INSTANCE branch_offset_q_reg\[3\])
+     (DELAY
+        (ABSOLUTE
+          (PORT RN (::0.0))
+          (PORT CLK (::0.0))
+          (PORT D (::0.1))
+          (IOPATH RN Q () (::169))
+          (IOPATH CLK Q (::264) (::160))
+          (IOPATH RN QBAR (::157) ())
+          (IOPATH CLK QBAR (::144) (::213))
+        )
+     )
+     (TIMINGCHECK
+        (RECREM (posedge RN) (COND D==1'b1 (posedge CLK)) (::100) (::93))
+        (SETUPHOLD (negedge D) (COND RN==1'b1 (posedge CLK)) (::234) (::-117))
+        (SETUPHOLD (posedge D) (COND RN==1'b1 (posedge CLK)) (::132) (::51))
+     )
+  )
+  (CELL
+     (CELLTYPE "DFFR_E")
+     (INSTANCE branch_offset_q_reg\[0\])
+     (DELAY
+        (ABSOLUTE
+          (PORT RN (::0.0))
+          (PORT CLK (::0.0))
+          (PORT D (::0.1))
+          (IOPATH RN Q () (::220))
+          (IOPATH CLK Q (::314) (::206))
+          (IOPATH RN QBAR (::114) ())
+          (IOPATH CLK QBAR (::101) (::166))
+        )
+     )
+     (TIMINGCHECK
+        (RECREM (posedge RN) (COND D==1'b1 (posedge CLK)) (::100) (::93))
+        (SETUPHOLD (negedge D) (COND RN==1'b1 (posedge CLK)) (::234) (::-117))
+        (SETUPHOLD (posedge D) (COND RN==1'b1 (posedge CLK)) (::132) (::51))
+     )
+  )
+  (CELL
+     (CELLTYPE "DFFR_E")
+     (INSTANCE jump_destination_q_reg\[2\])
+     (DELAY
+        (ABSOLUTE
+          (PORT RN (::0.0))
+          (PORT CLK (::0.0))
+          (PORT D (::0.1))
+          (IOPATH RN Q () (::199))
+          (IOPATH CLK Q (::294) (::186))
+          (IOPATH RN QBAR (::114) ())
+          (IOPATH CLK QBAR (::101) (::166))
+        )
+     )
+     (TIMINGCHECK
+        (RECREM (posedge RN) (COND D==1'b1 (posedge CLK)) (::100) (::93))
+        (SETUPHOLD (negedge D) (COND RN==1'b1 (posedge CLK)) (::234) (::-117))
+        (SETUPHOLD (posedge D) (COND RN==1'b1 (posedge CLK)) (::132) (::51))
+     )
+  )
+  (CELL
+     (CELLTYPE "DFFR_E")
+     (INSTANCE branch_offset_q_reg\[4\])
+     (DELAY
+        (ABSOLUTE
+          (PORT RN (::0.0))
+          (PORT CLK (::0.0))
+          (PORT D (::0.1))
+          (IOPATH RN Q () (::169))
+          (IOPATH CLK Q (::264) (::160))
+          (IOPATH RN QBAR (::157) ())
+          (IOPATH CLK QBAR (::144) (::213))
+        )
+     )
+     (TIMINGCHECK
+        (RECREM (posedge RN) (COND D==1'b1 (posedge CLK)) (::100) (::93))
+        (SETUPHOLD (negedge D) (COND RN==1'b1 (posedge CLK)) (::234) (::-117))
+        (SETUPHOLD (posedge D) (COND RN==1'b1 (posedge CLK)) (::132) (::51))
+     )
+  )
+  (CELL
+     (CELLTYPE "DFFR_E")
+     (INSTANCE jump_destination_q_reg\[3\])
+     (DELAY
+        (ABSOLUTE
+          (PORT RN (::0.0))
+          (PORT CLK (::0.0))
+          (PORT D (::0.1))
+          (IOPATH RN Q () (::199))
+          (IOPATH CLK Q (::294) (::186))
+          (IOPATH RN QBAR (::114) ())
+          (IOPATH CLK QBAR (::101) (::166))
+        )
+     )
+     (TIMINGCHECK
+        (RECREM (posedge RN) (COND D==1'b1 (posedge CLK)) (::100) (::93))
+        (SETUPHOLD (negedge D) (COND RN==1'b1 (posedge CLK)) (::234) (::-117))
+        (SETUPHOLD (posedge D) (COND RN==1'b1 (posedge CLK)) (::132) (::51))
+     )
+  )
+  (CELL
+     (CELLTYPE "DFFR_E")
+     (INSTANCE jump_destination_q_reg\[1\])
+     (DELAY
+        (ABSOLUTE
+          (PORT RN (::0.0))
+          (PORT CLK (::0.0))
+          (PORT D (::0.1))
+          (IOPATH RN Q () (::199))
+          (IOPATH CLK Q (::294) (::186))
+          (IOPATH RN QBAR (::114) ())
+          (IOPATH CLK QBAR (::101) (::166))
+        )
+     )
+     (TIMINGCHECK
+        (RECREM (posedge RN) (COND D==1'b1 (posedge CLK)) (::100) (::93))
+        (SETUPHOLD (negedge D) (COND RN==1'b1 (posedge CLK)) (::234) (::-117))
+        (SETUPHOLD (posedge D) (COND RN==1'b1 (posedge CLK)) (::132) (::51))
+     )
+  )
+  (CELL
+     (CELLTYPE "DFFR_E")
+     (INSTANCE branch_offset_q_reg\[2\])
+     (DELAY
+        (ABSOLUTE
+          (PORT RN (::0.0))
+          (PORT CLK (::0.0))
+          (PORT D (::0.1))
+          (IOPATH RN Q () (::169))
+          (IOPATH CLK Q (::264) (::160))
+          (IOPATH RN QBAR (::157) ())
+          (IOPATH CLK QBAR (::144) (::213))
+        )
+     )
+     (TIMINGCHECK
+        (RECREM (posedge RN) (COND D==1'b1 (posedge CLK)) (::100) (::93))
+        (SETUPHOLD (negedge D) (COND RN==1'b1 (posedge CLK)) (::234) (::-117))
+        (SETUPHOLD (posedge D) (COND RN==1'b1 (posedge CLK)) (::132) (::51))
+     )
+  )
+  (CELL
+     (CELLTYPE "DFFR_E")
+     (INSTANCE branch_offset_q_reg\[5\])
+     (DELAY
+        (ABSOLUTE
+          (PORT RN (::0.0))
+          (PORT CLK (::0.0))
+          (PORT D (::0.1))
+          (IOPATH RN Q () (::202))
+          (IOPATH CLK Q (::296) (::189))
+          (IOPATH RN QBAR (::114) ())
+          (IOPATH CLK QBAR (::101) (::166))
+        )
+     )
+     (TIMINGCHECK
+        (RECREM (posedge RN) (COND D==1'b1 (posedge CLK)) (::100) (::93))
+        (SETUPHOLD (negedge D) (COND RN==1'b1 (posedge CLK)) (::234) (::-117))
+        (SETUPHOLD (posedge D) (COND RN==1'b1 (posedge CLK)) (::132) (::51))
+     )
+  )
+  (CELL
+     (CELLTYPE "DFFR_E")
+     (INSTANCE jump_destination_q_reg\[0\])
+     (DELAY
+        (ABSOLUTE
+          (PORT RN (::0.0))
+          (PORT CLK (::0.0))
+          (PORT D (::0.1))
+          (IOPATH RN Q () (::169))
+          (IOPATH CLK Q (::264) (::160))
+          (IOPATH RN QBAR (::151) ())
+          (IOPATH CLK QBAR (::138) (::206))
+        )
+     )
+     (TIMINGCHECK
+        (RECREM (posedge RN) (COND D==1'b1 (posedge CLK)) (::100) (::93))
+        (SETUPHOLD (negedge D) (COND RN==1'b1 (posedge CLK)) (::234) (::-117))
+        (SETUPHOLD (posedge D) (COND RN==1'b1 (posedge CLK)) (::132) (::51))
+     )
+  )
+  (CELL
+     (CELLTYPE "DFFR_H")
+     (INSTANCE jump_q_reg)
+     (DELAY
+        (ABSOLUTE
+          (PORT RN (::0.0))
+          (PORT CLK (::0.0))
+          (PORT D (::0.1))
+          (IOPATH RN Q () (::251))
+          (IOPATH CLK Q (::347) (::243))
+          (IOPATH RN QBAR (::128) ())
+          (IOPATH CLK QBAR (::121) (::183))
+        )
+     )
+     (TIMINGCHECK
+        (RECREM (posedge RN) (COND D==1'b1 (posedge CLK)) (::100) (::50))
+        (SETUPHOLD (negedge D) (COND RN==1'b1 (posedge CLK)) (::234) (::-117))
+        (SETUPHOLD (posedge D) (COND RN==1'b1 (posedge CLK)) (::132) (::51))
+     )
+  )
+  (CELL
+     (CELLTYPE "DFFR_E")
+     (INSTANCE jump_destination_q_reg\[4\])
+     (DELAY
+        (ABSOLUTE
+          (PORT RN (::0.0))
+          (PORT CLK (::0.0))
+          (PORT D (::0.1))
+          (IOPATH RN Q () (::199))
+          (IOPATH CLK Q (::294) (::186))
+          (IOPATH RN QBAR (::114) ())
+          (IOPATH CLK QBAR (::101) (::166))
+        )
+     )
+     (TIMINGCHECK
+        (RECREM (posedge RN) (COND D==1'b1 (posedge CLK)) (::100) (::93))
+        (SETUPHOLD (negedge D) (COND RN==1'b1 (posedge CLK)) (::234) (::-117))
+        (SETUPHOLD (posedge D) (COND RN==1'b1 (posedge CLK)) (::132) (::51))
+     )
+  )
+  (CELL
+     (CELLTYPE "DFFR_E")
+     (INSTANCE jump_destination_q_reg\[5\])
+     (DELAY
+        (ABSOLUTE
+          (PORT RN (::0.0))
+          (PORT CLK (::0.0))
+          (PORT D (::0.1))
+          (IOPATH RN Q () (::199))
+          (IOPATH CLK Q (::294) (::186))
+          (IOPATH RN QBAR (::114) ())
+          (IOPATH CLK QBAR (::101) (::166))
+        )
+     )
+     (TIMINGCHECK
+        (RECREM (posedge RN) (COND D==1'b1 (posedge CLK)) (::100) (::93))
+        (SETUPHOLD (negedge D) (COND RN==1'b1 (posedge CLK)) (::234) (::-117))
+        (SETUPHOLD (posedge D) (COND RN==1'b1 (posedge CLK)) (::132) (::51))
+     )
+  )
+  (CELL
+     (CELLTYPE "DFFR_E")
+     (INSTANCE branch_offset_q_reg\[1\])
+     (DELAY
+        (ABSOLUTE
+          (PORT RN (::0.0))
+          (PORT CLK (::0.0))
+          (PORT D (::0.1))
+          (IOPATH RN Q () (::169))
+          (IOPATH CLK Q (::264) (::160))
+          (IOPATH RN QBAR (::157) ())
+          (IOPATH CLK QBAR (::144) (::213))
+        )
+     )
+     (TIMINGCHECK
+        (RECREM (posedge RN) (COND D==1'b1 (posedge CLK)) (::100) (::93))
+        (SETUPHOLD (negedge D) (COND RN==1'b1 (posedge CLK)) (::234) (::-117))
+        (SETUPHOLD (posedge D) (COND RN==1'b1 (posedge CLK)) (::132) (::51))
+     )
+  )
+  (CELL
+     (CELLTYPE "DFFR_H")
+     (INSTANCE update_msbs_q_reg)
+     (DELAY
+        (ABSOLUTE
+          (PORT RN (::0.0))
+          (PORT CLK (::0.0))
+          (PORT D (::0.1))
+          (IOPATH RN Q () (::261))
+          (IOPATH CLK Q (::354) (::252))
+          (IOPATH RN QBAR (::128) ())
+          (IOPATH CLK QBAR (::121) (::183))
+        )
+     )
+     (TIMINGCHECK
+        (RECREM (posedge RN) (COND D==1'b1 (posedge CLK)) (::100) (::50))
+        (SETUPHOLD (negedge D) (COND RN==1'b1 (posedge CLK)) (::234) (::-117))
+        (SETUPHOLD (posedge D) (COND RN==1'b1 (posedge CLK)) (::132) (::51))
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_F")
+     (INSTANCE g4708)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.1))
+          (IOPATH A Z (::61) (::70))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "INVERT_D")
+     (INSTANCE g4719)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (IOPATH A Z (::59) (::55))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_H")
+     (INSTANCE g4699)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (IOPATH A Z (::71) (::100))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_H")
+     (INSTANCE g4706)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (IOPATH A Z (::71) (::100))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_H")
+     (INSTANCE g4702)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (IOPATH A Z (::71) (::100))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_H")
+     (INSTANCE g4715)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (IOPATH A Z (::71) (::100))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_H")
+     (INSTANCE g4717)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (IOPATH A Z (::71) (::100))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_H")
+     (INSTANCE g4716)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (IOPATH A Z (::71) (::100))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_H")
+     (INSTANCE g4701)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (IOPATH A Z (::71) (::100))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_H")
+     (INSTANCE g4714)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (IOPATH A Z (::71) (::100))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_J")
+     (INSTANCE g4710)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (IOPATH A Z (::65) (::79))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "INVERT_H")
+     (INSTANCE g4720)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (IOPATH A Z (::68) (::59))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_J")
+     (INSTANCE g4724)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (IOPATH A Z (::65) (::79))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_C")
+     (INSTANCE g4711)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.0))
+          (IOPATH A Z (::92) (::98))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_H")
+     (INSTANCE g4703)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (IOPATH A Z (::71) (::100))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_H")
+     (INSTANCE g4700)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (IOPATH A Z (::71) (::100))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_H")
+     (INSTANCE g4707)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (IOPATH A Z (::71) (::100))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_H")
+     (INSTANCE g4704)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (IOPATH A Z (::71) (::100))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_H")
+     (INSTANCE g4705)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (IOPATH A Z (::71) (::100))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_H")
+     (INSTANCE g4712)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (IOPATH A Z (::71) (::100))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_H")
+     (INSTANCE g4718)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (IOPATH A Z (::71) (::100))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_H")
+     (INSTANCE g4721)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (IOPATH A Z (::64) (::76))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_H")
+     (INSTANCE g4713)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (IOPATH A Z (::71) (::100))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_J")
+     (INSTANCE g4723)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (IOPATH A Z (::65) (::79))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_J")
+     (INSTANCE g4725)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (IOPATH A Z (::65) (::79))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_I")
+     (INSTANCE g4722)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (IOPATH A Z (::68) (::83))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_J")
+     (INSTANCE g4709)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (IOPATH A Z (::64) (::78))
+        )
+     )
+  )
+)

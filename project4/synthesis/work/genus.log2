@@ -1,0 +1,1036 @@
+Cadence Genus(TM) Synthesis Solution.
+Copyright 2025 Cadence Design Systems, Inc. All rights reserved worldwide.
+Cadence and the Cadence logo are registered trademarks and Genus is a trademark
+of Cadence Design Systems, Inc. in the United States and other countries.
+
+[12:11:51.259929] Configured Lic search path (25.01-s002): 5280@cadence.lic.it.gwu.edu
+
+Version: 25.10-p002_1, built Thu Apr 17 12:35:38 PDT 2025
+Options: 
+Date:    Sun Oct 04 12:11:51 2026
+Host:    shell01 (x86_64 w/Linux 4.18.0-553.158.1.el8_10.x86_64) (14cores*56cpus*2physical cpus*Intel(R) Xeon(R) Gold 6132 CPU @ 2.60GHz 19712KB) (263271984KB)
+PID:     2006242
+OS:      Rocky Linux 8.10 (Green Obsidian)
+
+Checking out license: Genus_Synthesis
+[12:11:51.351674] Periodic Lic check successful
+[12:11:51.351705] Feature usage summary:
+[12:11:51.351705] Genus_Synthesis  
+
+
+***********************************************************************************************************
+***********************************************************************************************************
+
+
+
+Finished executable startup (9 seconds elapsed).
+
+Loading tool scripts...
+Finished loading tool scripts (29 seconds elapsed).
+
+WARNING: This version of the tool is 534 days old.
+@genus:root: 1> #############################
+@genus:root: 2> # Update design name to match top-level module name
+@genus:root: 3> set DESIGN "code0"
+code0
+@genus:root: 4> 
+@genus:root: 4> 
+@genus:root: 4> ##########################
+@genus:root: 5> 
+@genus:root: 5> 
+@genus:root: 5> set_db init_lib_search_path /apps/design_kits/ibm_kits/IBM_IP/ibm_cmos8hp/std_cell/sc/v.20110613/synopsys/ss_125/
+  Setting attribute of root '/': 'init_lib_search_path' = /apps/design_kits/ibm_kits/IBM_IP/ibm_cmos8hp/std_cell/sc/v.20110613/synopsys/ss_125/
+1 /apps/design_kits/ibm_kits/IBM_IP/ibm_cmos8hp/std_cell/sc/v.20110613/synopsys/ss_125/
+@genus:root: 6> set_db library IBM_CMOS8HP_SS125.lib
+
+  Message Summary for Library IBM_CMOS8HP_SS125.lib:
+  **************************************************
+  Missing library level attribute. [LBR-516]: 1
+  **************************************************
+ 
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 1.350000, 125.000000) in library 'IBM_CMOS8HP_SS125.lib'.
+        : The nominal operating condition is represented, either by the nominal PVT values specified in the library source (via nom_process,nom_voltage and nom_temperature respectively), or by the default PVT values (1.0,1.0,1.0).
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP_C' must have an output pin.
+        : Add the missing output pin(s), then reload the library. Else the library cell will be marked as timing model i.e. unusable. Timing_model means that the cell does not have any defined function. If there is no output pin, Genus will mark library cell as unusable i.e. the attribute 'usable' will be marked to 'false' on the libcell. Therefore, the cell is not used for mapping and it will not be picked up from the library for synthesis. If you query the attribute 'unusable_reason' on the libcell; result will be: 'Library cell has no output pins.'Note: The message LBR-9 is only for the logical pins and not for the power_ground pins. Genus will depend upon the output function defined in the pin group (output pin) of the cell, to use it for mapping. The pg_pin will not have any function defined.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP_C' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_A' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_A' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_B' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_B' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_C' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_C' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_D' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_D' must have an output pin.
+  Setting attribute of root '/': 'library' = IBM_CMOS8HP_SS125.lib
+1 IBM_CMOS8HP_SS125.lib
+@genus:root: 7> set_db init_hdl_search_path ../../source
+  Setting attribute of root '/': 'init_hdl_search_path' = ../../source
+1 ../../source
+@genus:root: 8> 
+@genus:root: 8> #############################
+@genus:root: 9> ## HDL files to read in
+@genus:root: 10> read_hdl program_counter.v
+@genus:root: 11> 
+@genus:root: 11> #############################
+@genus:root: 12> 
+@genus:root: 12> elaborate ${DESIGN}
+Error   : Could not find an HDL design. [CDFG-210] [elaborate]
+        : The design is 'code0'.
+        : This error may happen if you read a set of files, and you try to elaborate a design which description is not part of the files read. To fix this, check the name of the design you want to elaborate, or check if you have read all the expected RTL files.
+UM:   flow.cputime  flow.realtime  timing.setup.tns  timing.setup.wns  snapshot
+UM:*                                                                   elaborate
+1
+@genus:root: 13> source ../constraints/constraints_${DESIGN}.tcl
+Sourcing '../constraints/constraints_code0.tcl' (Sun Oct 04 12:13:45 EDT 2026)...
+#@ Begin verbose source ../constraints/constraints_code0.tcl
+@file(constraints_code0.tcl) 4: set CLK_PERIOD 10.00 
+@file(constraints_code0.tcl) 5: set CLK_LATENCY 0.60
+@file(constraints_code0.tcl) 6: set CLK_SKEW 0.40
+@file(constraints_code0.tcl) 7: set CLK_JITTER 0.20
+@file(constraints_code0.tcl) 8: set SETUP_UNCERTAINTY [expr $CLK_SKEW + $CLK_JITTER]
+@file(constraints_code0.tcl) 9: set INPUT_DELAY 3.00
+@file(constraints_code0.tcl) 10: set OUTPUT_DELAY 3.00
+@file(constraints_code0.tcl) 15: create_clock clk -period $CLK_PERIOD -waveform {0.0 5.0}
+Error   : A required object parameter could not be found. [TUI-61] [create_clock]
+        : An object of type 'port|pin|hpin' named 'clk' could not be found.
+        : Check to make sure that the object exists and is of the correct type.  The 'what_is' command can be used to determine the type of an object.
+
+Usage: create_clock [-add] [-name <string>] [-comment <string>] [-domain <string>] -period <float> [-waveform <float>+] [-apply_inverted <port|pin|hpin>+] [<port|pin|hpin>+]
+
+    [-add]:
+        should the sources add or overwrite 
+    [-name <string>]:
+        name of clock 
+    [-comment <string>]:
+        comment to be tagged with this command 
+    [-domain <string>]:
+        name of the clock domain for the clock 
+    -period <float>:
+        clock_period 
+    [-waveform <float>+]:
+        waveform string 
+    [-apply_inverted <port|pin|hpin>+]:
+        Sources(port | pin | hpin) that are inverted 
+    [<port|pin|hpin>+]:
+        Sources(port | pin | hpin) that are not inverted 
+#@ End verbose source ../constraints/constraints_code0.tcl
+1
+@genus:root: 14> 
+@genus:root: 14> uniquify ${DESIGN} -verbose
+Error   : A required object parameter could not be found. [TUI-61] [uniquify]
+        : An object of type 'design|module' named 'code0' could not be found.
+  uniquify: eliminates sharing of subdesigns between instances 
+
+Usage: uniquify <design|module> [-verbose]
+
+    <design|module>:
+        the design or subdesign to uniquify under 
+    [-verbose]:
+        prints uniquified instances and their subdesign names 
+1
+@genus:root: 15> check_design
+Error   : No designs are available. A design must first be read in and elaborated. [TUI-10] [check_design]
+        : There is no design here.
+        : A design must first be read in with 'read_hdl' command and elaborated with 'elaborate' command.
+Failed on check_design
+@genus:root: 16> 
+@genus:root: 16> set_db syn_generic_effort medium
+  Setting attribute of root '/': 'syn_generic_effort' = medium
+1 medium
+@genus:root: 17> set_db syn_map_effort medium
+  Setting attribute of root '/': 'syn_map_effort' = medium
+1 medium
+@genus:root: 18> 
+@genus:root: 18> syn_generic
+      flow.cputime  flow.realtime  timing.setup.tns  timing.setup.wns  snapshot
+UM:*                                                                   syn_gen
+1
+@genus:root: 19> syn_map
+#----------------------------------------------------------------------------------------
+# Root attributes for category: opt
+#----------------------------------------------------------------------------------------
+# Feature                           | Attribute                    | Value            
+#----------------------------------------------------------------------------------------
+# Avoid tied inputs                 | avoid_tied_inputs            | false (default)  
+# Allow floating outputs            | opt_allow_floating_outputs   | false (default)  
+# Power optimization effort         | design_power_effort          | none (default)   
+# Do not use qbar sequential pins   | dont_use_qbar_seq_pins       | false (default)  
+#----------------------------------------------------------------------------------------
+
+      flow.cputime  flow.realtime  timing.setup.tns  timing.setup.wns  snapshot
+UM:*                                                                   syn_map
+1
+@genus:root: 20> 
+@genus:root: 20> report_timing -max_paths 5 -from clk -to clk > ../reports/${DESIGN}_timing.rpt
+Error   : A required object parameter could not be found. [TUI-61] [report_timing]
+        : An object of type 'inst|hinst|external_delay|clock|port|pin|hpin' named 'clk' could not be found.
+  report_timing: print a timing report 
+
+Usage: report_timing [-fields <string>] [-output_format <string>] [-path_type <string>] [-path_exceptions <string>] [-split_delay] [-stage_delay] [-hpins] [-nets] [-exception_data]
+           [-unconstrained] [-physical] [-user_derate] [-user_mean_derate] [-user_sigma_derate] [-incr_derate] [-slew_derate] [-gui] [-max_paths <integer>] [-nworst <integer>]
+           [-logic_levels <integer>] [-skip_buf] [-skip_inv] [-logic_levels_tcl_list] [-max_slack <float>] [-min_slack <float>] [-paths <string>] [-domain <clock_domain>]
+           [-views <analysis_view>+] [-collection]
+           [ -from <inst|hinst|external_delay|clock|port|pin|hpin>+ |
+             -from_rise <inst|hinst|external_delay|clock|port|pin|hpin>+ |
+             -from_fall <inst|hinst|external_delay|clock|port|pin|hpin>+ ]
+           [ -through <inst|hinst|hnet|port|pin|hpin>+ |
+             -through_rise <inst|hinst|hnet|port|pin|hpin>+ |
+             -through_fall <inst|hinst|hnet|port|pin|hpin>+ ]+
+           [ -not_through <inst|hinst|hnet|port|pin|hpin>+ |
+             -not_through_rise <inst|hinst|hnet|port|pin|hpin>+ |
+             -not_through_fall <inst|hinst|hnet|port|pin|hpin>+ ]
+           [ -to <inst|hinst|external_delay|clock|port|pin|hpin>+ |
+             -to_rise <inst|hinst|external_delay|clock|port|pin|hpin>+ |
+             -to_fall <inst|hinst|external_delay|clock|port|pin|hpin>+ ]
+           [ -capture_clock_pins <pin|hpin>+ |
+             -capture_clock_pins_rise_clock <pin|hpin>+ |
+             -capture_clock_pins_fall_clock <pin|hpin>+ |
+             -capture_clock_pins_rise_pin <pin|hpin>+ |
+             -capture_clock_pins_fall_pin <pin|hpin>+ ]
+           [-exceptions <exception>+] [-group <cost_group>+] [-timing_bin <timing_bin>] [-timing_path <timing_bin_path>] [<timing_path>+] [> file]
+
+    [-fields <string>]:
+        fields 
+    [-output_format <string>]:
+        supported output format types are <gtd|text> 
+    [-path_type <string>]:
+        supported path types are <full|summary|full_clock|endpoint> 
+    [-path_exceptions <string>]:
+        supported path exceptions are <all|applied|ignored> 
+    [-split_delay]:
+        displays both drivers and loads in the data path 
+    [-stage_delay]:
+        displays only drivers in the data path 
+    [-hpins]:
+        displays hierarchical pins in the data path 
+    [-nets]:
+        displays nets in the data path 
+    [-exception_data]:
+        displays the exception cross-linking information 
+    [-unconstrained]:
+        displays the unconstrained paths 
+    [-physical]:
+        include physical information in report 
+    [-user_derate]:
+        show 'user_derate' column in timing reports 
+    [-user_mean_derate]:
+        show 'user_mean_derate' column in timing reports 
+    [-user_sigma_derate]:
+        show 'user_sigma_derate' column in timing reports 
+    [-incr_derate]:
+        show 'incr_derate' column in timing reports 
+    [-slew_derate]:
+        show 'slew_derate' column in timing reports 
+    [-gui]:
+        invoke GUI timing report dialog 
+    [-max_paths <integer>]:
+        number of paths 
+    [-nworst <integer>]:
+        number of worst paths to each endpoint (inapplicable to path_type endpoint) 
+    [-logic_levels <integer>]:
+        number of paths to report in the output 
+    [-skip_buf]:
+        skip buffers when computing logic levels 
+    [-skip_inv]:
+        skip inverters when computing logic levels 
+    [-logic_levels_tcl_list]:
+        list output 
+    [-max_slack <float>]:
+        only paths with less than this slack 
+    [-min_slack <float>]:
+        only paths with greater than this slack 
+    [-paths <string>]:
+        a path identifier result from the specify_paths command 
+    [-domain <clock_domain>]:
+        a clock domain the paths should be restricted to 
+    [-views <analysis_view>+]:
+        a view the paths should be restricted to 
+    [-collection]:
+        return a collection of timing paths 
+    -from <inst|hinst|external_delay|clock|port|pin|hpin>+:
+        a set of startpoints for the paths 
+    -from_rise <inst|hinst|external_delay|clock|port|pin|hpin>+:
+        startpoints with a rise transition at the pin itself 
+    -from_fall <inst|hinst|external_delay|clock|port|pin|hpin>+:
+        startpoints with a fall transition at the pin itself 
+    -through <inst|hinst|hnet|port|pin|hpin>+:
+        specifies paths that pass through these pins or instances. This option can be repeated indicating that the path must go through at least one element of each through list 
+        (in the order the options were specified). Objects must be ports, hierarchical pins, pins on sequential/mapped combinational cells, or sequential/mapped combinational 
+        instances 
+    -through_rise <inst|hinst|hnet|port|pin|hpin>+:
+        this option specifies paths that contain a rise transition in one of these objects and it can be repeated and can be combined with -through and/or -through_fall_pin 
+    -through_fall <inst|hinst|hnet|port|pin|hpin>+:
+        this option specifies paths that contain a fall transition in one of these objects and it can be repeated and can be combined with -through and/or -through_rise_pin 
+    -not_through <inst|hinst|hnet|port|pin|hpin>+:
+        specifies paths that do not pass through these pins or instances. Objects must be ports, hierarchical pins, pins on sequential/mapped combinational cells, or 
+        sequential/mapped combinational instances 
+    -not_through_rise <inst|hinst|hnet|port|pin|hpin>+:
+        this option specifies paths that does not contain a rise transition in one of these objects 
+    -not_through_fall <inst|hinst|hnet|port|pin|hpin>+:
+        this option specifies paths that does not contain a fall transition in one of these objects 
+    -to <inst|hinst|external_delay|clock|port|pin|hpin>+:
+        a set of endpoints for the paths 
+    -to_rise <inst|hinst|external_delay|clock|port|pin|hpin>+:
+        endpoints with a rise transition at the pin itself 
+    -to_fall <inst|hinst|external_delay|clock|port|pin|hpin>+:
+        endpoints with a fall transition at the pin itself 
+    -capture_clock_pins <pin|hpin>+:
+        sequential clock pins at the path endpoint 
+    -capture_clock_pins_rise_clock <pin|hpin>+:
+        pins that capture with rising clock edge 
+    -capture_clock_pins_fall_clock <pin|hpin>+:
+        pins that capture with falling clock edge 
+    -capture_clock_pins_rise_pin <pin|hpin>+:
+        pins that capture with rise transition at the pin itself 
+    -capture_clock_pins_fall_pin <pin|hpin>+:
+        pins that capture with fall transition at the pin itself 
+    [-exceptions <exception>+]:
+        report paths for exceptions 
+    [-group <cost_group>+]:
+        report paths for the specified cost groups/path groups 
+    [-timing_bin <timing_bin>]:
+        timing bin to report 
+    [-timing_path <timing_bin_path>]:
+        timing path to report 
+    [<timing_path>+]:
+        path_collection 
+Fields presented are controlled by the '-fields' switch or the attribute
+'timing_report_fields' and 'timing_report_endpoint_fields'
+Valid full report fields are:
+  - timing_point:        names of pins
+  - flags:               flags associated with the column timing_point
+  - arc:                 timing arc for which timing information was applied
+  - edge:                rising/falling edge
+  - cell:                cell type, exception type, etc.
+  - fanout:              fanout of leaf cells
+  - load:                load of leaf cells
+  - transition:          slew of leaf cell outputs
+  - transition_mean:     mean slew of leaf cell outputs
+  - transition_sigma:    sigma slew of leaf cell outputs
+  - delay:               delay through a leaf cell
+  - delay_mean:          mean delay through a leaf cell
+  - delay_sigma:         sigma delay through a leaf cell
+  - arrival:             arrival time at a leaf cell
+  - arrival_mean:        mean arrival time at a leaf cell
+  - arrival_sigma:       sigma arrival time at a leaf cell
+  - lib_set:             display the library set of the cell
+  - user_derate:         derating information
+  - user_mean_derate:    mean derating information
+  - user_sigma_derate:   derating information
+  - total_derate:        total derating information
+  - incr_derate:        incr derating information
+  - slew_derate:        slew derating information
+  - aocv_derate:         aocv derating information
+  - socv_derate:         socv spatial derating information
+  - stage_count:         aocv stage depth
+  - power_domain:        power domain associated with the object
+  - wire_length:         wire length
+  - instance_location:       instance location
+  - pin_location:        pin location
+  - module:              name of the subdesign
+  - frc:                 file row column information
+  - voltage:             voltage information
+1
+@genus:root: 21> report_gates > ../reports/${DESIGN}_gates.rpt
+Error   : No designs are available. A design must first be read in and elaborated. [TUI-10] [::report::gates::report_gates]
+        : There is no design here.
+Failed on find_unique_design
+@genus:root: 22> report_area > ../reports/${DESIGN}_area.rpt
+Error   : No designs are available. A design must first be read in and elaborated. [TUI-10] [::report::area::report_area]
+        : There is no design here.
+Failed on find_unique_design
+@genus:root: 23> report_power > ../reports/${DESIGN}_power.rpt
+Error   : No designs are available. A design must first be read in and elaborated. [TUI-10] [::report::power::report_power]
+        : There is no design here.
+Failed on find_unique_design
+@genus:root: 24> report_design > ../reports/${DESIGN}_const.rpt
+1
+@genus:root: 25> 
+@genus:root: 25> write_hdl > ../netlists/${DESIGN}.v
+Error   : No designs are available. A design must first be read in and elaborated. [TUI-10] [write_hdl]
+        : There is no design here.
+Failed on find_unique_design
+@genus:root: 26> write_sdc > ../netlists/${DESIGN}.sdc
+Error   : No designs are available. A design must first be read in and elaborated. [TUI-10] [write_sdc]
+        : There is no design here.
+Failed on find_unique_design
+@genus:root: 27> write_sdf > ../netlists/${DESIGN}.sdf
+Error   : No designs are available. A design must first be read in and elaborated. [TUI-10] [write_sdf]
+        : There is no design here.
+Failed on find_unique_design
+@genus:root: 28> 
+@genus:root: 28> echo "Synthesis Complete"
+Synthesis Complete
+@genus:root: 29> echo "   use command 'quit' to exit"
+   use command 'quit' to exit
+@genus:root: 30> 
+@genus:root: 30> 
+@genus:root: 30> source synthesis_code0.tcl
+File 'synthesis_code0.tcl' does not exist.
+@genus:root: 31> scripts synthesis_code0.tcl
+invalid command name "scripts"
+@genus:root: 32> source synthesis_code0.tcl
+File 'synthesis_code0.tcl' does not exist.
+@genus:root: 33> ls
+fv
+genus.cmd
+genus.cmd1
+genus.cmd2
+genus.log
+genus.log1
+genus.log2
+@genus:root: 34> pwd
+/home/ead/G33545035/VLSI-Design-Projects/project4/synthesis/work
+@genus:root: 35> pwd
+/home/ead/G33545035/VLSI-Design-Projects/project4/synthesis/work
+@genus:root: 36> cd..
+invalid command name "cd.."
+@genus:root: 37> cd ..
+@genus:root: 38> ls
+constraints
+netlists
+reports
+run_syn
+scripts
+work
+@genus:root: 39> cd scripts/
+@genus:root: 40> ls
+synthesis_code0.tcl
+synthesis_code1.tcl
+synthesis_code2.tcl
+synthesis_code3.tcl
+synthesis_code4a.tcl
+synthesis_program_counter.tcl
+@genus:root: 41> source synthesis_code0.tcl
+Sourcing './synthesis_code0.tcl' (Sun Oct 04 12:39:48 EDT 2026)...
+#@ Begin verbose source ./synthesis_code0.tcl
+@file(synthesis_code0.tcl) 3: set DESIGN "code0"
+@file(synthesis_code0.tcl) 9: set_db init_lib_search_path /apps/design_kits/ibm_kits/IBM_IP/ibm_cmos8hp/std_cell/sc/v.20110613/synopsys/ss_125/
+Warning : Cannot modify library search path after reading library(s). [TUI-83]
+        : Cannot modify 'init_lib_search_path' attribute to '/apps/design_kits/ibm_kits/IBM_IP/ibm_cmos8hp/std_cell/sc/v.20110613/synopsys/ss_125/'
+        : You must set the 'init_lib_search_path' attribute before you set the 'library' attribute.
+  Setting attribute of root '/': 'init_lib_search_path' = /apps/design_kits/ibm_kits/IBM_IP/ibm_cmos8hp/std_cell/sc/v.20110613/synopsys/ss_125/
+@file(synthesis_code0.tcl) 10: set_db library IBM_CMOS8HP_SS125.lib
+Freeing libraries in memory (IBM_CMOS8HP_SS125.lib)
+
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 1.350000, 125.000000) in library 'IBM_CMOS8HP_SS125.lib'.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP_C' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP_C' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_A' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_A' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_B' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_B' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_C' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_C' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_D' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_D' must have an output pin.
+  Setting attribute of root '/': 'library' = IBM_CMOS8HP_SS125.lib
+@file(synthesis_code0.tcl) 11: set_db init_hdl_search_path ../../source
+  Setting attribute of root '/': 'init_hdl_search_path' = ../../source
+@file(synthesis_code0.tcl) 15: read_hdl program_counter.v
+module program_counter(
+                     |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'program_counter' with Verilog module in file '../../source/program_counter.v' on line 10, column 22.
+        : A Verilog description is replaced when a new description of the same name and same library is read again.
+    Verilog descriptions are:
+       module
+       macromodule
+       configuration
+    SystemVerilog adds the following descriptions:
+       interface
+       program
+       package.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'program_counter' in library 'default' with newly read Verilog module 'program_counter' in the same library in file '../../source/program_counter.v' on line 10.
+        : A newly read VHDL entity replaces any previously read Verilog module or VHDL entity in the same library if its name matches (case-insensitively) the existing module or entity.
+    For instance:
+        VHDL 'foo'                  replaces  VHDL {'FOO' or 'foo' or 'Foo' or ...} in the same library
+        VHDL 'foo' (in any library) replaces  Verilog {'FOO' or 'foo' or 'Foo' or ...} in the same library
+ 
+A newly read Verilog module replaces any previously read Verilog module if its name matches (case-sensitively) that module.  Further, it replaces any previously read VHDL entity in the same library if its name matches (case -insensitively) that entity.
+    For instance:
+        Verilog 'foo' replaces    VHDL {'FOO' or 'foo' or 'Foo' or ...} in the same library
+        Verilog 'foo' replaces    Verilog 'foo' only
+    In addition:
+        Verilog 'foo' does not replace Verilog 'FOO' and the two remain as distinct modules.
+@file(synthesis_code0.tcl) 19: elaborate ${DESIGN}
+Error   : Could not find an HDL design. [CDFG-210] [elaborate]
+        : The design is 'code0'.
+      flow.cputime  flow.realtime  timing.setup.tns  timing.setup.wns  snapshot
+UM:*                                                                   elaborate
+#@ End verbose source ./synthesis_code0.tcl
+1
+@genus:root: 42> ls
+synthesis_code0.tcl
+synthesis_code1.tcl
+synthesis_code2.tcl
+synthesis_code3.tcl
+synthesis_code4a.tcl
+synthesis_program_counter.tcl
+@genus:root: 43> cd ..
+@genus:root: 44> ls
+constraints
+netlists
+reports
+run_syn
+scripts
+work
+@genus:root: 45> cd ..
+@genus:root: 46> ls
+simulation
+source
+synthesis
+@genus:root: 47> cd source/
+@genus:root: 48> ls
+code0.v
+code1.v
+code2.v
+code3.v
+code4a.v
+code4b.v
+program_counter.v
+@genus:root: 49> cd ..
+@genus:root: 50> s;
+ambiguous command name "s": save_snapshot scan schedule_flow search_doc seek select_obj set setPreference set_active_clocks set_activity set_analysis_view set_annotated_check set_annotated_delay set_annotated_transition set_case_analysis set_cell_padding set_cglar_specification set_clock_exclusivity set_clock_gating_check set_clock_gating_network_latency_table set_clock_groups set_clock_latency set_clock_sense set_clock_skew set_clock_transition set_clock_uncertainty set_compatible_test_clocks set_constraint_mode set_data_check set_db set_disable_clock_gating_check set_disable_timing set_dont_touch set_dont_touch_network set_dont_use set_drive set_driving_cell set_equal set_false_path set_fanout_load set_feature set_flow_config set_flowkit_read_db_args set_flowkit_write_db_args set_hierarchy_separator set_ideal_latency set_ideal_net set_ideal_network set_ideal_transition set_input_delay set_input_transition set_interactive_constraint_modes set_lib_pin set_lib_pins set_load set_load_unit set_logic_dc set_logic_one set_logic_zero set_max_capacitance set_max_delay set_max_dynamic_power set_max_fanout set_max_leakage_power set_max_time_borrow set_max_transition set_metric set_metric_alias set_metric_header set_min_capacitance set_min_delay set_min_fanout set_min_pulse_width set_min_transition set_mode set_module_model set_multi_cpu_usage set_multicycle_path set_opcg_equivalent set_operating_conditions set_opposite set_output_delay set_path_adjust set_path_group_options set_path_specification set_port_fanout_number set_proc_verbose set_resistance set_scan_equivalent set_sense set_size_only set_socv_rc_variation_factor set_socv_reporting_nsigma_multiplier set_time_unit set_timing_derate set_top_module set_unconnected set_units set_wire_load_mode set_wire_load_model set_wire_load_selection_group sh share_clock_gate sizeof_collection socket sort_collection source specify_cell_pad split split_clock_gate split_db sqlite3 start_preserve_for_auto_ungroup_constraints stop_preserve_for_auto_ungroup_constraints stop_suspend string stringify subst suppress_messages suspend switch syn_generic syn_map syn_opt
+@genus:root: 51> ls
+simulation
+source
+synthesis
+@genus:root: 52> cd synthesis/
+@genus:root: 53> ls
+constraints
+netlists
+reports
+run_syn
+scripts
+work
+@genus:root: 54> cd work/
+@genus:root: 55> ls
+fv
+genus.cmd
+genus.cmd1
+genus.cmd2
+genus.log
+genus.log1
+genus.log2
+@genus:root: 56> source scripts/synthesis_code0.tcl
+File 'scripts/synthesis_code0.tcl' does not exist.
+@genus:root: 57> source syntheis/scripts/synthesis_code0.tcl
+File 'syntheis/scripts/synthesis_code0.tcl' does not exist.
+@genus:root: 58> ls
+fv
+genus.cmd
+genus.cmd1
+genus.cmd2
+genus.log
+genus.log1
+genus.log2
+@genus:root: 59> cd ..
+@genus:root: 60> ls
+constraints
+netlists
+reports
+run_syn
+scripts
+work
+@genus:root: 61> cd ..
+@genus:root: 62> ls
+simulation
+source
+synthesis
+@genus:root: 63> cd synthesis/
+@genus:root: 64> s
+ambiguous command name "s": save_snapshot scan schedule_flow search_doc seek select_obj set setPreference set_active_clocks set_activity set_analysis_view set_annotated_check set_annotated_delay set_annotated_transition set_case_analysis set_cell_padding set_cglar_specification set_clock_exclusivity set_clock_gating_check set_clock_gating_network_latency_table set_clock_groups set_clock_latency set_clock_sense set_clock_skew set_clock_transition set_clock_uncertainty set_compatible_test_clocks set_constraint_mode set_data_check set_db set_disable_clock_gating_check set_disable_timing set_dont_touch set_dont_touch_network set_dont_use set_drive set_driving_cell set_equal set_false_path set_fanout_load set_feature set_flow_config set_flowkit_read_db_args set_flowkit_write_db_args set_hierarchy_separator set_ideal_latency set_ideal_net set_ideal_network set_ideal_transition set_input_delay set_input_transition set_interactive_constraint_modes set_lib_pin set_lib_pins set_load set_load_unit set_logic_dc set_logic_one set_logic_zero set_max_capacitance set_max_delay set_max_dynamic_power set_max_fanout set_max_leakage_power set_max_time_borrow set_max_transition set_metric set_metric_alias set_metric_header set_min_capacitance set_min_delay set_min_fanout set_min_pulse_width set_min_transition set_mode set_module_model set_multi_cpu_usage set_multicycle_path set_opcg_equivalent set_operating_conditions set_opposite set_output_delay set_path_adjust set_path_group_options set_path_specification set_port_fanout_number set_proc_verbose set_resistance set_scan_equivalent set_sense set_size_only set_socv_rc_variation_factor set_socv_reporting_nsigma_multiplier set_time_unit set_timing_derate set_top_module set_unconnected set_units set_wire_load_mode set_wire_load_model set_wire_load_selection_group sh share_clock_gate sizeof_collection socket sort_collection source specify_cell_pad split split_clock_gate split_db sqlite3 start_preserve_for_auto_ungroup_constraints stop_preserve_for_auto_ungroup_constraints stop_suspend string stringify subst suppress_messages suspend switch syn_generic syn_map syn_opt
+@genus:root: 65> ls
+constraints
+netlists
+reports
+run_syn
+scripts
+work
+@genus:root: 66> ls
+constraints
+netlists
+reports
+run_syn
+scripts
+work
+@genus:root: 67> source scripts/synthesis_code0.tcl
+Sourcing './scripts/synthesis_code0.tcl' (Sun Oct 04 12:43:15 EDT 2026)...
+#@ Begin verbose source ./scripts/synthesis_code0.tcl
+@file(synthesis_code0.tcl) 3: set DESIGN "code0"
+@file(synthesis_code0.tcl) 9: set_db init_lib_search_path /apps/design_kits/ibm_kits/IBM_IP/ibm_cmos8hp/std_cell/sc/v.20110613/synopsys/ss_125/
+Warning : Cannot modify library search path after reading library(s). [TUI-83]
+        : Cannot modify 'init_lib_search_path' attribute to '/apps/design_kits/ibm_kits/IBM_IP/ibm_cmos8hp/std_cell/sc/v.20110613/synopsys/ss_125/'
+  Setting attribute of root '/': 'init_lib_search_path' = /apps/design_kits/ibm_kits/IBM_IP/ibm_cmos8hp/std_cell/sc/v.20110613/synopsys/ss_125/
+@file(synthesis_code0.tcl) 10: set_db library IBM_CMOS8HP_SS125.lib
+Freeing libraries in memory (IBM_CMOS8HP_SS125.lib)
+
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 1.350000, 125.000000) in library 'IBM_CMOS8HP_SS125.lib'.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP_C' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP_C' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_A' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_A' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_B' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_B' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_C' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_C' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_D' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_D' must have an output pin.
+  Setting attribute of root '/': 'library' = IBM_CMOS8HP_SS125.lib
+@file(synthesis_code0.tcl) 11: set_db init_hdl_search_path ../../source
+  Setting attribute of root '/': 'init_hdl_search_path' = ../../source
+@file(synthesis_code0.tcl) 15: read_hdl program_counter.v
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'program_counter.v'.
+        : The specified file could not be opened.  Check the value of the init_hdl_search_path attribute.
+@file(synthesis_code0.tcl) 19: elaborate ${DESIGN}
+Error   : Could not find an HDL design. [CDFG-210] [elaborate]
+        : The design is 'code0'.
+      flow.cputime  flow.realtime  timing.setup.tns  timing.setup.wns  snapshot
+UM:*                                                                   elaborate
+#@ End verbose source ./scripts/synthesis_code0.tcl
+1
+@genus:root: 68> source scripts/synthesis_code0.tcl
+Sourcing './scripts/synthesis_code0.tcl' (Sun Oct 04 12:45:22 EDT 2026)...
+#@ Begin verbose source ./scripts/synthesis_code0.tcl
+@file(synthesis_code0.tcl) 3: set DESIGN "code0"
+@file(synthesis_code0.tcl) 9: set_db init_lib_search_path /apps/design_kits/ibm_kits/IBM_IP/ibm_cmos8hp/std_cell/sc/v.20110613/synopsys/ss_125/
+Warning : Cannot modify library search path after reading library(s). [TUI-83]
+        : Cannot modify 'init_lib_search_path' attribute to '/apps/design_kits/ibm_kits/IBM_IP/ibm_cmos8hp/std_cell/sc/v.20110613/synopsys/ss_125/'
+  Setting attribute of root '/': 'init_lib_search_path' = /apps/design_kits/ibm_kits/IBM_IP/ibm_cmos8hp/std_cell/sc/v.20110613/synopsys/ss_125/
+@file(synthesis_code0.tcl) 10: set_db library IBM_CMOS8HP_SS125.lib
+Freeing libraries in memory (IBM_CMOS8HP_SS125.lib)
+
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 1.350000, 125.000000) in library 'IBM_CMOS8HP_SS125.lib'.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP_C' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP_C' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_A' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_A' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_B' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_B' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_C' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_C' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_D' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_D' must have an output pin.
+  Setting attribute of root '/': 'library' = IBM_CMOS8HP_SS125.lib
+@file(synthesis_code0.tcl) 11: set_db init_hdl_search_path ../../source
+  Setting attribute of root '/': 'init_hdl_search_path' = ../../source
+@file(synthesis_code0.tcl) 15: read_hdl code0.v
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'code0.v'.
+@file(synthesis_code0.tcl) 19: elaborate ${DESIGN}
+Error   : Could not find an HDL design. [CDFG-210] [elaborate]
+        : The design is 'code0'.
+      flow.cputime  flow.realtime  timing.setup.tns  timing.setup.wns  snapshot
+UM:*                                                                   elaborate
+#@ End verbose source ./scripts/synthesis_code0.tcl
+1
+@genus:root: 69> #############################
+@genus:root: 70> # Update design name to match top-level module name
+@genus:root: 71> set DESIGN "code0"
+code0
+@genus:root: 72> 
+@genus:root: 72> 
+@genus:root: 72> ##########################
+@genus:root: 73> 
+@genus:root: 73> 
+@genus:root: 73> set_db init_lib_search_path /apps/design_kits/ibm_kits/IBM_IP/ibm_cmos8hp/std_cell/sc/v.20110613/synopsys/ss_125/
+Warning : Cannot modify library search path after reading library(s). [TUI-83]
+        : Cannot modify 'init_lib_search_path' attribute to '/apps/design_kits/ibm_kits/IBM_IP/ibm_cmos8hp/std_cell/sc/v.20110613/synopsys/ss_125/'
+  Setting attribute of root '/': 'init_lib_search_path' = /apps/design_kits/ibm_kits/IBM_IP/ibm_cmos8hp/std_cell/sc/v.20110613/synopsys/ss_125/
+1 /apps/design_kits/ibm_kits/IBM_IP/ibm_cmos8hp/std_cell/sc/v.20110613/synopsys/ss_125/
+@genus:root: 74> set_db library IBM_CMOS8HP_SS125.lib
+Freeing libraries in memory (IBM_CMOS8HP_SS125.lib)
+
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 1.350000, 125.000000) in library 'IBM_CMOS8HP_SS125.lib'.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP_C' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP_C' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_A' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_A' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_B' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_B' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_C' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_C' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_D' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_D' must have an output pin.
+  Setting attribute of root '/': 'library' = IBM_CMOS8HP_SS125.lib
+1 IBM_CMOS8HP_SS125.lib
+@genus:root: 75> set_db init_hdl_search_path ../../source
+  Setting attribute of root '/': 'init_hdl_search_path' = ../../source
+1 ../../source
+@genus:root: 76> 
+@genus:root: 76> #############################
+@genus:root: 77> ## HDL files to read in
+@genus:root: 78> read_hdl code0.v
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'code0.v'.
+@genus:root: 79> 
+@genus:root: 79> #############################
+@genus:root: 80> 
+@genus:root: 80> elaborate ${DESIGN}
+Error   : Could not find an HDL design. [CDFG-210] [elaborate]
+        : The design is 'code0'.
+      flow.cputime  flow.realtime  timing.setup.tns  timing.setup.wns  snapshot
+UM:*                                                                   elaborate
+1
+@genus:root: 81> source ../constraints/constraints_${DESIGN}.tcl
+File '../constraints/constraints_code0.tcl' does not exist.
+@genus:root: 82> 
+@genus:root: 82> uniquify ${DESIGN} -verbose
+Error   : A required object parameter could not be found. [TUI-61] [uniquify]
+        : An object of type 'design|module' named 'code0' could not be found.
+  uniquify: eliminates sharing of subdesigns between instances 
+
+Usage: uniquify <design|module> [-verbose]
+
+    <design|module>:
+        the design or subdesign to uniquify under 
+    [-verbose]:
+        prints uniquified instances and their subdesign names 
+1
+@genus:root: 83> check_design
+Error   : No designs are available. A design must first be read in and elaborated. [TUI-10] [check_design]
+        : There is no design here.
+Failed on check_design
+@genus:root: 84> 
+@genus:root: 84> set_db syn_generic_effort medium
+  Setting attribute of root '/': 'syn_generic_effort' = medium
+1 medium
+@genus:root: 85> set_db syn_map_effort medium
+  Setting attribute of root '/': 'syn_map_effort' = medium
+1 medium
+@genus:root: 86> 
+@genus:root: 86> syn_generic
+      flow.cputime  flow.realtime  timing.setup.tns  timing.setup.wns  snapshot
+UM:*                                                                   syn_gen
+1
+@genus:root: 87> syn_map
+#----------------------------------------------------------------------------------------
+# Root attributes for category: opt
+#----------------------------------------------------------------------------------------
+# Feature                           | Attribute                    | Value            
+#----------------------------------------------------------------------------------------
+# Avoid tied inputs                 | avoid_tied_inputs            | false (default)  
+# Allow floating outputs            | opt_allow_floating_outputs   | false (default)  
+# Power optimization effort         | design_power_effort          | none (default)   
+# Do not use qbar sequential pins   | dont_use_qbar_seq_pins       | false (default)  
+#----------------------------------------------------------------------------------------
+
+      flow.cputime  flow.realtime  timing.setup.tns  timing.setup.wns  snapshot
+UM:*                                                                   syn_map
+1
+@genus:root: 88> 
+@genus:root: 88> report_timing -max_paths 5 -from clk -to clk > ../reports/${DESIGN}_timing.rpt
+Error   : A required object parameter could not be found. [TUI-61] [report_timing]
+        : An object of type 'inst|hinst|external_delay|clock|port|pin|hpin' named 'clk' could not be found.
+  report_timing: print a timing report 
+
+Usage: report_timing [-fields <string>] [-output_format <string>] [-path_type <string>] [-path_exceptions <string>] [-split_delay] [-stage_delay] [-hpins] [-nets] [-exception_data]
+           [-unconstrained] [-physical] [-user_derate] [-user_mean_derate] [-user_sigma_derate] [-incr_derate] [-slew_derate] [-gui] [-max_paths <integer>] [-nworst <integer>]
+           [-logic_levels <integer>] [-skip_buf] [-skip_inv] [-logic_levels_tcl_list] [-max_slack <float>] [-min_slack <float>] [-paths <string>] [-domain <clock_domain>]
+           [-views <analysis_view>+] [-collection]
+           [ -from <inst|hinst|external_delay|clock|port|pin|hpin>+ |
+             -from_rise <inst|hinst|external_delay|clock|port|pin|hpin>+ |
+             -from_fall <inst|hinst|external_delay|clock|port|pin|hpin>+ ]
+           [ -through <inst|hinst|hnet|port|pin|hpin>+ |
+             -through_rise <inst|hinst|hnet|port|pin|hpin>+ |
+             -through_fall <inst|hinst|hnet|port|pin|hpin>+ ]+
+           [ -not_through <inst|hinst|hnet|port|pin|hpin>+ |
+             -not_through_rise <inst|hinst|hnet|port|pin|hpin>+ |
+             -not_through_fall <inst|hinst|hnet|port|pin|hpin>+ ]
+           [ -to <inst|hinst|external_delay|clock|port|pin|hpin>+ |
+             -to_rise <inst|hinst|external_delay|clock|port|pin|hpin>+ |
+             -to_fall <inst|hinst|external_delay|clock|port|pin|hpin>+ ]
+           [ -capture_clock_pins <pin|hpin>+ |
+             -capture_clock_pins_rise_clock <pin|hpin>+ |
+             -capture_clock_pins_fall_clock <pin|hpin>+ |
+             -capture_clock_pins_rise_pin <pin|hpin>+ |
+             -capture_clock_pins_fall_pin <pin|hpin>+ ]
+           [-exceptions <exception>+] [-group <cost_group>+] [-timing_bin <timing_bin>] [-timing_path <timing_bin_path>] [<timing_path>+] [> file]
+
+    [-fields <string>]:
+        fields 
+    [-output_format <string>]:
+        supported output format types are <gtd|text> 
+    [-path_type <string>]:
+        supported path types are <full|summary|full_clock|endpoint> 
+    [-path_exceptions <string>]:
+        supported path exceptions are <all|applied|ignored> 
+    [-split_delay]:
+        displays both drivers and loads in the data path 
+    [-stage_delay]:
+        displays only drivers in the data path 
+    [-hpins]:
+        displays hierarchical pins in the data path 
+    [-nets]:
+        displays nets in the data path 
+    [-exception_data]:
+        displays the exception cross-linking information 
+    [-unconstrained]:
+        displays the unconstrained paths 
+    [-physical]:
+        include physical information in report 
+    [-user_derate]:
+        show 'user_derate' column in timing reports 
+    [-user_mean_derate]:
+        show 'user_mean_derate' column in timing reports 
+    [-user_sigma_derate]:
+        show 'user_sigma_derate' column in timing reports 
+    [-incr_derate]:
+        show 'incr_derate' column in timing reports 
+    [-slew_derate]:
+        show 'slew_derate' column in timing reports 
+    [-gui]:
+        invoke GUI timing report dialog 
+    [-max_paths <integer>]:
+        number of paths 
+    [-nworst <integer>]:
+        number of worst paths to each endpoint (inapplicable to path_type endpoint) 
+    [-logic_levels <integer>]:
+        number of paths to report in the output 
+    [-skip_buf]:
+        skip buffers when computing logic levels 
+    [-skip_inv]:
+        skip inverters when computing logic levels 
+    [-logic_levels_tcl_list]:
+        list output 
+    [-max_slack <float>]:
+        only paths with less than this slack 
+    [-min_slack <float>]:
+        only paths with greater than this slack 
+    [-paths <string>]:
+        a path identifier result from the specify_paths command 
+    [-domain <clock_domain>]:
+        a clock domain the paths should be restricted to 
+    [-views <analysis_view>+]:
+        a view the paths should be restricted to 
+    [-collection]:
+        return a collection of timing paths 
+    -from <inst|hinst|external_delay|clock|port|pin|hpin>+:
+        a set of startpoints for the paths 
+    -from_rise <inst|hinst|external_delay|clock|port|pin|hpin>+:
+        startpoints with a rise transition at the pin itself 
+    -from_fall <inst|hinst|external_delay|clock|port|pin|hpin>+:
+        startpoints with a fall transition at the pin itself 
+    -through <inst|hinst|hnet|port|pin|hpin>+:
+        specifies paths that pass through these pins or instances. This option can be repeated indicating that the path must go through at least one element of each through list 
+        (in the order the options were specified). Objects must be ports, hierarchical pins, pins on sequential/mapped combinational cells, or sequential/mapped combinational 
+        instances 
+    -through_rise <inst|hinst|hnet|port|pin|hpin>+:
+        this option specifies paths that contain a rise transition in one of these objects and it can be repeated and can be combined with -through and/or -through_fall_pin 
+    -through_fall <inst|hinst|hnet|port|pin|hpin>+:
+        this option specifies paths that contain a fall transition in one of these objects and it can be repeated and can be combined with -through and/or -through_rise_pin 
+    -not_through <inst|hinst|hnet|port|pin|hpin>+:
+        specifies paths that do not pass through these pins or instances. Objects must be ports, hierarchical pins, pins on sequential/mapped combinational cells, or 
+        sequential/mapped combinational instances 
+    -not_through_rise <inst|hinst|hnet|port|pin|hpin>+:
+        this option specifies paths that does not contain a rise transition in one of these objects 
+    -not_through_fall <inst|hinst|hnet|port|pin|hpin>+:
+        this option specifies paths that does not contain a fall transition in one of these objects 
+    -to <inst|hinst|external_delay|clock|port|pin|hpin>+:
+        a set of endpoints for the paths 
+    -to_rise <inst|hinst|external_delay|clock|port|pin|hpin>+:
+        endpoints with a rise transition at the pin itself 
+    -to_fall <inst|hinst|external_delay|clock|port|pin|hpin>+:
+        endpoints with a fall transition at the pin itself 
+    -capture_clock_pins <pin|hpin>+:
+        sequential clock pins at the path endpoint 
+    -capture_clock_pins_rise_clock <pin|hpin>+:
+        pins that capture with rising clock edge 
+    -capture_clock_pins_fall_clock <pin|hpin>+:
+        pins that capture with falling clock edge 
+    -capture_clock_pins_rise_pin <pin|hpin>+:
+        pins that capture with rise transition at the pin itself 
+    -capture_clock_pins_fall_pin <pin|hpin>+:
+        pins that capture with fall transition at the pin itself 
+    [-exceptions <exception>+]:
+        report paths for exceptions 
+    [-group <cost_group>+]:
+        report paths for the specified cost groups/path groups 
+    [-timing_bin <timing_bin>]:
+        timing bin to report 
+    [-timing_path <timing_bin_path>]:
+        timing path to report 
+    [<timing_path>+]:
+        path_collection 
+Fields presented are controlled by the '-fields' switch or the attribute
+'timing_report_fields' and 'timing_report_endpoint_fields'
+Valid full report fields are:
+  - timing_point:        names of pins
+  - flags:               flags associated with the column timing_point
+  - arc:                 timing arc for which timing information was applied
+  - edge:                rising/falling edge
+  - cell:                cell type, exception type, etc.
+  - fanout:              fanout of leaf cells
+  - load:                load of leaf cells
+  - transition:          slew of leaf cell outputs
+  - transition_mean:     mean slew of leaf cell outputs
+  - transition_sigma:    sigma slew of leaf cell outputs
+  - delay:               delay through a leaf cell
+  - delay_mean:          mean delay through a leaf cell
+  - delay_sigma:         sigma delay through a leaf cell
+  - arrival:             arrival time at a leaf cell
+  - arrival_mean:        mean arrival time at a leaf cell
+  - arrival_sigma:       sigma arrival time at a leaf cell
+  - lib_set:             display the library set of the cell
+  - user_derate:         derating information
+  - user_mean_derate:    mean derating information
+  - user_sigma_derate:   derating information
+  - total_derate:        total derating information
+  - incr_derate:        incr derating information
+  - slew_derate:        slew derating information
+  - aocv_derate:         aocv derating information
+  - socv_derate:         socv spatial derating information
+  - stage_count:         aocv stage depth
+  - power_domain:        power domain associated with the object
+  - wire_length:         wire length
+  - instance_location:       instance location
+  - pin_location:        pin location
+  - module:              name of the subdesign
+  - frc:                 file row column information
+  - voltage:             voltage information
+1
+@genus:root: 89> report_gates > ../reports/${DESIGN}_gates.rpt
+Error   : No designs are available. A design must first be read in and elaborated. [TUI-10] [::report::gates::report_gates]
+        : There is no design here.
+Failed on find_unique_design
+@genus:root: 90> report_area > ../reports/${DESIGN}_area.rpt
+Error   : No designs are available. A design must first be read in and elaborated. [TUI-10] [::report::area::report_area]
+        : There is no design here.
+Failed on find_unique_design
+@genus:root: 91> report_power > ../reports/${DESIGN}_power.rpt
+Error   : No designs are available. A design must first be read in and elaborated. [TUI-10] [::report::power::report_power]
+        : There is no design here.
+Failed on find_unique_design
+@genus:root: 92> report_design > ../reports/${DESIGN}_const.rpt
+1
+@genus:root: 93> 
+@genus:root: 93> write_hdl > ../netlists/${DESIGN}.v
+Error   : No designs are available. A design must first be read in and elaborated. [TUI-10] [write_hdl]
+        : There is no design here.
+Failed on find_unique_design
+@genus:root: 94> write_sdc > ../netlists/${DESIGN}.sdc
+Error   : No designs are available. A design must first be read in and elaborated. [TUI-10] [write_sdc]
+        : There is no design here.
+Failed on find_unique_design
+@genus:root: 95> write_sdf > ../netlists/${DESIGN}.sdf
+Error   : No designs are available. A design must first be read in and elaborated. [TUI-10] [write_sdf]
+        : There is no design here.
+Failed on find_unique_design
+@genus:root: 96> 
+@genus:root: 96> echo "Synthesis Complete"
+Synthesis Complete
+@genus:root: 97> echo "   use command 'quit' to exit"
+   use command 'quit' to exit
+@genus:root: 98> 
+@genus:root: 98> 
+@genus:root: 98> source scripts/synthesis_code0.tcl
+Sourcing './scripts/synthesis_code0.tcl' (Sun Oct 04 12:47:59 EDT 2026)...
+#@ Begin verbose source ./scripts/synthesis_code0.tcl
+@file(synthesis_code0.tcl) 3: set DESIGN "code0"
+@file(synthesis_code0.tcl) 9: set_db init_lib_search_path /apps/design_kits/ibm_kits/IBM_IP/ibm_cmos8hp/std_cell/sc/v.20110613/synopsys/ss_125/
+Warning : Cannot modify library search path after reading library(s). [TUI-83]
+        : Cannot modify 'init_lib_search_path' attribute to '/apps/design_kits/ibm_kits/IBM_IP/ibm_cmos8hp/std_cell/sc/v.20110613/synopsys/ss_125/'
+  Setting attribute of root '/': 'init_lib_search_path' = /apps/design_kits/ibm_kits/IBM_IP/ibm_cmos8hp/std_cell/sc/v.20110613/synopsys/ss_125/
+@file(synthesis_code0.tcl) 10: set_db library IBM_CMOS8HP_SS125.lib
+Freeing libraries in memory (IBM_CMOS8HP_SS125.lib)
+
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 1.350000, 125.000000) in library 'IBM_CMOS8HP_SS125.lib'.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP_C' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP_C' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_A' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_A' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_B' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_B' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_C' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_C' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_D' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'TERM_D' must have an output pin.
+  Setting attribute of root '/': 'library' = IBM_CMOS8HP_SS125.lib
+@file(synthesis_code0.tcl) 11: set_db init_hdl_search_path ../../source
+  Setting attribute of root '/': 'init_hdl_search_path' = ../../source
+@file(synthesis_code0.tcl) 15: read_hdl code0.v
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'code0.v'.
+@file(synthesis_code0.tcl) 19: elaborate ${DESIGN}
+Error   : Could not find an HDL design. [CDFG-210] [elaborate]
+        : The design is 'code0'.
+      flow.cputime  flow.realtime  timing.setup.tns  timing.setup.wns  snapshot
+UM:*                                                                   elaborate
+#@ End verbose source ./scripts/synthesis_code0.tcl
+1
+@genus:root: 99> quit
+
+Lic Summary:
+[12:59:17.274738] Cdslmd servers: fb-lic-p19
+[12:59:17.274753] Feature usage summary:
+[12:59:17.274753] Genus_Synthesis  
+Normal exit.

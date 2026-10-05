@@ -55,7 +55,7 @@ module code2(
 	   end
 	   S2_TWO_QUARTER_INSERTED : begin
 	      if ( button_pressed == 1'b1) begin
-		state_next = S4_VEND;
+		state_next = S3_VEND; 			// CHANGED:  S4_VEND -> S3_VEND
 	      end
 	   end
 	   S3_VEND : begin

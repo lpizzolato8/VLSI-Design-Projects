@@ -1,0 +1,14 @@
+# Cadence Genus(TM) Synthesis Solution, Version 25.10-p002_1, built Apr 17 2025 15:35:38
+
+# Date: Sun Oct 04 14:40:12 2026
+# Host: shell01 (x86_64 w/Linux 4.18.0-553.158.1.el8_10.x86_64) (14cores*56cpus*2physical cpus*Intel(R) Xeon(R) Gold 6132 CPU @ 2.60GHz 19712KB)
+# OS:   Rocky Linux 8.10 (Green Obsidian)
+
+ssourls
+ls
+cd ..
+ls
+source scripts/synthesis_code1.tcl
+source scripts/synthesis_code1.tcl
+source scripts/synthesis_code1.tcl
+exit

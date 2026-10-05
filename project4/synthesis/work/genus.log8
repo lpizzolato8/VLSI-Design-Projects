@@ -1,0 +1,42 @@
+Cadence Genus(TM) Synthesis Solution.
+Copyright 2025 Cadence Design Systems, Inc. All rights reserved worldwide.
+Cadence and the Cadence logo are registered trademarks and Genus is a trademark
+of Cadence Design Systems, Inc. in the United States and other countries.
+
+[14:50:29.260009] Configured Lic search path (25.01-s002): 5280@cadence.lic.it.gwu.edu
+
+Version: 25.10-p002_1, built Thu Apr 17 12:35:38 PDT 2025
+Options: 
+Date:    Sun Oct 04 14:50:29 2026
+Host:    shell01 (x86_64 w/Linux 4.18.0-553.158.1.el8_10.x86_64) (14cores*56cpus*2physical cpus*Intel(R) Xeon(R) Gold 6132 CPU @ 2.60GHz 19712KB) (263271984KB)
+PID:     2146603
+OS:      Rocky Linux 8.10 (Green Obsidian)
+
+Checking out license: Genus_Synthesis
+[14:50:29.406899] Periodic Lic check successful
+[14:50:29.931210] Feature usage summary:
+[14:50:29.931211] Genus_Synthesis  
+
+
+***********************************************************************************************************
+***********************************************************************************************************
+
+
+
+Finished executable startup (47 seconds elapsed).
+
+Loading tool scripts...
+Finished loading tool scripts (165 seconds elapsed).
+
+WARNING: This version of the tool is 534 days old.
+
+Another Ctrl-C within 1 second will terminate the tool.
+CURRENT RESOURCES: RT {elapsed: 181s, ST: 25s, FG: 25s, CPU: 0.8%}, MEM {curr: 1.6G, peak: 1.6G, phys curr: 0.7G, phys peak: 0.7G}, SYS {load: 1.4, cpu: 56, total: 251.1G, free: 209.6G}
+
+Another Ctrl-C within 1 second will terminate the tool.
+CURRENT RESOURCES: RT {elapsed: 247s, ST: 25s, FG: 25s, CPU: 0.9%}, MEM {curr: 1.6G, peak: 1.6G, phys curr: 0.7G, phys peak: 0.7G}, SYS {load: 1.3, cpu: 56, total: 251.1G, free: 209.6G}
+
+Another Ctrl-C within 1 second will terminate the tool.
+CURRENT RESOURCES: RT {elapsed: 263s, ST: 25s, FG: 25s, CPU: 0.7%}, MEM {curr: 1.6G, peak: 1.6G, phys curr: 0.7G, phys peak: 0.7G}, SYS {load: 1.3, cpu: 56, total: 251.1G, free: 209.6G}
+XIO:  fatal IO error 2 (No such file or directory) on X server "localhost:13.0"
+      after 2340 requests (2340 known processed) with 0 events remaining.

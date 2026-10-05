@@ -1,6 +1,6 @@
 #############################
 # Update design name to match top-level module name
-set DESIGN "program_counter"
+set DESIGN "code3"
 
 ##########################
 

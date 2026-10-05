@@ -1,0 +1,13 @@
+(DELAYFILE
+  (SDFVERSION  "OVI 3.0")
+  (DESIGN      "code2")
+  (DATE        "Mon Oct 05 15:42:30 EDT 2026")
+  (VENDOR      "Cadence, Inc.")
+  (PROGRAM     "Genus(TM) Synthesis Solution")
+  (VERSION     "25.10-p002_1")
+  (DIVIDER     .)
+  (VOLTAGE     ::1.35)
+  (PROCESS     "::1.0")
+  (TEMPERATURE ::125.0)
+  (TIMESCALE   1ps)
+)

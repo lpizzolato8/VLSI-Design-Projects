@@ -1,22 +1,24 @@
 #############################
 # Update design name to match top-level module name
-set DESIGN "program_counter"
+set DESIGN "code2"
 
 ##########################
 
 
 set_db init_lib_search_path /apps/design_kits/ibm_kits/IBM_IP/ibm_cmos8hp/std_cell/sc/v.20110613/synopsys/ss_125/
 set_db library IBM_CMOS8HP_SS125.lib
-set_db init_hdl_search_path ../../source
+set_db init_hdl_search_path ../source		
+#CHANGED: PATH OVERSHOOTS SOURCE BY 1 DIR WHEN RUN IN SYNTHESIS
 
 #############################
 ## HDL files to read in
-read_hdl program_counter.v
-
+read_hdl code2.v
+#CHANGED: NEEDS TO READ CODE2
 #############################
 
 elaborate ${DESIGN}
-source ../constraints/constraints_${DESIGN}.tcl
+source constraints/constraints_${DESIGN}.tcl
+#CHANGED: PATH OVERSHOOTS CONSTRAINTS BY 1 DIR WHEN RUN IN SYNTHESIS
 
 uniquify ${DESIGN} -verbose
 check_design
