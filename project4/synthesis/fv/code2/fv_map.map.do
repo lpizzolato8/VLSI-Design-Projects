@@ -14,6 +14,8 @@ add mapped point vend_cola vend_cola -type PO PO
 
 
 //Sequential Pins
+add mapped point state_current[0]/q state_current_reg[0]/Q -type DFF DFF
+add mapped point state_current[1]/q state_current_reg[1]/Q -type DFF DFF
 
 
 

@@ -26,7 +26,7 @@ module code2(
    parameter [1:0]   S0_IDLE                   = 2'd0;
    parameter [1:0]   S1_ONE_QUARTER_INTERTED   = 2'd1;
    parameter [1:0]   S2_TWO_QUARTER_INSERTED   = 2'd2;
-   parameter [1:0]   S3_VEND                   = 2'd4;
+   parameter [1:0]   S3_VEND                   = 2'd3;	// CHANGED: 2BITS CANNOT REPRESENT D4 -> YES D3
    
        
     // clock in registers, asynch active-low reset    
@@ -72,8 +72,9 @@ module code2(
      begin
         if (state_current == S3_VEND ) begin
 	   vend_cola = 1'b1;
-	end
-    
-     end
+	end else begin
+	   vend_cola = 1'b0;		// CHANGED: CREATES AN INFERRED LATCH BY ASSIGNING VEND_COLA WHEN 
+    	end				// STATE_CURRENT ISNT S3_VEND. FIXED BY ADDING ELSE STATEMENT
+     end // always @(*)
      
 endmodule

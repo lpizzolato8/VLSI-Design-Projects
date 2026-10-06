@@ -1,0 +1,123 @@
+(DELAYFILE
+  (SDFVERSION  "OVI 3.0")
+  (DESIGN      "code3")
+  (DATE        "Tue Oct 06 15:47:46 EDT 2026")
+  (VENDOR      "Cadence, Inc.")
+  (PROGRAM     "Genus(TM) Synthesis Solution")
+  (VERSION     "25.10-p002_1")
+  (DIVIDER     .)
+  (VOLTAGE     ::1.35)
+  (PROCESS     "::1.0")
+  (TEMPERATURE ::125.0)
+  (TIMESCALE   1ps)
+  (CELL
+     (CELLTYPE "DFFR_E")
+     (INSTANCE out1_reg)
+     (DELAY
+        (ABSOLUTE
+          (PORT RN (::0.0))
+          (PORT CLK (::0.0))
+          (PORT D (::0.1))
+          (IOPATH RN Q () (::228))
+          (IOPATH CLK Q (::322) (::214))
+          (IOPATH RN QBAR (::114) ())
+          (IOPATH CLK QBAR (::101) (::166))
+        )
+     )
+     (TIMINGCHECK
+        (RECREM (posedge RN) (COND D==1'b1 (posedge CLK)) (::100) (::93))
+        (SETUPHOLD (negedge D) (COND RN==1'b1 (posedge CLK)) (::236) (::-115))
+        (SETUPHOLD (posedge D) (COND RN==1'b1 (posedge CLK)) (::113) (::47))
+     )
+  )
+  (CELL
+     (CELLTYPE "DFFR_E")
+     (INSTANCE out2_reg)
+     (DELAY
+        (ABSOLUTE
+          (PORT RN (::0.0))
+          (PORT CLK (::0.0))
+          (PORT D (::0.1))
+          (IOPATH RN Q () (::228))
+          (IOPATH CLK Q (::322) (::214))
+          (IOPATH RN QBAR (::114) ())
+          (IOPATH CLK QBAR (::101) (::166))
+        )
+     )
+     (TIMINGCHECK
+        (RECREM (posedge RN) (COND D==1'b1 (posedge CLK)) (::100) (::93))
+        (SETUPHOLD (negedge D) (COND RN==1'b1 (posedge CLK)) (::236) (::-115))
+        (SETUPHOLD (posedge D) (COND RN==1'b1 (posedge CLK)) (::113) (::47))
+     )
+  )
+  (CELL
+     (CELLTYPE "DFFR_E")
+     (INSTANCE mid2_reg)
+     (DELAY
+        (ABSOLUTE
+          (PORT RN (::0.0))
+          (PORT CLK (::0.0))
+          (PORT D (::0.1))
+          (IOPATH RN Q () (::199))
+          (IOPATH CLK Q (::294) (::186))
+          (IOPATH RN QBAR (::114) ())
+          (IOPATH CLK QBAR (::101) (::166))
+        )
+     )
+     (TIMINGCHECK
+        (RECREM (posedge RN) (COND D==1'b1 (posedge CLK)) (::100) (::93))
+        (SETUPHOLD (negedge D) (COND RN==1'b1 (posedge CLK)) (::234) (::-117))
+        (SETUPHOLD (posedge D) (COND RN==1'b1 (posedge CLK)) (::132) (::51))
+     )
+  )
+  (CELL
+     (CELLTYPE "DFFR_E")
+     (INSTANCE mid1_reg)
+     (DELAY
+        (ABSOLUTE
+          (PORT RN (::0.0))
+          (PORT CLK (::0.0))
+          (PORT D (::0.1))
+          (IOPATH RN Q () (::199))
+          (IOPATH CLK Q (::294) (::186))
+          (IOPATH RN QBAR (::114) ())
+          (IOPATH CLK QBAR (::101) (::166))
+        )
+     )
+     (TIMINGCHECK
+        (RECREM (posedge RN) (COND D==1'b1 (posedge CLK)) (::100) (::93))
+        (SETUPHOLD (negedge D) (COND RN==1'b1 (posedge CLK)) (::234) (::-117))
+        (SETUPHOLD (posedge D) (COND RN==1'b1 (posedge CLK)) (::132) (::51))
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_C")
+     (INSTANCE g13)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.0))
+          (IOPATH A Z (::92) (::98))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_H")
+     (INSTANCE g11)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (IOPATH A Z (::71) (::100))
+        )
+     )
+  )
+  (CELL
+     (CELLTYPE "BUFFER_H")
+     (INSTANCE g12)
+     (DELAY
+        (ABSOLUTE
+          (PORT A (::0.2))
+          (IOPATH A Z (::71) (::100))
+        )
+     )
+  )
+)
