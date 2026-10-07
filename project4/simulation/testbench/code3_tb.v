@@ -21,8 +21,6 @@ module code3_tb(
 	
 	);
 
-
-
 	code3 DUT(
 		.clk(clk),
 		.rst_n(rst_n),
@@ -36,20 +34,25 @@ module code3_tb(
 	initial clk    = 0; 
 	always #5 clk = ~clk;
 		
-	
-	task 
+	// task to cycle through 1 clk
+	task tick(input integer n); begin
+		repeat (n)  @(posedge clk);	// using repeat (n) to have task repeat @(posedge clk) for n amount of times
+ 		#1 
+	end endtask
 	
 	// task to facilitate reset 
 	task reset;  begin
 		{in1,in2} = 1'b0;
-		@negedge 
+		rst_n = 0; tick(3);
+		@(negedge clk) rst_n = 1; tick(2); 
 	end endtask
 
 
 	initial begin
 
 
-
+	$monitor
+	
 	end
 
 endmodule
