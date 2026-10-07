@@ -1,5 +1,11 @@
 `timescale 1ns / 1ps
 
+// Testcase Ideas: demonstrate reset when in1 and in2 have values in them
+// 				   set in1 high, check mid1 at next clk, check out1 at final clk repeat for in2
+//				   
+
+
+
 
 module code3_tb(
 
@@ -16,8 +22,8 @@ module code3_tb(
 	wire out2,
 
 	// instantiate helper variables 	
-	reg[(20*8)-1:0] testcase,
-	reg [7:0] error_count = 8'b00000000
+	reg[(20*8)-1:0] testcase;
+	reg [7:0] error_count = 8'b00000000;
 	
 	);
 
@@ -50,9 +56,70 @@ module code3_tb(
 
 	initial begin
 
-
-	$monitor
 	
-	end
+		$monitor("Testcase %s : Time = %t", testcase, $time);
+	
 
+
+		testcase = "Testcase 1: Test Reset"
+	
+		// initialize both inputs to 1, then again after 1 clk cycle, then check that all values have been stored
+		in1 = 1'b1;
+		in2 = 1'b1;
+
+		tick(1);
+
+		in1 = 1'b1;
+		in2 = 1'b1;
+
+		tick(1);
+
+		error_count = compare_outputs(1'b1, out1, "mid1 = 1'b1", error_count);		
+		error_count = compare_outputs(1'b1, out1, "out1 = 1'b1", error_count);
+		error_count = compare_outputs(1'b1, out1, "mid2 = 1'b1", error_count);
+		error_count = compare_outputs(1'b1, out1, "out2 = 1'b1", error_count);
+
+		reset;
+
+		error_count = compare_outputs(1'b0, out1, "mid1 = 1'b0", error_count);
+		error_count = compare_outputs(1'b0, out1, "out1 = 1'b0", error_count);
+		error_count = compare_outputs(1'b0, out1, "mid2 = 1'b0", error_count);
+		error_count = compare_outputs(1'b0, out1, "out2 = 1'b0", error_count);
+
+		// buffer tick
+		tick(2);
+
+
+		testcase = "Testcase 2: "
+
+
+
+		// final pass/fail count
+		if (error_count == 0) begin
+			$display("\n\n----------SIMULATION PASSED----------");
+			$display("----------RTL SIMULATION   ----------\n\n");
+		end else begin
+			$display("\n\n----------SIMULATION FAILED----------");
+			$display("----------RTL SIMULATION   ----------");
+			$display("---------- %d ERRORS TOTAL----------\n\n", error_count);
+		end
+		$finish;
+
+		// pass/fail comparison
+		function  [7:0] compare_outputs (
+			input [7:0]    expected_value,
+			input [7:0]    actual_value,
+			input [8*19:0] signal_name,
+			input [7:0]    error_count);
+			if (expected_value == actual_value) begin
+				$display("  PASS  : %s: Expected = %h, Actual = %h, Time = %t",
+			         signal_name, expected_value, actual_value, $time);
+				compare_outputs = error_count;
+			end else begin
+				$display("**FAIL**: %s: Expected = %h, Actual = %h, Time = %t",
+			         signal_name, expected_value, actual_value, $time);
+				compare_outputs = error_count + 1;
+			end
+		endfunction
+	end
 endmodule
