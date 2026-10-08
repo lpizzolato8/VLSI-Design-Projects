@@ -107,7 +107,7 @@ module elevator_fsm(
  
     	// FSM Output Logic 
 		// always_comb makes sure there are no inferred latches
-    	always_comb @(*) begin
+    	always_comb begin
 		
        		// all outputs 0 to start then values relating to each floor are changed based on if the elevator is on that floor
 			// basically output set high when in the state they are related to
@@ -123,7 +123,7 @@ module elevator_fsm(
         	elevator_floor_2_button_clear = 1'b0;
         	elevator_floor_3_button_clear = 1'b0;
  
-	        case (state)
+	        unique case (state)
 	        	F1DC:  floor_1 = 1'b1;
             		F1DO:  begin
 							floor_1 					  = 1'b1;

@@ -59,7 +59,7 @@ module elevator_controller_tb();
 
 	// helper function to make the clock run for n clock edges. #1 lets the outputs settle after the edge before checking
 	// ticks needed to pass time so the states can change
-	task tick(input integer n); begin repeat n @(posedge clk); #1; end endtask
+	task tick(input integer n); begin repeat (n) @(posedge clk); #1; end endtask
 
 	// helper function that simulates pressing the reset button at the start. Needs to assign the inputs as 0 before beginning testing
 	task reset; begin

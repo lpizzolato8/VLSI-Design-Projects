@@ -110,7 +110,7 @@ then
     then
 	echo "   ***Simulation Error: No top module defined***"
     else 
-	xmverilog ../testbench/${topmodule}.v ${sim_options}
+	xmverilog ../testbench/${topmodule}.sv ${sim_options}
     fi
     
 fi   
