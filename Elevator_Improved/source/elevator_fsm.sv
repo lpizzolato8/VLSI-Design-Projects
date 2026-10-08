@@ -54,7 +54,7 @@ module elevator_fsm(
   
 
     	// FSM Next State Logic
-    	always @(*) begin
+    	always_comb begin
  		next_state = state; // default to prevent latches and random state assignment after reset
 
         	case (state)
