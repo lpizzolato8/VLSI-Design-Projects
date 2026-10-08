@@ -32,25 +32,26 @@ module elevator_sva (
 
 	// Exactly one floor indicator is active at all times
 	a_onehot_floor: assert property ($onehot({floor_1, floor_2, floor_3}));
+	else $error("more than 1 floor active");
 
 	// if on floor #n there must be a button clear for floor n
-	a_f1_door_clears: assert property ((elevator_door_open && floor_1) |-> (floor_1_up_button_clear || elevator_floor_1_button_clear)) 
+	a_f1_door_clears: assert property ((elevator_door_open && floor_1) |-> (floor_1_up_button_clear || elevator_floor_1_button_clear));
 	else $error("door open on floor 1 but no floor 1 clear");
 
-	a_f2_door_clears: assert property ((elevator_door_open && floor_2) |-> (floor_2_down_button_clear || floor_2_up_button_clear || elevator_floor_2_button_clear)) 
+	a_f2_door_clears: assert property ((elevator_door_open && floor_2) |-> (floor_2_down_button_clear || floor_2_up_button_clear || elevator_floor_2_button_clear)); 
 	else $error("door open on floor 2 but no floor 2 clear");
 
-	a_f3_door_clears: assert property ((elevator_door_open && floor_3) |-> (floor_3_down_button_clear || elevator_floor_3_button_clear)) 
+	a_f3_door_clears: assert property ((elevator_door_open && floor_3) |-> (floor_3_down_button_clear || elevator_floor_3_button_clear));
 	else $error("door open on floor 3 but no floor 3 clear");
 
 
 
 	// if elevator is on floor 1 or 3 it shouldnt skip to another floor without hitting 2
-	a_f1_no_jump: assert property ((floor_1) |=> (!floor_3))
-	else $error("elevator skipped floor 2")
+	a_f1_no_jump: assert property ((floor_1) |=> (!floor_3));	// using |=> to check next cycle, -> checks current cycle
+	else $error("elevator skipped floor 2");
 
-	a_f1_no_jump: assert property ((floor_3) |=> (!floor_1))
-	else $error("elevator skipped floor 2")
+	a_f1_no_jump: assert property ((floor_3) |=> (!floor_1));	// using |=> to check next cycle, -> checks current cycle
+	else $error("elevator skipped floor 2");
 
 endmodule
 
