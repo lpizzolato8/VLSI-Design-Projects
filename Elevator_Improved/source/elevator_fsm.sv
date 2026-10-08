@@ -2,69 +2,70 @@
 
 module elevator_fsm(
 	 
-	input wire clk,                  // clock signal
-	input wire rst_n,		 // active-low asynchrnous reset
+	input logic clk,                  // clock signal
+	input logic rst_n,		 // active-low asynchrnous reset
 	
-	input wire floor_1_up_button,
-	input wire floor_2_down_button,
-	input wire floor_2_up_button,
-	input wire floor_3_down_button,
-	input wire elevator_floor_1_button,
-	input wire elevator_floor_2_button,
-	input wire elevator_floor_3_button,
+	input logic floor_1_up_button,
+	input logic floor_2_down_button,
+	input logic floor_2_up_button,
+	input logic floor_3_down_button,
+	input logic elevator_floor_1_button,
+	input logic elevator_floor_2_button,
+	input logic elevator_floor_3_button,
 	
 
 
-	output reg floor_1,
-	output reg floor_2,
-	output reg floor_3,
-	output reg elevator_door_open,
-	output reg floor_1_up_button_clear, 
-	output reg floor_2_down_button_clear,
-	output reg floor_2_up_button_clear,
-	output reg floor_3_down_button_clear,
-	output reg elevator_floor_1_button_clear,
-	output reg elevator_floor_2_button_clear,
-	output reg elevator_floor_3_button_clear
+	output logic floor_1,
+	output logic floor_2,
+	output logic floor_3,
+	output logic elevator_door_open,
+	output logic floor_1_up_button_clear, 
+	output logic floor_2_down_button_clear,
+	output logic floor_2_up_button_clear,
+	output logic floor_3_down_button_clear,
+	output logic elevator_floor_1_button_clear,
+	output logic elevator_floor_2_button_clear,
+	output logic elevator_floor_3_button_clear
 
 
 	);
 	
-	
 	// State encoding
-	localparam 
-		F1DC  = 3'd0,
-               	F1DO  = 3'd1,
-               	F2DCU = 3'd2,
-               	F2DOU = 3'd3,
-               	F2DCD = 3'd4,
-               	F2DOD = 3'd5,
-               	F3DC  = 3'd6,
-               	F3DO  = 3'd7;
+	typedef enum logic [2:0] {
+		F1DC  = 3'd0, 
+		F1DO  = 3'd1, 
+		F2DCU = 3'd2, 
+		F2DOU = 3'd3, 
+		F2DCD = 3'd4, 
+		F2DOD = 3'd5, 
+		F3DC  = 3'd6, 
+		F3DO  = 3'd7 
+		} state_t ; 
 	
-	reg [2:0] state;
-	reg [2:0] next_state;
+	state_t state, next_state;
 
 
 	// seq block for curr FSM state
-	always@(posedge clk or negedge rst_n) begin 
+	// always_ff makes sure that there are no nonblocking 
+	always_ff @(posedge clk or negedge rst_n) begin 
 		if (!rst_n) state <= F1DC; 
 		else state <= next_state;		
 	end
   
 
-    	// FSM Next State Logic
-    	always_comb begin
+    // FSM Next State Logic
+	// always_comb makes sure there are no inferred latches
+    always_comb begin
  		next_state = state; // default to prevent latches and random state assignment after reset
 
-        	case (state)
-            		F1DC: begin
+        	unique case (state)
+				F1DC: begin
                 		
-				if (floor_1_up_button | elevator_floor_1_button)             next_state = F1DO;                        // open door
+				if (floor_1_up_button | elevator_floor_1_button) next_state = F1DO;      // open door
                 		
-				else if (floor_3_down_button    | elevator_floor_3_button |
-                                        floor_2_up_button       | floor_2_down_button     | 
-                                        elevator_floor_2_button)                             next_state = F2DCU;                       // go up
+				else if (floor_3_down_button | elevator_floor_3_button |
+                         floor_2_up_button   | floor_2_down_button     | 
+                         elevator_floor_2_button) next_state = F2DCU;                    // go up
             			
 				end
  
@@ -105,7 +106,8 @@ module elevator_fsm(
 	end
  
     	// FSM Output Logic 
-    	always @(*) begin
+		// always_comb makes sure there are no inferred latches
+    	always_comb @(*) begin
 		
        		// all outputs 0 to start then values relating to each floor are changed based on if the elevator is on that floor
 			// basically output set high when in the state they are related to
@@ -124,28 +126,31 @@ module elevator_fsm(
 	        case (state)
 	        	F1DC:  floor_1 = 1'b1;
             		F1DO:  begin
-				floor_1                       = 1'b1;
+							floor_1 					  = 1'b1;
                        		elevator_door_open            = 1'b1;
                        		floor_1_up_button_clear       = 1'b1;
                        		elevator_floor_1_button_clear = 1'b1;
                    		end
             		F2DCU: floor_2 = 1'b1;
+
             		F2DOU: begin
-				floor_2 		      = 1'b1;
+							floor_2 = 1'b1;
                        		elevator_door_open            = 1'b1;
                        		floor_2_up_button_clear       = 1'b1;
                        		elevator_floor_2_button_clear = 1'b1;
                    		end
             		F2DCD: floor_2 = 1'b1;
+
             		F2DOD: begin
-				floor_2			      = 1'b1;
+							floor_2			              = 1'b1;
                        		elevator_door_open            = 1'b1;
                        		floor_2_down_button_clear     = 1'b1;
                        		elevator_floor_2_button_clear = 1'b1;
                    		end
             		F3DC:  floor_3 = 1'b1;
+
             		F3DO:  begin
-				floor_3			      = 1'b1;
+							floor_3			              = 1'b1;
                        		elevator_door_open            = 1'b1;
                        		floor_3_down_button_clear     = 1'b1;
                        		elevator_floor_3_button_clear = 1'b1;

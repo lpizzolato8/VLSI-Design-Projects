@@ -12,7 +12,6 @@ module elevator_controller_tb();
 	reg elevator_floor_1_button;
 	reg elevator_floor_2_button;
 	reg elevator_floor_3_button;
-	reg [7:0] error_count = 8'h00;
 
 	wire floor_1;
 	wire floor_2;
@@ -26,6 +25,8 @@ module elevator_controller_tb();
 	wire elevator_floor_2_button_clear;
 	wire elevator_floor_3_button_clear;
 
+	//helper variables
+	reg [7:0] error_count = 8'h00;
 	reg [(20*8)-1:0] testcase;
 
 	// instantiate elevator controller
@@ -58,7 +59,7 @@ module elevator_controller_tb();
 
 	// helper function to make the clock run for n clock edges. #1 lets the outputs settle after the edge before checking
 	// ticks needed to pass time so the states can change
-	task tick(input integer n); integer i; begin for(i=0;i<n;i=i+1) @(posedge clk); #1; end endtask
+	task tick(input integer n); begin repeat n @(posedge clk); #1; end endtask
 
 	// helper function that simulates pressing the reset button at the start. Needs to assign the inputs as 0 before beginning testing
 	task reset; begin

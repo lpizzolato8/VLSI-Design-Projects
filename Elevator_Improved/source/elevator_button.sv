@@ -1,25 +1,18 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// ECE6213
-// Matthew LaRue 
-// Elevator buttons
-// 
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
 
 module elevator_button(
-    input wire clk,
-    input wire rst_n,
-    input wire button_pressed,
-    input wire clear,		       
-    output reg button_out
+
+    input logic clk,
+    input logic rst_n,
+    input logic button_pressed,
+    input logic clear,		       
+    output logic button_out
     );
 
-   reg	       button_out_next;
+   logic	       button_out_next;
    
     // clock in registers, asynch active-low reset    
-    always @(posedge clk or negedge rst_n)
+    always_ff @(posedge clk or negedge rst_n)
     begin
         if (rst_n == 1'b0) begin
 	   button_out <= 1'b0;
@@ -29,8 +22,7 @@ module elevator_button(
     end
 
     // combinational logic
-    always @(*)
-      begin
+    always_comb @(*) begin
 	 // default value, button holds previous output
 	 button_out_next = button_out;
 
