@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 
 // Testcase Ideas: demonstrate reset when in1 and in2 have values in them
-// 				   set in1 high, check mid1 at next clk, check out1 at final clk repeat for in2
+// 				   
 //				   
 
 
@@ -12,20 +12,17 @@ module code3_tb(
 	);
 
 	// instantiate code3 module variables
+	reg clk;
+	reg rst_n; 
+	reg in1;
+	reg in2; 
 	
-	reg clk, 
-	reg rst_n, 
-	reg in1, 
-	reg in2, 
-	
-	wire out1, 
-	wire out2,
+	wire out1; 
+	wire out2;
 
 	// instantiate helper variables 	
 	reg[(20*8)-1:0] testcase;
 	reg [7:0] error_count = 8'b00000000;
-	
-	);
 
 	code3 DUT(
 		.clk(clk),
@@ -56,12 +53,12 @@ module code3_tb(
 
 	initial begin
 
-	
 		$monitor("Testcase %s : Time = %t", testcase, $time);
-	
 
+		{in1,in2} = 1'b0;
+		rst_n = 1'b1;
 
-		testcase = "Testcase 1: Test Reset"
+		testcase = "Testcase 1: Test Reset";
 	
 		// initialize both inputs to 1, then again after 1 clk cycle, then check that all values have been stored
 		in1 = 1'b1;
@@ -90,7 +87,7 @@ module code3_tb(
 		tick(2);
 
 
-		testcase = "Testcase 2: "
+		testcase = "Testcase 2: ";
 
 
 
@@ -105,7 +102,10 @@ module code3_tb(
 		end
 		$finish;
 
-		// pass/fail comparison
+		
+	end
+
+	// pass/fail comparison
 		function  [7:0] compare_outputs (
 			input [7:0]    expected_value,
 			input [7:0]    actual_value,
@@ -121,5 +121,6 @@ module code3_tb(
 				compare_outputs = error_count + 1;
 			end
 		endfunction
-	end
+
+
 endmodule
