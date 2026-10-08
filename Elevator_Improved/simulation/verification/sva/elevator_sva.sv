@@ -45,16 +45,12 @@ module elevator_sva (
 
 
 
-	// if elevator is on floor n it shouldnt be on another floor
-	a_f1_no_jump: assert property ((floor_1) |-> (~floor_2 && ~floor_3))
-	else $error("elevator should be on floor 1 but on other floor")
+	// if elevator is on floor 1 or 3 it shouldnt skip to another floor without hitting 2
+	a_f1_no_jump: assert property ((floor_1) |=> (!floor_3))
+	else $error("elevator skipped floor 2")
 
-	a_f1_no_jump: assert property ((floor_2) |-> (~floor_1 && ~floor_3))
-	else $error("elevator should be on floor 2 but on other floor")
-
-	a_f1_no_jump: assert property ((floor_3) |-> (~floor_2 && ~floor_1))
-	else $error("elevator should be on floor 3 but on other floor")
-
+	a_f1_no_jump: assert property ((floor_3) |=> (!floor_1))
+	else $error("elevator skipped floor 2")
 
 endmodule
 
