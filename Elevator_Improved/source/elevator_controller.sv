@@ -15,7 +15,6 @@ module elevator_controller(
 	input logic  elevator_floor_2_button,
 	input logic  elevator_floor_3_button,
     	
-	// outputs driven by a submod (elevator_fsm) instance must be declared as wire
 	output logic floor_1,
 	output logic floor_2,
 	output logic floor_3,
@@ -49,7 +48,6 @@ module elevator_controller(
     logic elev_floor_3_clear;
 	
 
-	// output ports connected to internal clear wires
 	assign floor_1_up_button_clear       = floor_1_up_clear;
 	assign floor_2_down_button_clear     = floor_2_down_clear;
 	assign floor_2_up_button_clear       = floor_2_up_clear;

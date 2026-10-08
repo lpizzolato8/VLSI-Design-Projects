@@ -62,7 +62,7 @@ then
     for design_file in ${ver_files[@]}
     do
 	echo "   Compiling "$design_file
-	xmverilog $design_file -compile
+	xmverilog-sv $design_file -compile
     done  
 fi
 

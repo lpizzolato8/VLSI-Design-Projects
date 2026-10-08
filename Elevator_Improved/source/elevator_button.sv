@@ -22,7 +22,7 @@ module elevator_button(
     end
 
     // combinational logic
-    always_comb @(*) begin
+    always_comb begin
 	 // default value, button holds previous output
 	 button_out_next = button_out;
 
