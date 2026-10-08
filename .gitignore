@@ -1,0 +1,30 @@
+# Xcelium simulation outputs (keep the empty work/ dir so run_sim can pushd into it)
+**/simulation/work/*
+!**/simulation/work/.gitkeep
+xcelium.d/
+INCA_libs/
+*.shm/
+.simvision/
+xmverilog.*
+xrun.*
+
+# Genus synthesis run outputs (netlists/ and reports/ are still tracked)
+**/synthesis/work/*
+!**/synthesis/work/.gitkeep
+genus.cmd*
+genus.log*
+.rs_*.tstamp
+
+# Vivado outputs
+.Xil/
+*.jou
+vivado*.log
+usage_statistics_webtalk.*
+
+# Logs
+*.log
+
+# Editor files
+*.swp
+*.swo
+*~

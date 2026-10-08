@@ -1,3 +1,0 @@
-SOFTINCLUDE /apps/vlsi_2018/cadence/XCELIUM1710/tools/inca/files/cds.lib
-include ../../../../../../../../../apps/design_kits/ncsu-cdk-1.6.0.beta/cdssetup/cds.lib
-define worklib ../worklib

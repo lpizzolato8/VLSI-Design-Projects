@@ -1,9 +1,0 @@
-//
-// File created by:  xmverilog
-// Do not modify this file
-//
-../testbench/elevator_controller_tb.v
-+gui
-+access+r
--timescale
-1ns/1ps

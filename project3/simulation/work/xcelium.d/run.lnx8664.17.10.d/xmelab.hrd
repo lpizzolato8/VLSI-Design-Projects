@@ -1,8 +1,0 @@
-//
-// File created by:  xmverilog
-// Do not modify this file
-//
--ACCESS
-+r
--timescale
-1ns/1ps
