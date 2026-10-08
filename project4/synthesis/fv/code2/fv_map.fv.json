@@ -249,20 +249,20 @@
 "object":"/designs/code2/instances_seq/state_current_reg[1]",
 "type":"instance"},
 {"index": "1", 
- "date": "Mon Oct 05 20:17:41 UTC 2026",
- "seconds": 1791231461.510926,
+ "date": "Wed Oct 07 15:50:16 UTC 2026",
+ "seconds": 1791388216.3879468,
  "netlist": "fv/code2/fv_map.v.gz", 
  "netlist_exists": "1", 
  "netlist_normalize": "/home/ead/G33545035/VLSI-Design-Projects/project4/synthesis/fv/code2/fv_map.v.gz", 
- "netlist_mtime": "1791231459", 
- "netlist_timestamp": "Mon Oct 05 20:17:39 UTC 2026", 
- "netlist_size": "636", 
- "netlist_cksum": "2199672276", 
+ "netlist_mtime": "1791388214", 
+ "netlist_timestamp": "Wed Oct 07 15:50:14 UTC 2026", 
+ "netlist_size": "635", 
+ "netlist_cksum": "361512657", 
  "design_name": "code2", 
  "synth_workdir": "/home/ead/G33545035/VLSI-Design-Projects/project4/synthesis", 
  "synthesis_command":"",
  "current_label": "fv_map", 
  "previous_label": "rtl", 
- "write_verif_file_runtime": 2.113285 
+ "write_verif_file_runtime": 2.3399769999999998 
  }
 ]
