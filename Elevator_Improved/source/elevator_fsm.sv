@@ -46,7 +46,7 @@ module elevator_fsm(
 
 
 	// seq block for curr FSM state
-	// always_ff makes sure that there are no nonblocking 
+	// always_ff tells the tool this block must infer flip-flops thus it flags a block that doesn't infer one.
 	always_ff @(posedge clk or negedge rst_n) begin 
 		if (!rst_n) state <= F1DC; 
 		else state <= next_state;		
