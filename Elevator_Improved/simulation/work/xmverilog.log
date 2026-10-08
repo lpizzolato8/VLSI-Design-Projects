@@ -1,11 +1,39 @@
 xmverilog(64): 17.10-s001: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
-TOOL:	xmverilog	17.10-s001: Started on Sep 25, 2026 at 23:39:48 EDT
+TOOL:	xmverilog	17.10-s001: Started on Oct 07, 2026 at 20:56:41 EDT
 xmverilog
-	../testbench/elevator_controller_tb.v
+	../testbench/elevator_controller_tb.sv
 	+gui
 	+access+r
 	-timescale
 	1ns/1ps
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+		Caching library 'worklib' ....... Done
+xmelab: *W,DSEMEL: This SystemVerilog design will be simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.elevator_fsm:sv <0x6b2b2e9c>
+			streams:   4, words:  7120
+		worklib.elevator_button:v <0x245230dd>
+			streams:   3, words:   780
+		worklib.elevator_controller:sv <0x4851f7ef>
+			streams:  39, words:  9696
+		worklib.elevator_controller_tb:sv <0x5a6e3218>
+			streams:  17, words: 62586
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                 Instances  Unique
+		Modules:                10       4
+		Registers:              71      59
+		Scalar wires:           77       -
+		Always blocks:          18       6
+		Initial blocks:          3       3
+		Cont. assignments:       7       7
+		Pseudo assignments:     33      33
+		Simulation timescale:  1ps
+	Writing initial simulation snapshot: worklib.elevator_controller_tb:sv
+xmsim: *W,DSEM2009: This SystemVerilog design is simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
 
 -------------------------------------
 Relinquished control to SimVision...
@@ -166,7 +194,11 @@ Testcase  No_passengers_stuck : Time =              1206000
 
 
 Simulation complete via $finish(1) at time 1406 NS + 0
-../testbench/elevator_controller_tb.v:296 		$finish;
+../testbench/elevator_controller_tb.sv:297 		$finish;
 xcelium> ^C
-xcelium> exit
-TOOL:	xmverilog	17.10-s001: Exiting on Sep 25, 2026 at 23:56:25 EDT  (total: 00:16:37)
+xcelium> ^C
+xcelium> ^C
+xcelium> ^C
+xcelium> ^C
+xcelium> ^C
+xcelium> 
