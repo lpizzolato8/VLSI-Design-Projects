@@ -58,11 +58,20 @@ then
     # read in list of design files
     source ../scripts/design_files
 
-    # loop through list of design files and compile
+    # remove old compiled library so stale modules can't be simulated
+    rm -rf xcelium.d
+
+    # loop through list of design files and compile, stop on first error
     for design_file in ${ver_files[@]}
     do
 	echo "   Compiling "$design_file
-	xmverilog-sv $design_file -compile
+	xmverilog -sv $design_file -compile
+	if [ $? -ne 0 ]
+	then
+	    echo "   ***COMPILE FAILED: "$design_file"***"
+	    popd
+	    exit 1
+	fi
     done  
 fi
 
@@ -110,7 +119,7 @@ then
     then
 	echo "   ***Simulation Error: No top module defined***"
     else 
-	xmverilog ../testbench/${topmodule}.sv ${sim_options}
+	xmverilog -sv ../testbench/${topmodule}.sv ${sim_options}
     fi
     
 fi   
