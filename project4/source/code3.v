@@ -24,11 +24,11 @@ module code3(
    always @(posedge clk or negedge rst_n)
      begin
         if (rst_n == 1'b0) begin
-	   mid1 <= 1'b0;
-	   out1 <= 1'b0;
+	         mid1 <= 1'b0;
+	         out1 <= 1'b0;
         end else begin
-	   mid1 <= in1;
-	   out1 <= mid1;
+	         mid1 <= in1;
+	         out1 <= mid1;
         end   
      end
 
@@ -36,11 +36,11 @@ module code3(
    always @(posedge clk or negedge rst_n)
      begin
         if (rst_n == 1'b0) begin
-	   mid2 <= 1'b0;			//CHANGED: 4 IF STATEMENTS BELOW = -> <=
-	   out2 <= 1'b0;
+	         mid2 <= 1'b0;			//CHANGED: 4 ASSIGNMENTS BELOW = -> <=
+	         out2 <= 1'b0;
         end else begin
-	   mid2 <= in2;
-	   out2 <= mid2;
+	         mid2 <= in2;
+	         out2 <= mid2;
         end   
      end
 

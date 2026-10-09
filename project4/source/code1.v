@@ -31,12 +31,12 @@ module code1(
 
    always @(*)
      begin
-	if (enable == 1'b1) begin	// CHANGED: == -> = 
+	if (enable == 1'b1) begin	// CHANGED: = -> ==
 	   c_next   = a + b;
         end else begin
-	   c_next   = 3'b0; 		// CHANGED: NO VALUE FOR CNEXT WHEN ENABLE NOT HIGH
-	end				// THUS CREATING AN INFERRED LATCH. FIXED BY ADDING
-     end				// AN ELSE STATEMENT SETTING CNEXT TO 0
+	   c_next   = 3'b0; 		   // CHANGED: NO VALUE FOR CNEXT WHEN ENABLE NOT HIGH
+	end				            // THUS CREATING AN INFERRED LATCH. FIXED BY ADDING
+     end				            // AN ELSE STATEMENT SETTING CNEXT TO 0
 
      
 endmodule
