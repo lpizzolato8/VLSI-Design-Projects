@@ -1,5 +1,8 @@
 # VLSI Design
 
+## Projects moved
+- **Elevator_Improved** now lives in its own repo: [fpga-elevator-controller](https://github.com/lpizzolato8/fpga-elevator-controller)
+
 ## Notes:
 Edge Detection Design:
 ``` Verilog
