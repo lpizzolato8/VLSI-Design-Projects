@@ -1,6 +1,7 @@
 #############################
 # Update design name to match top-level module name
 set DESIGN "code4a"
+# CHANGED NAME
 
 ##########################
 
@@ -11,7 +12,8 @@ set_db init_hdl_search_path ../../source
 
 #############################
 ## HDL files to read in
-read_hdl program_counter.v
+read_hdl code4a.v
+# CHANGED NAME
 
 #############################
 
@@ -28,6 +30,9 @@ syn_generic
 syn_map 
 
 report_timing -max_paths 5 -from clk -to clk > ../reports/${DESIGN}_timing.rpt
+report_timing -max_paths 5  > ../reports/${DESIGN}_timing.rpt
+# ADDED NEW COMMAND WITH NO FILTER
+
 report_gates > ../reports/${DESIGN}_gates.rpt
 report_area > ../reports/${DESIGN}_area.rpt
 report_power > ../reports/${DESIGN}_power.rpt

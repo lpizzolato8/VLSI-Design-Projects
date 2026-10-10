@@ -6,19 +6,22 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 module code4b(
-		       input wire 	clk,
-		       input wire 	rst_n,
-		       output reg       update_minutes		     
-		       );
+	input wire 	clk,
+	input wire 	rst_n,
+	output reg       update_minutes		     
+	);
 
-   // sequential variables
-   reg [7:0] 				count_q; // 256 Hz clock, so 8-bit value needed
-   reg [5:0] 				time_seconds_q;
+   	// sequential variables
+   	reg [7:0] 				count_q; // 256 Hz clock, so 8-bit value needed
+   	reg [5:0] 				time_seconds_q;
    
-   // combinational variables
-   reg [7:0] 			        count_d;
-   reg [5:0] 				time_seconds_d;
+   	// combinational variables
+   	reg [7:0] 			        count_d;
+   	reg [5:0] 				time_seconds_d;
        
+	reg update_minutes_d; //CHANGED: INITIALIZED VAR 
+
+
     // clock in registers, asynch active-low reset    
     always @(posedge clk or negedge rst_n)
     begin
