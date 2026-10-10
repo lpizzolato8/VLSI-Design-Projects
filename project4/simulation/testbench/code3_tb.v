@@ -142,7 +142,7 @@ module code3_tb(
 		error_count = compare_outputs(1'b0, DUT.mid2, "mid2 = 1'b0", error_count);
 		error_count = compare_outputs(1'b0, out2,     "out2 = 1'b0", error_count);
  
-		// cycle 2: opposite of cycle 1. pipe1 moves to out1. pipe2 enters mid2
+		// cycle 2: in2 = 1, in2 = 0 -> out1 and mid2 are 1
 		in1 = 1'b0;
 		in2 = 1'b1;
  
@@ -153,7 +153,7 @@ module code3_tb(
 		error_count = compare_outputs(1'b1, DUT.mid2, "mid2 = 1'b1", error_count);
 		error_count = compare_outputs(1'b0, out2,     "out2 = 1'b0", error_count);
  
-		// cycle 3: inputs low -> only out2 holds a 1
+		// cycle 3: inputs low -> only out2 is 1
 		in1 = 1'b0;
 		in2 = 1'b0;
  

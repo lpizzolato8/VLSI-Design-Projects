@@ -243,20 +243,20 @@
 "object":"/designs/code0/instances_seq/c_reg",
 "type":"instance"},
 {"index": "1", 
- "date": "Sun Oct 04 17:13:26 UTC 2026",
- "seconds": 1791134006.0877168,
+ "date": "Sat Oct 10 00:25:06 UTC 2026",
+ "seconds": 1791591906.57296,
  "netlist": "fv/code0/fv_map.v.gz", 
  "netlist_exists": "1", 
  "netlist_normalize": "/home/ead/G33545035/VLSI-Design-Projects/project4/synthesis/fv/code0/fv_map.v.gz", 
- "netlist_mtime": "1791134004", 
- "netlist_timestamp": "Sun Oct 04 17:13:24 UTC 2026", 
- "netlist_size": "377", 
- "netlist_cksum": "2481244370", 
+ "netlist_mtime": "1791591904", 
+ "netlist_timestamp": "Sat Oct 10 00:25:04 UTC 2026", 
+ "netlist_size": "379", 
+ "netlist_cksum": "2807732543", 
  "design_name": "code0", 
  "synth_workdir": "/home/ead/G33545035/VLSI-Design-Projects/project4/synthesis", 
  "synthesis_command":"",
  "current_label": "fv_map", 
  "previous_label": "rtl", 
- "write_verif_file_runtime": 1.9988709999999998 
+ "write_verif_file_runtime": 2.0204489999999997 
  }
 ]
