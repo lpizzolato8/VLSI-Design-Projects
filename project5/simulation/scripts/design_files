@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# list of design files to be compiled
+
+
+ver_files=("../../source/code3.v"
+           "../testbench/code3_tb.v")
