@@ -35,7 +35,7 @@ module arbiter_tb ();
 
     // helper function to make the clock run for n clock edges. #1 lets the outputs settle after the edge before checking
 	// ticks needed to pass time so the states can change
-	task tick(input integer n); integer i; begin for(i=0;i<n;i=i+1) @(posedge clk); #1; end endtask 
+	repeat (n)  @(posedge clk);	// using repeat (n) to have task repeat @(posedge clk) for n amount of times
 
     // task to facilitate reset 
 	task reset;  begin
@@ -50,7 +50,6 @@ module arbiter_tb ();
         reset;
 
         testcase = "Rotation";
-
         req = 5'b10010;                      // FIFOs 4 and 1 have data
         #1;
         error_count = compare_outputs(5'b00010, grant, "grant = FIFO 1", error_count);
@@ -67,14 +66,6 @@ module arbiter_tb ();
 
         //buffer cycle
         tick(2);
-
-        // testing when fifo req is 10101;
-        testcase = "Full Run";
-
-        //buffer cycle
-        tick(2);
-
-
 
         // a FIFO that just won should not win again while another is waiting
         testcase = "No Double Grant";
@@ -98,15 +89,8 @@ module arbiter_tb ();
         #1;                                      // both still requesting: back to FIFO 3
         error_count = compare_outputs(5'b01000, grant, "grant = FIFO 3", error_count);      
 
-
-
-
-
-
-
-
-
-
+        //buffer cycle
+        tick(2);
 
 
     // final pass/fail count

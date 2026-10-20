@@ -17,11 +17,11 @@ module arbiter #( parameter N = 5 ) (
 
     );
 
+    // since we are using one hot encoding for the output grant
     localparam X = $clog2(N);
 
     // local variables
-    reg [X-1:0] last_winner;
-    reg [N-1] winner;
+    reg [X-1:0] last_winner, winner;
     integer i, which_fifo;
 
     always @(*) begin
