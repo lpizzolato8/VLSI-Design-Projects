@@ -1,6 +1,6 @@
 #############################
 # Update design name to match top-level module name
-set DESIGN "program_counter"
+set DESIGN "router_top"
 
 ##########################
 
@@ -11,7 +11,7 @@ set_db init_hdl_search_path ../../source
 
 #############################
 ## HDL files to read in
-read_hdl program_counter.v
+read_hdl {fifo.v arbiter.v crossbar_mux.v mvmt_logic.v router_top.v}
 
 #############################
 

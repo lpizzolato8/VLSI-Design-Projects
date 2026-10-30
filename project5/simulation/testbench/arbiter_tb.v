@@ -1,125 +1,151 @@
 `timescale 1ns / 1ps
 
+// doesnt grant two fifos at the same time
+// 1 fifo doesnt keep winning
+// reset works
+// all fifos request
 
 
-module arbiter_tb ();
+module arbiter_tb;
 
-    // set number of fifos I am testing
     parameter N = 5;
 
-    // instantiate all variables 
-    reg clk;
-    reg rst_n;
-    reg [N-1:0] req;
+    reg          clk;
+    reg          rst_n;
+    reg  [N-1:0] req;
 
     wire [N-1:0] grant;
-    wire winner_found;
-    
+    wire         winner_found;
 
-    // helper variables
-    reg [7:0] error_count = 8'h00;
-    wire [(30*8)-1:0] testcase;
+    reg  [(40*8)-1:0] testcase;     
 
-    // instantiate the arbiter we are testing
-    arbiter #(.N(N)) DUT(
-        .clk(clk),
-        .rst_n(rst_n),
-        .req(req),
-        .grant(grant),
-        .winner_found(winner_found)
+    arbiter #(.N(N)) DUT (
+        .clk          (clk),
+        .rst_n        (rst_n),
+        .req          (req),
+        .grant        (grant),
+        .winner_found (winner_found)
     );
 
-    // initialize the clk to 5 time units -> 100MHz
-	initial clk    = 0; 
-	always #5 clk = ~clk;
+    initial clk = 0;
+    always #5 clk = ~clk;
 
-    // helper function to make the clock run for n clock edges. #1 lets the outputs settle after the edge before checking
-	// ticks needed to pass time so the states can change
-	repeat (n)  @(posedge clk);	// using repeat (n) to have task repeat @(posedge clk) for n amount of times
+    integer errors = 0;
+    task check (input [63:0] actual, input [63:0] expected, input [8*24-1:0] name);
+        if (actual !== expected) begin
+            $display("**FAIL** %0s: expected %b, got %b at %0t", name, expected[N-1:0], actual[N-1:0], $time);
+            errors = errors + 1;
+        end else begin
+            $display("  PASS   %0s: %h at %0t", name, actual, $time);
+        end
+    endtask
 
-    // task to facilitate reset 
-	task reset;  begin
-		{last_winner} = 3'b000;
-		rst_n = 0; tick(3);
-		@(negedge clk) rst_n = 1; tick(2); 
-	end endtask
+    // wait n full clock cycles, ending on a negedge like every other step
+    task tick (input integer n);
+        repeat (n) @(negedge clk);
+    endtask
 
+    
+    task reset;
+        begin
+            req = 0;
+            rst_n = 0; tick(1);
+            rst_n = 1; tick(1);
+        end
+    endtask
 
-    initial begin 
-        // initialize values with reset
+    // everything should be done on the negative edge since last_winner updates on the positive edge
+
+    initial begin
+
+        // last_winner = 4, so fifo 0 is checked first
+        testcase = "TESTCASE: reset functionality";
+        $display("%0s", testcase);
+        req = 0;
+        rst_n = 0;
+        tick(3);
+        rst_n = 1;
+        tick(1);
+
+        // no requests: no grant
+        #1;
+        check(grant,        5'b00000, "no req: grant");
+        check(winner_found, 0,        "no req: winner_found");
+
+        req = 0; tick(1);    
+
+        // one requester gets the grant every cycle
+        testcase = "TESTCASE: single requester";
+        $display("%0s", testcase);
+        req = 5'b00100;
+        #1; check(grant, 5'b00100, "single 1");
+        tick(1);
+        #1; check(grant, 5'b00100, "single 2");
+        check(winner_found, 1, "single: winner_found");
+        tick(1);
+
+        req = 0; tick(1); 
         reset;
 
-        testcase = "Rotation";
-        req = 5'b10010;                      // FIFOs 4 and 1 have data
-        #1;
-        error_count = compare_outputs(5'b00010, grant, "grant = FIFO 1", error_count);
+        // all 5 request and grants rotate 0,1,2,3,4 then back to 0
+        testcase = "TESTCASE: full rotation";
+        $display("%0s", testcase);
+        req = 5'b11111;
+        #1; check(grant, 5'b00001, "rotate 0");    tick(1);
+        #1; check(grant, 5'b00010, "rotate 1");    tick(1);
+        #1; check(grant, 5'b00100, "rotate 2");    tick(1);
+        #1; check(grant, 5'b01000, "rotate 3");    tick(1);
+        #1; check(grant, 5'b10000, "rotate 4");    tick(1);
+        #1; check(grant, 5'b00001, "rotate wrap"); tick(1);
 
-        tick(1);                             // FIFO 1 wins, last_winner updates
-        error_count = compare_outputs(3'd1, DUT.last_winner, "last_winner = 1", error_count);
-        error_count = compare_outputs(5'b10000, grant, "grant = FIFO 4", error_count);
+        req = 0; tick(1);  
+        reset;
 
-        testcase = "Async Reset";
+        // a fifo that just won does not win again while another waits
+        testcase = "TESTCASE: no double grant";
+        $display("%0s", testcase);
+        req = 5'b01010;                                             // fifos 1 and 3
+        #1; check(grant, 5'b00010, "no double: 1");      tick(1);   // 1 wins
+        req = 5'b01000;                                             // only 3 left
+        #1; check(grant, 5'b01000, "no double: 3");      tick(1);   // 3 wins
+        req = 5'b01010;                                             // 1 is back, 3 still waiting
+        #1; check(grant, 5'b00010, "no double: 1 next"); tick(1);
+        #1; check(grant, 5'b01000, "no double: 3 next"); tick(1);
+
+        req = 0; tick(1);  
+        reset;
+
+        // a cycle with no requests does not move last_winner
+        testcase = "TESTCASE: idle keeps place";
+        $display("%0s", testcase);
+        req = 5'b10010;
+        #1; check(grant, 5'b00010, "idle: 1 wins");  tick(1);       // last_winner = 1
+        req = 0;
+        #1; check(winner_found, 0, "idle: no winner"); tick(2);     // 2 idle cycles
+        req = 5'b10010;
+        #1; check(grant, 5'b10000, "idle: 4 next");                 // still after 1, so 4
+        tick(1);
+
+        req = 0; tick(1); 
+        reset;
+
+        // reset in the middle
+        testcase = "TESTCASE: async reset";
+        $display("%0s", testcase);
+        req = 5'b10010;
+        #1; check(grant, 5'b00010, "before reset");   tick(1);      // 1 wins
+        #1; check(grant, 5'b10000, "4 is next");                    // 4 would win
         rst_n = 0;
-        #1;
-        error_count = compare_outputs(3'd4, DUT.last_winner, "last_winner = 4", error_count);
-        error_count = compare_outputs(5'b00010, grant, "grant = FIFO 1", error_count);
-
-        //buffer cycle
-        tick(2);
-
-        // a FIFO that just won should not win again while another is waiting
-        testcase = "No Double Grant";
-        reset;                                   // last_winner = 4
-
-        req = 5'b01010;                          // FIFOs 3 and 1 have data
-        #1;
-        error_count = compare_outputs(5'b00010, grant, "grant = FIFO 1", error_count);
-        tick(1);                                 // FIFO 1 wins, last_winner = 1
-
-        req = 5'b01000;                          // FIFO 1 emptied, only FIFO 3 has data
-        #1;
-        error_count = compare_outputs(5'b01000, grant, "grant = FIFO 3", error_count);
-        tick(1);                                 // FIFO 3 wins, last_winner = 3
-
-        req = 5'b01010;                          // FIFO 1 refilled, FIFO 3 still has data
-        #1;                                      // FIFO 3 just won, so FIFO 1 should win
-        error_count = compare_outputs(5'b00010, grant, "grant = FIFO 1", error_count);
-        tick(1);                                 // last_winner = 1
-
-        #1;                                      // both still requesting: back to FIFO 3
-        error_count = compare_outputs(5'b01000, grant, "grant = FIFO 3", error_count);      
-
-        //buffer cycle
-        tick(2);
+        #1; check(grant, 5'b00010, "after reset");                  // back to 1
+        req = 0;
+        tick(1);
+        rst_n = 1;
+        tick(1);
 
 
-    // final pass/fail count
-		if (error_count == 0) begin
-			$display("\n\n----------SIMULATION PASSED----------");
-			$display("----------RTL SIMULATION   ----------\n\n");
-		end else begin
-			$display("\n\n----------SIMULATION FAILED----------");
-			$display("----------RTL SIMULATION   ----------");
-			$display("---------- %d ERRORS TOTAL----------\n\n", error_count);
-		end
-		$finish;
-	end
-
-	// pass/fail comparison
-	function  [7:0] compare_outputs (
-		input [7:0]    expected_value,
-		input [7:0]    actual_value,
-		input [8*19:0] signal_name,
-		input [7:0]    error_count);
-		if (expected_value == actual_value) begin
-			$display("  PASS  : %s: Expected = %h, Actual = %h, Time = %t",
-			         signal_name, expected_value, actual_value, $time);
-			compare_outputs = error_count;
-		end else begin
-			$display("**FAIL**: %s: Expected = %h, Actual = %h, Time = %t",
-			         signal_name, expected_value, actual_value, $time);
-			compare_outputs = error_count + 1;
-		end
-	endfunction
+        if (errors == 0) $display("\n---------- ARBITER: SIMULATION PASSED ----------\n");
+        else             $display("\n---------- ARBITER: SIMULATION FAILED, %0d errors ----------\n", errors);
+        $finish;
+    end
 
 endmodule

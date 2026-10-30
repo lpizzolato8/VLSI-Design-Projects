@@ -3,5 +3,5 @@
 # list of design files to be compiled
 
 
-ver_files=("../../source/code3.v"
-           "../testbench/code3_tb.v")
+ver_files=("../../source/crossbar_mux.v"
+           "../testbench/crossbar_mux_tb.v")

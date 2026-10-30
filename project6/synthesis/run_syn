@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# a simple bash script for Synopsys Design Compiler
+
+echo "Genus Control Script"
+
+echo ""
+pushd work
+
+echo "   Launching Genus with GUI"
+
+/apps/cadence/DDI251/GENUS251/bin/genus -gui
+
+popd
+
+
+
+	
