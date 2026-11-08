@@ -1,7 +1,7 @@
 (DELAYFILE
   (SDFVERSION  "OVI 3.0")
   (DESIGN      "main")
-  (DATE        "Thu Oct 29 23:04:35 EDT 2026")
+  (DATE        "Fri Oct 30 17:24:16 EDT 2026")
   (VENDOR      "Cadence, Inc.")
   (PROGRAM     "Genus(TM) Synthesis Solution")
   (VERSION     "25.10-p002_1")
@@ -3286,7 +3286,7 @@
   )
   (CELL
      (CELLTYPE "DFFR_E")
-     (INSTANCE u_reset_sync.sync_ff_reg\[1\])
+     (INSTANCE u_reset_sync.ff2_reg)
      (DELAY
         (ABSOLUTE
           (PORT RN (::0.0))
@@ -3306,7 +3306,7 @@
   )
   (CELL
      (CELLTYPE "DFFR_E")
-     (INSTANCE u_reset_sync.sync_ff_reg\[0\])
+     (INSTANCE u_reset_sync.ff1_reg)
      (DELAY
         (ABSOLUTE
           (PORT RN (::0.0))

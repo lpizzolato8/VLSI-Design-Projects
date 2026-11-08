@@ -19,6 +19,7 @@ module reset_sync (
         end
     end
 
+    // rst_n_sync is assigned the value of ff2 always
     assign rst_n_sync = ff2;
     
 endmodule
